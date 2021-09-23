@@ -1,6 +1,6 @@
 
 
-const getProducts = (page, count) => {
+const getAll = (page, count) => {
 
   /**
    *
@@ -39,7 +39,7 @@ const getProducts = (page, count) => {
 
 }
 
-const getProductById = (product_id) => {
+const getOne = (product_id) => {
   /**
 
   PARAMETER - product_id integer required ID of product requested
@@ -66,7 +66,7 @@ const getProductById = (product_id) => {
    */
 }
 
-const getProductStyles = (product_id) => {
+const getStyles = (product_id) => {
     /**
    {
     "product_id": "1",
@@ -107,7 +107,7 @@ const getProductStyles = (product_id) => {
    */
 }
 
-const getRelatedProducts = () => {
+const getRelated = () => {
   /**
 
   [
@@ -121,8 +121,8 @@ const getRelatedProducts = () => {
 }
 
 module.exports = {
-  getProducts,
-  getProductById,
-  getProductStyles
-  getRelatedProducts
+  getAll,
+  getOne,
+  getStyles
+  getRelated
 }

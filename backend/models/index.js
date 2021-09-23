@@ -4,6 +4,4 @@ module.exports = {
   product: require('./product'),
   qa: require('./qa'),
   reviews: require('./reviews')
-  users: require('./users')
 }
-

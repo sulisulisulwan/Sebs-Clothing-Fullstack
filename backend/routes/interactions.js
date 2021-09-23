@@ -1,29 +1,25 @@
 const router = require('express').Router();
-
+const Interactions = require('../models/interactions')
 
 router.post('/', (req, res) => {
 
-  /**
+  let { element, widget, time } = req.body
 
-Log an Interaction
-Adds a interaction to the db.
+  //validate parameters
+  //if parameters invalid
+    //throw '422'
 
-POST /interactions
-
-Body Parameters
-
-Parameter	Type	Description
-element	string	Required. Selector for the element which was clicked
-widget	string	Required. Name of the module/widget in which the click occured
-time	string	Required. Time the interaction occurred
-Response:
-
-Success: Status: 201 CREATED
-
-Invalid parameters: Status: 422 UNPROCESSABLE ENTITY
-
-   */
-
+    Interactions.post(element, widget, time)
+    .then(_=> {
+      res.sendStatus(201)
+    })
+    .catch(err => {
+      console.error(err)
+      //if err is '422'
+        //res.sendStatus(422)
+      //else
+        res.sendStatus(500);
+    })
 })
 
 module.exports = router;
