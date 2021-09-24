@@ -2,6 +2,11 @@
 
 const getAll = (page, count) => {
 
+
+  let q = `
+    SELECT COUNT(*) FROM Product
+  `
+
   /**
    *
     PARAMETER: page -	integer	Selects the page of results to return. Default 1.
