@@ -1,5 +1,5 @@
-const { template_exe } = require('./etl_TEMPLATE')
-const opt = require('./etl_OPTIONS')
+const { template_exe } = require('./etl_Template')
+const opt = require('./etl_Options')
 
 const cycleThroughTables = (tables) => {
   return new Promise ((resolve, reject) => {

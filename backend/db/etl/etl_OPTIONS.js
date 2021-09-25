@@ -1,4 +1,4 @@
-const lineProcessors = require('./etl_lineProcessor')
+const lineProcessors = require('./etl_LineProcessor')
 
 class ETL_Options {
   constructor (csvFile, table, dataTypes, totalRows) {
@@ -16,7 +16,7 @@ class ETL_Options {
 module.exports = {
   Product: new ETL_Options('/csvs/products/product.csv', 'Product', ['int', 'string', 'string', 'string', 'string', 'string'], 1000011),
   Features: new ETL_Options('/csvs/products/features.csv', 'Features', ['int', 'int', 'string', 'string'], 2219279),
-  Related: new ETL_Options('/csvs/products/related.csv', 'Related', ['int', 'int', 'int'], 4508263),
+  // Related: new ETL_Options('/csvs/products/related.csv', 'Related', ['int', 'int', 'int'], 4508263),
   SKUs: new ETL_Options('/csvs/products/skus.csv', 'SKUs', ['int', 'int', 'int', 'int'], 11323917),
   Styles: new ETL_Options('/csvs/products/styles.csv', 'Styles', ['int', 'int', 'string', 'string', 'string', 'boolean'], 1958102),
   Product_Photos: new ETL_Options('/csvs/products/photos.csv', 'Product_Photos', ['int', 'int', 'string', 'string']),
