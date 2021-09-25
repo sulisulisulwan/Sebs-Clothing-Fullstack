@@ -59,7 +59,7 @@ CREATE TABLE  Product_Photos (
 CREATE TABLE Questions (
   ID INT NOT NULL AUTO_INCREMENT,
   product_id VARCHAR (20),
-  body VARCHAR(256),
+  body VARCHAR(1000),
   date_written DATETIME,
   asker_name VARCHAR(100),
   asker_email VARCHAR(100),
@@ -78,7 +78,7 @@ CREATE TABLE Answers_Photos (
 CREATE TABLE Answers (
   ID INT NOT NULL AUTO_INCREMENT,
   question_id INT,
-  body VARCHAR(256),
+  body VARCHAR(1000),
   date_written DATETIME,
   answerer_name VARCHAR(100),
   answerer_email VARCHAR(100),
@@ -115,12 +115,12 @@ CREATE TABLE Reviews (
   rating INT,
   date DATETIME,
   summary VARCHAR(256),
-  body VARCHAR(256),
+  body VARCHAR(1000),
   recommend BOOLEAN,
   reported BOOLEAN,
   reviewer_name VARCHAR(100),
   reviewer_email VARCHAR(100),
-  response VARCHAR(100) NULL,
+  response VARCHAR(1000) NULL,
   helpfulness INT,
   PRIMARY KEY (ID)
 );

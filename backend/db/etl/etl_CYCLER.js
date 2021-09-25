@@ -1,7 +1,7 @@
 const { template_exe } = require('./etl_Template')
 const opt = require('./etl_Options')
 
-const cycleThroughTables = (tables) => {
+const cycleThroughTables = (tables, tablesCompleted) => {
   return new Promise ((resolve, reject) => {
     if (tables.length === 0) {
       resolve();
@@ -9,10 +9,11 @@ const cycleThroughTables = (tables) => {
     let currentTable = tables.pop();
 
     console.log(`Initializing ETL for ${currentTable}`)
-    template_exe(opt[currentTable])
+    template_exe(opt[currentTable], tablesCompleted)
       .then(_=>{
         console.log(`Completed ETL for ${currentTable}`)
-        cycleThroughTables(tables)
+        tablesCompleted.push(currentTable)
+        cycleThroughTables(tables, tablesCompleted);
       })
       .catch(err => {
         console.error(`ERROR during ETL of ${currentTable}`, err.message);
@@ -23,7 +24,7 @@ const cycleThroughTables = (tables) => {
 
 const initTableCycler = () => {
   let tables = Object.keys(opt);
-  cycleThroughTables(tables)
+  cycleThroughTables(tables, [])
     .then(_=> {
       console.log('ETL PROCESS COMPLETE')
     })
@@ -33,4 +34,6 @@ const initTableCycler = () => {
 }
 
 
-module.exports = initTableCycler;
+module.exports = {
+  initTableCycler,
+}

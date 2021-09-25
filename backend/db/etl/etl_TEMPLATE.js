@@ -4,8 +4,7 @@ const db = require('../db');
 const processLine = require('./etl_LineProcessor');
 
 
-
-const template_exe = (options) => {
+const template_exe = (options, tablesCompleted) => {
   return new Promise((resolve, reject) => {
     let lineCount = 0;
     let linesProcessed = 0;
@@ -39,10 +38,13 @@ const template_exe = (options) => {
           if (waterMark === 0) {
             readline.resume();
           }
-          if (linesProcessed % 1000 === 0) {
-            console.log(linesProcessed);
+          if (linesProcessed % 50000 === 0) {
+            console.log(options.table, linesProcessed, tablesCompleted)
+          } else if (linesProcessed % 5000 === 0) {
+            console.log(linesProcessed + ` lines processed in ${options.table} --- ${((linesProcessed / options.totalRows) * 100).toString().substring(0, 5)}%`)
           }
           if (linesProcessed === options.totalRows) {
+            console.log(linesProcessed + ` lines processed in ${options.table} --- 100%`)
             resolve()
           }
         })
