@@ -3,8 +3,10 @@ const Products = require('../models/product');
 
 router.get('/', (req, res) => {
   let { page, count } = req.query
+  console.log('hello')
   return Products.getAll(page, count)
     .then(products => {
+      console.log(products);
       res.status(200).json(products);
     })
     .catch(err => {

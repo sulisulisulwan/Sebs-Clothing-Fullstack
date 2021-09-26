@@ -1,13 +1,19 @@
-
+const db = require('../db/db')
 
 const getAll = (page, count) => {
-
-
-  let q = `
-    SELECT COUNT(*) FROM Product
-  `
-
-  /**
+  return new Promise ((resolve, result) => {
+    let q = `
+    SELECT *
+    FROM Product
+    WHERE id >= ${count * (page - 1) + 1}
+    LIMIT ${count};
+    `
+    db.query(q)
+    .then(products => {
+      resolve(products[0])
+    })
+  })
+    /**
    *
     PARAMETER: page -	integer	Selects the page of results to return. Default 1.
     PARAMETER: count - integer	Specifies how many results per page to return. Default 5.
@@ -128,6 +134,6 @@ const getRelated = () => {
 module.exports = {
   getAll,
   getOne,
-  getStyles
+  getStyles,
   getRelated
 }

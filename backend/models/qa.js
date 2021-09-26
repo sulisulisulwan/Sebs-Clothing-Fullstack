@@ -145,7 +145,7 @@ Response
    */
 }
 
-const postAnswer = (question_id, { body, name, email, photos }) {
+const postAnswer = (question_id, { body, name, email, photos }) => {
   /**
 
 Add an Answer

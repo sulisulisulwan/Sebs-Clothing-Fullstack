@@ -5,10 +5,10 @@ CREATE DATABASE SebsClothing;
 USE SebsClothing;
 
 CREATE TABLE Product (
-  ID INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(100),
   slogan VARCHAR(256),
-  description VARCHAR(256),
+  description VARCHAR(1000),
   category VARCHAR(100),
   default_price VARCHAR(20),
   PRIMARY KEY (ID)
@@ -17,8 +17,8 @@ CREATE TABLE Product (
 CREATE TABLE Features (
   ID INT NOT NULL AUTO_INCREMENT,
   product_id INT,
-  feature VARCHAR(20),
-  value VARCHAR(20),
+  feature VARCHAR(100),
+  value VARCHAR(100),
   PRIMARY KEY (ID)
 );
 
@@ -32,7 +32,7 @@ CREATE TABLE Related (
 CREATE TABLE SKUs (
   ID INT NOT NULL AUTO_INCREMENT,
   styleId INT,
-  size VARCHAR (5),
+  size VARCHAR (15),
   quantity INT,
   PRIMARY KEY (ID)
 );

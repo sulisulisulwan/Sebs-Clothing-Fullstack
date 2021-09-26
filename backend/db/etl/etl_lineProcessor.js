@@ -1,3 +1,5 @@
+const { processDoubleQuotes } = require('./etl_Helpers');
+
 const convertDataType = {
   string: (str) => {
     return str;
@@ -17,9 +19,12 @@ const convertDataType = {
 }
 
 module.exports = (line, columnsObj, columnNames, dataTypes) => {
+  let doubleQuotedStrings;
+  [line, doubleQuotedStrings] = processDoubleQuotes(line)
   let columns = line.split(',');
   columns.forEach((column, i) => {
-    columnsObj[columnNames[i]] = convertDataType[dataTypes[i]](column);
+    columnsObj[columnNames[i]] = dataTypes[i] === 'string' && column.length === 0 ? doubleQuotedStrings.shift()
+      : convertDataType[dataTypes[i]](column);
   })
   return columnsObj;
 }

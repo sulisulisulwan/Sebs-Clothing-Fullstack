@@ -56,7 +56,7 @@ product_id	integer	Specifies the product for which to retrieve reviews.
 */
 }
 
-const getMetadata = (product_id) {
+const getMetadata = (product_id) => {
   // product_id	integer	Required ID of the product for which data should be returned
 
   /*
