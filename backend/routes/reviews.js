@@ -2,8 +2,8 @@ const router = require('express').Router();
 const Reviews = require('../models/reviews')
 
 router.get('/', (req, res) => {
-  let { page, count, sort, results } = req.query
-  return Reviews.getAll(page, count, sort, results)
+  let { page, count, sort, product_id } = req.query
+  return Reviews.getAll(page, count, sort, product_id)
     .then(reviews => {
       res.status(200).json(reviews)
     })

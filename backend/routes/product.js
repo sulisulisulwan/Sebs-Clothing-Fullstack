@@ -3,10 +3,8 @@ const Products = require('../models/product');
 
 router.get('/', (req, res) => {
   let { page, count } = req.query
-  console.log('hello')
   return Products.getAll(page, count)
     .then(products => {
-      console.log(products);
       res.status(200).json(products);
     })
     .catch(err => {
@@ -16,7 +14,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:product_id', (req, res) => {
-  let product_id = req.url.substring() //find the indices
+  let { product_id } = req.params
   return Products.getOne(product_id)
     .then(product => {
       res.status(200).json(product);
@@ -29,7 +27,7 @@ router.get('/:product_id', (req, res) => {
 })
 
 router.get('/:product_id/styles', (req, res) => {
-  let product_id = req.url.substring() //find the indices
+  let { product_id } = req.params
   return Products.getStyles(product_id)
     .then(productStyles => {
       res.status(200).json(productStyles);
@@ -42,8 +40,8 @@ router.get('/:product_id/styles', (req, res) => {
 })
 
 
-router.get('/products/:product_id/related', (req, res) => {
-  let product_id = req.url.substring() //find the indices
+router.get('/:product_id/related', (req, res) => {
+  let { product_id } = req.params
   return Products.getRelated(product_id)
     .then(relatedProducts => {
       res.status(200).json(relatedProducts);

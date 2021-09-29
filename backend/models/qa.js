@@ -1,8 +1,57 @@
+const db = require('../db/db')
+
 const getQsByProductId = (product_id, page, count) => {
+  return new Promise((resolve, reject) => {
+    let q = `SELECT COUNT(*) FROM Questions WHERE product_id= ${product_id} AND reported = 0`;
+    return db.query(q)
+      .then(resultCount => {
+        q = `
+          SELECT JSON_OBJECT(
+            'product_id', ${product_id},
+            'results', (
+              SELECT JSON_ARRAYAGG(
+                JSON_OBJECT(
+                  'question_id', id,
+                  'question_body', body,
+                  'question_date', date_written,
+                  'asker_name', asker_name,
+                  'question_helpfulness', helpful,
+                  'reported', reported,
+                  'answers', (
+                    SELECT JSON_OBJECTAGG(id,
+                      JSON_OBJECT(
+                        'id', id,
+                        'body', body,
+                        'date', date_written,
+                        'answerer_name', answerer_name,
+                        'helpfulness', helpful,
+                        'photos', (
+                          SELECT JSON_ARRAYAGG(
+                            url
+                          ) FROM Answers_Photos WHERE answer_id = Answers.id
+                        )
+                      )
+                    ) FROM Answers WHERE question_id = NonReportedQs.id
+                  )
+                )
+              ) FROM (SELECT * FROM Questions WHERE product_id= ${product_id} AND reported = 0 LIMIT ${count} OFFSET ${(page * count) - count}) AS NonReportedQs
+            )
+          ) AS questions
+        `;
+        return db.query(q)
+      })
+      .then(questions => {
+        resolve(questions[0][0].questions)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
 /**
 
 List Questions
 GET /qa/questions Retrieves a list of questions for a particular product. This list does not include any reported questions.
+
 
 Parameters
 
@@ -69,6 +118,42 @@ Status: 200 OK
 }
 
 const getAnswersByQId = (question_id, page, count) => {
+  return new Promise((resolve, reject) => {
+    let q = `
+      SELECT JSON_OBJECT(
+        'question', ${question_id},
+        'page', ${page},
+        'count', ${count},
+        'results', (
+          SELECT JSON_ARRAYAGG(
+            JSON_OBJECT(
+              'answer_id', id,
+              'body', Answers.body,
+              'date', Answers.date_written,
+              'answerer_name', Answers.answerer_name,
+              'helpfulness', Answers.helpful,
+              'photos', (
+                SELECT JSON_ARRAYAGG(
+                  JSON_OBJECT(
+                    'id', id,
+                    'url', url
+                  )
+                ) FROM Answers_Photos WHERE answer_id = Answers.id
+              )
+            )
+          ) FROM Answers WHERE question_id = ${question_id}
+        )
+      ) AS answers;
+    `;
+    return db.query(q)
+      .then(answers => {
+        resolve(answers[0][0].answers);
+      })
+      .catch(err => {
+        console.error(err);
+        reject(err);
+      })
+  })
  /**
 Answers List
 Returns answers for a given question. This list does not include any reported answers.

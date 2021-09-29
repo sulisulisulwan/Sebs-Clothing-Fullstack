@@ -19,7 +19,8 @@ CREATE TABLE Features (
   product_id INT,
   feature VARCHAR(100),
   value VARCHAR(100),
-  PRIMARY KEY (ID)
+  PRIMARY KEY (ID),
+  FOREIGN KEY (product_id) REFERENCES Product(id)
 );
 
 CREATE TABLE Related (
