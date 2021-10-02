@@ -49,7 +49,7 @@ router.put('/:review_id/helpful', (req, res) => {
 })
 
 router.put('/:review_id/report', (req, res) => {
-  let review_id = req.url.substring() //find the indices
+  let review_id = req.params.review_id //find the indices
   Reviews.updateOneAsReported(review_id)
     .then(_=> {
       res.sendStatus(204)

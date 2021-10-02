@@ -183,6 +183,15 @@ const post = (
   { product_id, rating, summary, body,
     recommend, name, email, photos,
     characteristics}) => {
+  return new Promise((resolve, reject) => {
+    db.query()
+      .then(_=> {
+        resolve();
+      })
+      .catch(err => {
+        reject();
+      })
+  })
 /*
 
   Parameter	Type	Description
@@ -202,6 +211,15 @@ const post = (
 }
 
 const updateOneAsHelpful = (review_id) => {
+  return new Promise((resolve, reject) => {
+    db.query()
+      .then(_=> {
+        resolve();
+      })
+      .catch(err => {
+        reject();
+      })
+  })
   /*
 Updates a review to show it was found helpful.
 
@@ -216,6 +234,16 @@ Status: 204 NO CONTENT
 }
 
 const updateOneAsReported = (review_id) => {
+  return new Promise((resolve, reject) => {
+    let q = `UPDATE Reviews SET reported = reported + 1 WHERE id = ${review_id}`
+    return db.query(q)
+    .then(_=> {
+      resolve();
+    })
+    .catch(err => {
+      reject(err);
+    })
+  })
   /*
 Parameters
 
