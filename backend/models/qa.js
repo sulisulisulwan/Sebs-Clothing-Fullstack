@@ -31,7 +31,7 @@ const getQsByProductId = (product_id, page, count) => {
                           ) FROM Answers_Photos WHERE answer_id = Answers.id
                         )
                       )
-                    ) FROM Answers WHERE question_id = NonReportedQs.id
+                    ) FROM Answers WHERE question_id = NonReportedQs.id AND Answers.reported = 0
                   )
                 )
               ) FROM (SELECT * FROM Questions WHERE product_id= ${product_id} AND reported = 0 LIMIT ${count} OFFSET ${(page * count) - count}) AS NonReportedQs
@@ -119,6 +119,7 @@ Status: 200 OK
 
 const getAnswersByQId = (question_id, page, count) => {
   return new Promise((resolve, reject) => {
+
     let q = `
       SELECT JSON_OBJECT(
         'question', ${question_id},
@@ -141,7 +142,7 @@ const getAnswersByQId = (question_id, page, count) => {
                 ) FROM Answers_Photos WHERE answer_id = Answers.id
               )
             )
-          ) FROM Answers WHERE question_id = ${question_id}
+          ) FROM Answers WHERE question_id = ${question_id} AND reported = 0
         )
       ) AS answers;
     `;
@@ -212,6 +213,31 @@ Status: 200 OK
 }
 
 const postQuestion = ({ body, name, email, product_id}) => {
+  return new Promise((resolve, reject) => {
+    let date = new Date().toISOString().split('T');
+    date = date[0] + ' ' + date[1].substring(0, 8);
+    let q = `
+      INSERT INTO
+      Questions SET ?
+    `;
+    let v = {
+      product_id: product_id,
+      body: body,
+      date_written: date,
+      asker_name: name,
+      asker_email: email,
+      reported: 0,
+      helpful: 0
+    }
+    db.query(q, v)
+      .then(_=> {
+        resolve()
+      })
+      .then(err => {
+        reject()
+      })
+  })
+
  /**
 
 Add a Question
@@ -231,6 +257,38 @@ Response
 }
 
 const postAnswer = (question_id, { body, name, email, photos }) => {
+  return new Promise((resolve, reject) => {
+    let date = new Date().toISOString().split('T');
+    date = date[0] + ' ' + date[1].substring(0, 8);
+    let v1 = {
+      question_id: Number(question_id),
+      body: body,
+      date_written: date,
+      answerer_name: name,
+      answerer_email: email,
+      reported: 0,
+      helpful: 0
+    }
+
+    return db.query(`INSERT INTO Answers SET ?`, v1)
+      .then(result => {
+        let answer_id = result[0].insertId
+        let answersPhotosQueries = []
+        photos.forEach(photoUrl => {
+          let v2 = {}
+          v2.answer_id = answer_id
+          v2.url = photoUrl
+          answersPhotosQueries.push(db.query(`INSERT INTO Answers_Photos SET ?`, v2))
+        })
+        return Promise.all(answersPhotosQueries)
+      })
+      .then(_=> {
+        resolve()
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
   /**
 
 Add an Answer
@@ -253,7 +311,22 @@ Response
    */
 }
 
-const updateQuestionAsHelpful = () => {
+const updateQuestionAsHelpful = (question_id) => {
+  return new Promise((resolve, reject) => {
+    let q = `
+      UPDATE Questions
+      SET helpful = helpful + 1
+      WHERE id = ${question_id}
+    `;
+    db.query(q)
+      .then(_=>{
+        resolve();
+      })
+      .catch(err => {
+        console.error(err);
+        reject(err);
+      })
+  })
   /**
 
 Mark Question as Helpful
@@ -272,7 +345,22 @@ Status: 204 NO CONTENT
    */
 }
 
-const reportQuestion = () => {
+const reportQuestion = (question_id) => {
+  return new Promise((resolve, reject) => {
+    let q = `
+      UPDATE Questions
+      SET reported = 1
+      WHERE id = ${question_id};
+    `;
+    db.query(q)
+      .then(_=> {
+        resolve()
+      })
+      .catch(err => {
+        console.error(err)
+        reject(err);
+      })
+  })
     /**
 
 Report Question
@@ -289,7 +377,22 @@ Response
    */
 }
 
-const updateAnswerAsHelpful = () => {
+const updateAnswerAsHelpful = (answer_id) => {
+  return new Promise((resolve, reject) => {
+    let q = `
+      UPDATE Answers
+      SET helpful = helpful + 1
+      WHERE id = ${answer_id}
+    `;
+    db.query(q)
+      .then(_=>{
+        resolve();
+      })
+      .catch(err => {
+        console.error(err);
+        reject(err);
+      })
+  })
   /**
 
    Mark Answer as Helpful
@@ -308,9 +411,21 @@ Status: 204 NO CONTENT
 */
 }
 
-const reportAnswer = () => {
+const reportAnswer = (answer_id) => {
+  let q = `
+  UPDATE Answers
+  SET reported = 1
+  WHERE id = ${answer_id};
+`;
+db.query(q)
+  .then(_=> {
+    resolve()
+  })
+  .catch(err => {
+    console.error(err)
+    reject(err);
+  })
   /**
-
 Report Answer
 Updates an answer to show it has been reported. Note, this action does not delete the answer, but the answer will not be returned in the above GET request.
 

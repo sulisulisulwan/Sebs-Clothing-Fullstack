@@ -17,7 +17,7 @@ router.get('/meta', (req, res) => {
   let { product_id } = req.query;
   return Reviews.getMetadata(product_id)
     .then(reviewMetadata => {
-      res.status(200).json(reviews)
+      res.status(200).json(reviewMetadata)
     })
     .catch(err => {
       console.error(err);
