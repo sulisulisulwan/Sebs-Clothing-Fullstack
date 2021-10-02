@@ -1,4 +1,5 @@
-const db = require('../db/db')
+const db = require('../db/db');
+const utils = require('./utils.js');
 
 const getAll = (page, count, sort, product_id) => {
   return new Promise ((resolve, reject) => {
@@ -184,12 +185,29 @@ const post = (
     recommend, name, email, photos,
     characteristics}) => {
   return new Promise((resolve, reject) => {
-    db.query()
+    let v = {
+      product_id: product_id,
+      rating: rating,
+      date: utils.formatDateTimeOfNow(),
+      summary: summary,
+      body: body,
+      recommend: recommend,
+      reviewer_name: name,
+      reviewer_email: email,
+      reported: 0,
+      helpfulness: 0,
+    }
+
+    return db.query(`INSERT INTO Reviews SET ?`, v)
+      .then(results => {
+        let review_id = results[0].insertId
+        Promise.all(utils.preparePhotosQueriesArray('Review_Photos', review_id, photos))
+      })
       .then(_=> {
         resolve();
       })
       .catch(err => {
-        reject();
+        reject(err);
       })
   })
 /*
@@ -212,12 +230,12 @@ const post = (
 
 const updateOneAsHelpful = (review_id) => {
   return new Promise((resolve, reject) => {
-    db.query()
+    return db.query(utils.updateHelpfulnessQuery('Reviews', review_id))
       .then(_=> {
         resolve();
       })
       .catch(err => {
-        reject();
+        reject(err);
       })
   })
   /*
@@ -235,8 +253,7 @@ Status: 204 NO CONTENT
 
 const updateOneAsReported = (review_id) => {
   return new Promise((resolve, reject) => {
-    let q = `UPDATE Reviews SET reported = reported + 1 WHERE id = ${review_id}`
-    return db.query(q)
+    return db.query(utils.updateReportQuery('Reviews', review_id))
     .then(_=> {
       resolve();
     })

@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:review_id/helpful', (req, res) => {
-  let review_id = req.url.substring() //find the indices
+  let review_id = req.params.review_id
   Reviews.updateOneAsHelpful(review_id)
     .then(_=> {
       res.sendStatus(204)

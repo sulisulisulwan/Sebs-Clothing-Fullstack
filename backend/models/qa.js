@@ -1,4 +1,5 @@
 const db = require('../db/db')
+const utils = require('./utils.js')
 
 const getQsByProductId = (product_id, page, count) => {
   return new Promise((resolve, reject) => {
@@ -214,8 +215,6 @@ Status: 200 OK
 
 const postQuestion = ({ body, name, email, product_id}) => {
   return new Promise((resolve, reject) => {
-    let date = new Date().toISOString().split('T');
-    date = date[0] + ' ' + date[1].substring(0, 8);
     let q = `
       INSERT INTO
       Questions SET ?
@@ -223,7 +222,7 @@ const postQuestion = ({ body, name, email, product_id}) => {
     let v = {
       product_id: product_id,
       body: body,
-      date_written: date,
+      date_written: utils.formatDateTimeOfNow(),
       asker_name: name,
       asker_email: email,
       reported: 0,
@@ -258,12 +257,10 @@ Response
 
 const postAnswer = (question_id, { body, name, email, photos }) => {
   return new Promise((resolve, reject) => {
-    let date = new Date().toISOString().split('T');
-    date = date[0] + ' ' + date[1].substring(0, 8);
     let v1 = {
       question_id: Number(question_id),
       body: body,
-      date_written: date,
+      date_written: utils.formatDateTimeOfNow(),
       answerer_name: name,
       answerer_email: email,
       reported: 0,
@@ -273,14 +270,7 @@ const postAnswer = (question_id, { body, name, email, photos }) => {
     return db.query(`INSERT INTO Answers SET ?`, v1)
       .then(result => {
         let answer_id = result[0].insertId
-        let answersPhotosQueries = []
-        photos.forEach(photoUrl => {
-          let v2 = {}
-          v2.answer_id = answer_id
-          v2.url = photoUrl
-          answersPhotosQueries.push(db.query(`INSERT INTO Answers_Photos SET ?`, v2))
-        })
-        return Promise.all(answersPhotosQueries)
+        return Promise.all(utils.preparePhotosQueriesArray('Answers_Photos', answer_id, photos))
       })
       .then(_=> {
         resolve()
@@ -313,12 +303,7 @@ Response
 
 const updateQuestionAsHelpful = (question_id) => {
   return new Promise((resolve, reject) => {
-    let q = `
-      UPDATE Questions
-      SET helpful = helpful + 1
-      WHERE id = ${question_id}
-    `;
-    db.query(q)
+    db.query(utils.updateHelpfulnessQuery('Questions', question_id))
       .then(_=>{
         resolve();
       })
@@ -347,12 +332,7 @@ Status: 204 NO CONTENT
 
 const reportQuestion = (question_id) => {
   return new Promise((resolve, reject) => {
-    let q = `
-      UPDATE Questions
-      SET reported = 1
-      WHERE id = ${question_id};
-    `;
-    db.query(q)
+    db.query(utils.updateReportQuery('Questions', question_id))
       .then(_=> {
         resolve()
       })
@@ -379,12 +359,7 @@ Response
 
 const updateAnswerAsHelpful = (answer_id) => {
   return new Promise((resolve, reject) => {
-    let q = `
-      UPDATE Answers
-      SET helpful = helpful + 1
-      WHERE id = ${answer_id}
-    `;
-    db.query(q)
+    db.query(utils.updateHelpfulnessQuery('Answers', answer_id))
       .then(_=>{
         resolve();
       })
@@ -412,19 +387,14 @@ Status: 204 NO CONTENT
 }
 
 const reportAnswer = (answer_id) => {
-  let q = `
-  UPDATE Answers
-  SET reported = 1
-  WHERE id = ${answer_id};
-`;
-db.query(q)
-  .then(_=> {
-    resolve()
-  })
-  .catch(err => {
-    console.error(err)
-    reject(err);
-  })
+  db.query(utils.updateReportQuery('Answers', answer_id))
+    .then(_=> {
+      resolve()
+    })
+    .catch(err => {
+      console.error(err)
+      reject(err);
+    })
   /**
 Report Answer
 Updates an answer to show it has been reported. Note, this action does not delete the answer, but the answer will not be returned in the above GET request.
