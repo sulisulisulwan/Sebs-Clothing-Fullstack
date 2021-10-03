@@ -1,32 +1,24 @@
-
-const removeChars = (line, index) => {
-  return line.substring(0, index) + line.substring(index + 1);
-}
-
-const processDoubleQuotes = (line) => {
-  let doubleQuotedStrings = [];
-  let isInQuote = false;
-  let quoteString = '';
-  let substringStart;
-
-  for (let i = 0; i < line.length; i++) {
-    if (line[i] === '"') {
-      line = removeChars(line, i)
-      //possible bug?? check if we need to i-- to correct the iteration count becauwe of char removal
-      if (isInQuote) {
-        doubleQuotedStrings.push(quoteString);
-        quoteString = ''
+const processDoubleQuotes = (str) => {
+  let doubleQuotedStrings = []
+  let isInDoubleQuote = false;
+  let startIndex;
+  let endIndex;
+  let i = 0
+  while (str[i] !== undefined) {
+    if (str[i] === '"') {
+      isInDoubleQuote = !isInDoubleQuote;
+      if (isInDoubleQuote) {
+        startIndex = i + 1
       } else {
-        isInQuote = !isInQuote
-        continue;
+        endIndex = i
+        doubleQuotedStrings.push(str.substring(startIndex, endIndex))
+        str = str.slice(0, startIndex - 1) + str.slice(endIndex + 1)
+        i = i - (endIndex - startIndex) - 1
+      }
     }
-    if (isInQuote) {
-      quoteString += line[i]
-      line = removeChars(line, i)
-      i--
-    }
+    i++
   }
-  return [line, doubleQuotedStrings]
+  return [str, doubleQuotedStrings]
 }
 
 

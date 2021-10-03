@@ -25,6 +25,7 @@ const updateHelpfulnessQuery = (table, id) => {
 }
 
 
+
 module.exports = {
   formatDateTimeOfNow,
   updateReportQuery,

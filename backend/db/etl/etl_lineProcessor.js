@@ -11,10 +11,8 @@ const convertDataType = {
     return (str === '1' || str === 'true') ? true : false
   },
   datetime: (str) => {
-    // let [date, time] = new Date(Number(str)).toISOString().split('T')
-    // let datetime = date.concat(' ', time.substring(0, 8))
-    // return datetime;
-    return new Date(str);
+    let date = new Date(Number(str)).toISOString().split('T');
+    return date[0] + ' ' + date[1].substring(0, 8);
   }
 }
 
