@@ -58,26 +58,20 @@ CREATE TABLE  Product_Photos (
 
 
 CREATE TABLE Questions (
-  ID INT NOT NULL AUTO_INCREMENT,
-  product_id VARCHAR (20),
+  id INT NOT NULL AUTO_INCREMENT,
+  product_id INT,
   body VARCHAR(1000),
   date_written DATETIME,
   asker_name VARCHAR(100),
   asker_email VARCHAR(100),
   reported BOOLEAN,
   helpful INT,
-  PRIMARY KEY (ID)
-);
-
-CREATE TABLE Answers_Photos (
-  ID INT NOT NULL AUTO_INCREMENT,
-  answer_id INT,
-  url VARCHAR(250),
-  PRIMARY KEY (ID)
+  PRIMARY KEY (id),
+  FOREIGN KEY (product_id) REFERENCES Product(id)
 );
 
 CREATE TABLE Answers (
-  ID INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   question_id INT,
   body VARCHAR(1000),
   date_written DATETIME,
@@ -85,33 +79,27 @@ CREATE TABLE Answers (
   answerer_email VARCHAR(100),
   reported BOOLEAN,
   helpful INT,
-  PRIMARY KEY (ID)
+  PRIMARY KEY (id),
+  FOREIGN KEY (question_id) REFERENCES Questions(id)
 );
 
-CREATE TABLE Characteristic_Reviews (
+CREATE TABLE Answers_Photos (
   ID INT NOT NULL AUTO_INCREMENT,
-  characteristic_id INT,
-  review_id INT,
-  value VARCHAR(100),
-  PRIMARY KEY (ID)
+  answer_id INT,
+  url VARCHAR(250),
+  PRIMARY KEY (ID),
+  FOREIGN KEY (answer_id) REFERENCES Answers(id)
 );
 
 CREATE TABLE Characteristics (
-  ID INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   product_id INT,
   name VARCHAR(100),
-  PRIMARY KEY (ID)
+  PRIMARY KEY (id),
+  FOREIGN KEY (product_id) REFERENCES Product(id)
 );
-
-CREATE TABLE Review_Photos (
-  ID INT NOT NULL AUTO_INCREMENT,
-  review_id INT,
-  url VARCHAR(256),
-  PRIMARY KEY (ID)
-);
-
 CREATE TABLE Reviews (
-  ID INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   product_id INT,
   rating INT,
   date DATETIME,
@@ -123,13 +111,36 @@ CREATE TABLE Reviews (
   reviewer_email VARCHAR(100),
   response VARCHAR(1000) NULL,
   helpfulness INT,
-  PRIMARY KEY (ID)
+  PRIMARY KEY (id),
+  FOREIGN KEY (product_id) REFERENCES Product(id)
 );
 
+CREATE TABLE Characteristic_Reviews (
+  id INT NOT NULL AUTO_INCREMENT,
+  characteristic_id INT,
+  review_id INT,
+  value VARCHAR(100),
+  PRIMARY KEY (id),
+  FOREIGN KEY (review_id) REFERENCES Reviews(id),
+  FOREIGN KEY (characteristic_id) REFERENCES Characteristics(id)
+);
+
+
+
+CREATE TABLE Review_Photos (
+  id INT NOT NULL AUTO_INCREMENT,
+  review_id INT,
+  url VARCHAR(256),
+  PRIMARY KEY (id),
+  FOREIGN KEY (review_id) REFERENCES Reviews(id)
+);
+
+
 CREATE TABLE Cart (
-  ID INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   user_session VARCHAR(20),
   product_id INT,
   active BOOLEAN,
-  PRIMARY KEY (ID)
+  PRIMARY KEY (id)
+  FOREIGN KEY (product_id) REFERENCES Product(id)
 );
