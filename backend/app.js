@@ -5,8 +5,7 @@ const { cart, interactions, product, qa, reviews, users } = require('./routes')
 const app = express();
 const PORT = process.env.APP_PORT;
 
-
-app.use(express.static('fronted/public'));
+app.use(express.static(path.resolve('frontend/public')));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 

@@ -1,0 +1,115 @@
+/***************
+* HEADER
+****************/
+
+.banner-search-logo-container {
+  background-color: silver;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+.banner-search-logo-logo {
+  grid-column: 1;
+}
+.banner-search-logo-searchbar {
+  grid-column: 3;
+}
+
+.banner-announcements-container {
+  text-align: center;
+}
+
+
+/*******************
+* PRODUCT DETAIL
+********************/
+
+.product-detail-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.product-detail-current-product-photo-container {
+  grid-column: 1;
+}
+.product-detail-current-product-details-container {
+  grid-column: 2;
+}
+.product-detail-vertical-photo-carousel-container {
+  position: relative;
+  right: 100%;
+}
+
+
+/****************
+
+SUB WIDGETS
+
+****************/
+
+.widget-title {
+
+}
+
+
+/***************
+* Q AND A
+***************/
+
+.qa-question-and-answer-wrapper {
+
+}
+
+.qa-question-wrapper {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+.qa-question-text {
+  grid-column: 1;
+}
+.qa-question-user-entry-info {
+  grid-column: 2;
+}
+
+.qa-answer-wrapper {
+
+}
+.qa-answer {
+
+}
+.qa-answer-user-entry-info {
+
+}
+
+/****************************
+
+RATINGS AND REVIEWS
+
+****************************/
+
+.ratings-and-reviews-aggregates-wrapper {
+
+}
+.ratings-and-reviews-reviews-wrapper {
+
+}
+.ratings-and-reviews-reviews-stars {
+
+}
+.ratings-and-reviews-reviews-review {
+
+}
+.ratings-and-reviews-reviews-review-text-wrapper {
+
+}
+.ratings-and-reviews-reviews-review-text-title {
+
+}
+.ratings-and-reviews-reviews-review-text-body {
+
+}
+
+.ratings-and-reviews-reviews-review-user-entry-info {
+
+}
+
+
