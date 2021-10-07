@@ -23,21 +23,42 @@
 * PRODUCT DETAIL
 ********************/
 
-.product-detail-container {
-  display: grid;
-  grid-template-columns: 50% 50%;
+.current-product-detail-container {
+
 }
 
-.product-detail-current-product-photo-container {
+/* HIGHBAR */
+.current-product-detail-highbar-container {
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+.current-product-detail-highbar-photo-container {
   grid-column: 1;
 }
-.product-detail-current-product-details-container {
+.current-product-detail-highbar-vertical-photo-carousel-container {
+  position: relative;
+  right: 0%;
+}
+.current-product-detail-highbar-sidebar-container {
   grid-column: 2;
 }
-.product-detail-vertical-photo-carousel-container {
-  position: relative;
-  right: 100%;
+
+
+/*LOWBAR*/
+.current-product-detail-lowbar-wrapper {
+  display: grid;
+  grid-template-columns: 60% 40%;
 }
+.current-product-detail-lowbar-description {
+
+}
+.current-product-detail-lowbar-slogan {
+
+}
+.current-product-detail-lowbar-features {
+
+}
+
 
 
 /****************
@@ -79,6 +100,27 @@ SUB WIDGETS
 .qa-answer-user-entry-info {
 
 }
+
+/**********************
+
+  RELATED PRODUCTS
+
+***********************/
+
+.related-products-container {
+
+}
+.related-products-related-cards-container {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+.related-products-related-cards-card {
+  border: solid black 2px;
+}
+
+
+
 
 /****************************
 
