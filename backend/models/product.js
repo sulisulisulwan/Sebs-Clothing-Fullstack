@@ -81,7 +81,9 @@ const getStyles = (product_id) => {
     `;
     return db.query(q)
       .then(styles => {
-        resolve(styles[0][0].Styles)
+        let formatted = styles[0][0].Styles
+        formatted.results.forEach(style => style['default?'] = style['default?'] === '1' ? true : false)
+        resolve(formatted)
       })
       .catch(err => {
         reject(err)
