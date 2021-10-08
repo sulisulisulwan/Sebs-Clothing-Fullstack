@@ -12,12 +12,16 @@ const Card = ({ parentClassName, productData }) => {
 
   return (
     <div className={`${parentClassName}-card`}>
-      <img className={`${parentClassName}-card-image`} src={defaultThumbnailUrl} alt={'Product Image'}></img>
-      <ActionButton parentClassName={`${parentClassName}-card`}/>
-      <div className={`${parentClassName}-card-category`}>{category}</div>
-      <div className={`${parentClassName}-card-name`}>{name}</div>
-      <div className={`${parentClassName}-card-price`}>{price}</div>
-      <Stars className={`${parentClassName}-card-stars`}/>
+      <div className={`${parentClassName}-card-image-wrapper`}>
+        <img className={`${parentClassName}-card-image`} src={defaultThumbnailUrl} alt={'Product Image'}></img>
+        <ActionButton parentClassName={`${parentClassName}-card`}/>
+      </div>
+      <div className={ `${parentClassName}-card-details-wrapper`}>
+        <div className={`${parentClassName}-card-category`}>{category}</div>
+        <div className={`${parentClassName}-card-name`}>{name}</div>
+        <div className={`${parentClassName}-card-price`}>{price}</div>
+        <Stars className={`${parentClassName}-card-stars`}/>
+      </div>
     </div>
   )
 }

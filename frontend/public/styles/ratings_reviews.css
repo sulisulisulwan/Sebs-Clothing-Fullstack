@@ -4,8 +4,11 @@ RATINGS AND REVIEWS
 
 ****************************/
 
-.ratings-and-reviews-aggregates-wrapper {
 
+.ratings-and-reviews-wrapper {
+  grid-row: 3;
+}
+.ratings-and-reviews-aggregates-wrapper {
 }
 .ratings-and-reviews-reviews-wrapper {
 

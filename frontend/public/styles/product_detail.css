@@ -3,7 +3,7 @@
 ********************/
 
 .current-product-detail-container {
-
+  grid-row: 1;
 }
 
 /* HIGHBAR */

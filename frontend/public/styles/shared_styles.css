@@ -23,7 +23,9 @@ html {
 }
 
 
-
+.main-content {
+  grid-template-rows: 25% 25% 25% 25%;
+}
 
 /****************
 

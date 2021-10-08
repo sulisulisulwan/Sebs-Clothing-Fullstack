@@ -31,7 +31,7 @@ const RelatedProducts = ({ currentProduct }) => {
   return (
     <div className={`${componentClassName}-container`}>
       <div className="widget-title">
-        RELATED PRODUCTS
+        <h2>RELATED PRODUCTS</h2>
       </div>
       <RelatedCards parentClassName={componentClassName} relatedProducts={relatedProducts}/>
       <OutfitCards parentClassName={componentClassName}/>

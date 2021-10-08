@@ -3,7 +3,7 @@
 ***************/
 
 .qa-question-and-answer-wrapper {
-
+  grid-row: 4;
 }
 
 .qa-question-wrapper {

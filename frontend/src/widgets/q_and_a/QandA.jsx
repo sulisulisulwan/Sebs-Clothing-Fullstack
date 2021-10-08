@@ -7,7 +7,7 @@ const QandA = () => {
   return (
     <div className={`${componentClassName}-wrapper`}>
       <div className="widget-title">
-        QUESTIONS AND ANSWERS
+        <h2>QUESTIONS AND ANSWERS</h2>
       </div>
       <QuestionAndAnswerWrapper parentClassName={componentClassName}/>
 

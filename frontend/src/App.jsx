@@ -27,13 +27,12 @@ const App = () => {
     <>
       <Header/>
       <hr></hr>
-      <ProductDetail currentProduct={currentProduct}/>
-      <hr></hr>
-      <RelatedProducts currentProduct={currentProduct}/>
-      <hr></hr>
-      <QandA/>
-      <hr></hr>
-      <RatingsAndReviews/>
+      <main className="main-content">
+        <ProductDetail currentProduct={currentProduct}/>
+        <RelatedProducts currentProduct={currentProduct}/>
+        <RatingsAndReviews/>
+        <QandA/>
+      </main>
     </>
   )
 }
