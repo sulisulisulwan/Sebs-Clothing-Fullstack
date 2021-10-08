@@ -1,0 +1,27 @@
+
+/**********************
+
+  RELATED PRODUCTS
+
+***********************/
+
+.related-products-container {
+
+}
+.related-products-related-cards-container {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  column-gap: 5%;
+}
+
+.related-products-related-cards-card {
+  border: solid black;
+  overflow: hidden;
+}
+
+.related-products-related-cards-card-image {
+  object-fit: scale-down;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+}

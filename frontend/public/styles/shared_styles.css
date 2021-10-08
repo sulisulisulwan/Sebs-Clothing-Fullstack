@@ -1,0 +1,52 @@
+/***************
+* HEADER
+****************/
+
+html {
+  font-family: 'Spartan', sans-serif;
+}
+
+.banner-search-logo-container {
+  background-color: silver;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+.banner-search-logo-logo {
+  grid-column: 1;
+}
+.banner-search-logo-searchbar {
+  grid-column: 3;
+}
+
+.banner-announcements-container {
+  text-align: center;
+}
+
+
+
+
+/****************
+
+SUB WIDGETS
+
+****************/
+
+.widget-title {
+
+}
+
+
+
+/*****************
+
+Buttons
+
+******************/
+
+.related-products-related-cards-card-action-button-star {
+  position: relative;
+  top: 2%;
+  left: 100%;
+  max-height: 2%;
+  z-index: 1000;
+}

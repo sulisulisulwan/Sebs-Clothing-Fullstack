@@ -1,0 +1,28 @@
+/***************
+* Q AND A
+***************/
+
+.qa-question-and-answer-wrapper {
+
+}
+
+.qa-question-wrapper {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+.qa-question-text {
+  grid-column: 1;
+}
+.qa-question-user-entry-info {
+  grid-column: 2;
+}
+
+.qa-answer-wrapper {
+
+}
+.qa-answer {
+
+}
+.qa-answer-user-entry-info {
+
+}
