@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
+import { getProduct } from './API_call_functions.js'
 
 import Header from './widgets/header/Header.jsx'
 import ProductDetail from './widgets/product_detail/ProductDetail.jsx';
@@ -14,9 +14,9 @@ const App = () => {
   const [currentProduct, setCurrentProduct] = useState(null);
 
   useEffect(() => {
-    return axios.get('/product/1')
-      .then(result => {
-        setCurrentProduct(result.data);
+    return getProduct(1)
+      .then(product => {
+        setCurrentProduct(product);
       })
       .catch(err => {
         console.error(err);

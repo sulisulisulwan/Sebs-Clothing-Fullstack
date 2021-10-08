@@ -6,12 +6,12 @@ import CurrentProductLowBar from './subcomponents/CurrentProductDescription.jsx'
 const ProductDetail = ({ currentProduct }) => {
 
   const componentClassName = "current-product-detail";
-  console.log(currentProduct)
+
   return (
     <div className={`${componentClassName}-container`}>
       <div className={`${componentClassName}-highbar-container`}>
-        <VerticalPhotoCarousel parentClassName={`${componentClassName}-highbar`}/>
-        <CurrentProductPhoto parentClassName={`${componentClassName}-highbar`}/>
+        <VerticalPhotoCarousel parentClassName={`${componentClassName}-highbar`} currentProduct={currentProduct}/>
+        <CurrentProductPhoto parentClassName={`${componentClassName}-highbar`} currentProduct={currentProduct}/>
         <CurrentProductSideBar parentClassName={`${componentClassName}-highbar`}/>
       </div>
       <CurrentProductLowBar parentClassName={componentClassName} currentProduct={currentProduct}/>

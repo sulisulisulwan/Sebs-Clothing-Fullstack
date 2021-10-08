@@ -4,6 +4,7 @@ import { useState } from 'react';
 import RelatedCards from './subcomponents/RelatedCards.jsx'
 import OutfitCards from './subcomponents/OutfitCards.jsx'
 import axios from 'axios';
+import { getRelated } from '../../API_call_functions.js'
 
 const RelatedProducts = ({ currentProduct }) => {
 
@@ -17,25 +18,12 @@ const RelatedProducts = ({ currentProduct }) => {
     if (id === null) {
       return;
     }
-    return axios.get(`/product/${id}/related`)
-      .then(result => {
-        result.data.forEach(relatedProductId => {
-          relatedProductsAPICalls.push(axios.get(`product/${relatedProductId}`))
-          relatedProductStylesAPICalls.push(axios.get(`product/${relatedProductId}/styles`))
-        })
-        return Promise.all(relatedProductsAPICalls)
+    return getRelated(id)
+      .then(allRelatedProducts => {
+        setRelatedProducts(allRelatedProducts)
       })
-      .then(relatedProductsResults => {
-        relatedProductsResults.forEach(relatedProduct => {
-          formattedRelatedProducts.push(relatedProduct.data)
-        })
-        return Promise.all(relatedProductStylesAPICalls)
-      })
-      .then(relatedProductStylesResults => {
-        relatedProductStylesResults.forEach((relatedProductStyles, i) => {
-          formattedRelatedProducts[i].styles = relatedProductStyles.data.results;
-        })
-        setRelatedProducts(formattedRelatedProducts);
+      .catch( err=> {
+        console.error(err)
       })
   }, [currentProduct])
 

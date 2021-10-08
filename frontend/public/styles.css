@@ -2,6 +2,10 @@
 * HEADER
 ****************/
 
+html {
+  font-family: 'Spartan', sans-serif;
+}
+
 .banner-search-logo-container {
   background-color: silver;
   display: grid;
@@ -31,9 +35,21 @@
 .current-product-detail-highbar-container {
   display: grid;
   grid-template-columns: 60% 40%;
+
 }
 .current-product-detail-highbar-photo-container {
   grid-column: 1;
+  max-height: 70%;
+  max-height: 100%;
+  overflow: scroll;
+}
+.current-product-detail-highbar-photo-large {
+  grid-column: 1;
+  object-fit: scale-down;
+  max-height: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  min-width: 100%;
 }
 .current-product-detail-highbar-vertical-photo-carousel-container {
   position: relative;
@@ -113,13 +129,20 @@ SUB WIDGETS
 .related-products-related-cards-container {
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
+  column-gap: 5%;
 }
 
 .related-products-related-cards-card {
-  border: solid black 2px;
+  border: solid black;
+  overflow: hidden;
 }
 
-
+.related-products-related-cards-card-image {
+  object-fit: scale-down;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+}
 
 
 /****************************
@@ -155,3 +178,16 @@ RATINGS AND REVIEWS
 }
 
 
+/*
+
+Buttons
+
+*/
+
+.related-products-related-cards-card-action-button-star {
+  position: relative;
+  top: 2%;
+  left: 100%;
+  max-height: 2%;
+  z-index: 1000;
+}
