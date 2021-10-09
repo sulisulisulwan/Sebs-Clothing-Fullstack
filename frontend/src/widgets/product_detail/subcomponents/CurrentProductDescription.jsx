@@ -3,7 +3,7 @@ import CurrentProductFeatures from './CurrentProductFeatures.jsx';
 
 const CurrentProductLowBar = ({ parentClassName, currentProduct }) => {
   return (
-    <div className={`${parentClassName}-lowbar-wrapper`}>
+    <div className={`${parentClassName}-lowbar-container`}>
       <div className = {`${parentClassName}-lowbar-left-wrapper`}>
         <div className={`${parentClassName}-lowbar-slogan`}>
           {currentProduct ? currentProduct.slogan : null}

@@ -4,10 +4,10 @@ import BannerAnnouncements from './BannerAnnouncements.jsx'
 
 const Header = () => {
   return (
-    <header>
+    <>
       <BannerSearchAndLogo/>
       <BannerAnnouncements/>
-    </header>
+    </>
   )
 }
 

@@ -4,7 +4,7 @@ import Logo from '../../shared_components/Logo.jsx';
 
 const BannerSearchAndLogo = () => {
 
-  const componentClassName = 'banner-search-logo';
+  const componentClassName = 'banner-header';
 
   return (
     <div className={`${componentClassName}-container`}>

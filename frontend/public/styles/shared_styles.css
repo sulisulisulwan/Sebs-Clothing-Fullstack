@@ -4,23 +4,11 @@
 
 html {
   font-family: 'Spartan', sans-serif;
+  min-width: 1000px;
 }
 
-.banner-search-logo-container {
-  background-color: silver;
-  display: grid;
-  grid-template-columns: 20% 60% 20%;
-}
-.banner-search-logo-logo {
-  grid-column: 1;
-}
-.banner-search-logo-searchbar {
-  grid-column: 3;
-}
 
-.banner-announcements-container {
-  text-align: center;
-}
+
 
 
 .main-content {
@@ -47,8 +35,8 @@ Buttons
 
 .related-products-related-cards-card-action-button-star {
   position: relative;
-  top: 2%;
-  left: 100%;
+  bottom: 30%;
+  left: 80%;
   max-height: 2%;
   z-index: 1000;
 }

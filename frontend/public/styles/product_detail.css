@@ -3,7 +3,8 @@
 ********************/
 
 .current-product-detail-container {
-  grid-row: 1;
+  border: 2px blue solid;
+  max-height: 100%;
 }
 
 /* HIGHBAR */
@@ -12,41 +13,45 @@
   grid-template-columns: 60% 40%;
 
 }
-.current-product-detail-highbar-photo-container {
-  grid-column: 1;
-  max-height: 70%;
-  max-height: 100%;
-  overflow: scroll;
-}
-.current-product-detail-highbar-photo-large {
-  grid-column: 1;
-  object-fit: scale-down;
-  max-height: 100%;
-  max-width: 100%;
-  min-height: 100%;
-  min-width: 100%;
-}
-.current-product-detail-highbar-vertical-photo-carousel-container {
-  position: relative;
-  right: 0%;
-}
+    .current-product-detail-highbar-vertical-photo-carousel-container {
+      position: relative;
+      right: 0%;
+    }
+    .current-product-detail-highbar-photo-container {
+      border: 2px blue solid;
+      grid-column: 1;
+      overflow: scroll;
+    }
+        .current-product-detail-highbar-photo-large {
+          object-fit: contain;
+          max-height: 100%;
+          max-width: 100%;
+        }
+
 .current-product-detail-highbar-sidebar-container {
   grid-column: 2;
+  border: blue 2px solid;
 }
 
-
-/*LOWBAR*/
-.current-product-detail-lowbar-wrapper {
+.current-product-detail-lowbar-container {
+  border: blue solid 2px;
   display: grid;
   grid-template-columns: 60% 40%;
 }
-.current-product-detail-lowbar-description {
+    .current-product-detail-lowbar-slogan {
+      border: goldenrod 2px solid;
+      /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    .current-product-detail-lowbar-description {
+      border: goldenrod 2px solid;
+      font-size: 14px;
+    }
 
-}
-.current-product-detail-lowbar-slogan {
 
-}
-.current-product-detail-lowbar-features {
+    .current-product-detail-lowbar-features {
+      border: goldenrod 2px solid;
 
-}
+    }
 

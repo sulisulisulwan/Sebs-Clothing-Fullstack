@@ -25,13 +25,20 @@ const App = () => {
 
   return (
     <>
-      <Header/>
-      <hr></hr>
+      <header>
+        <Header/>
+      </header>
       <main className="main-content">
         <ProductDetail currentProduct={currentProduct}/>
-        <RelatedProducts currentProduct={currentProduct}/>
-        <RatingsAndReviews/>
-        <QandA/>
+        <div className="subwidgets-wrapper">
+          <div className="subwidgets-indent"></div>
+          <div className="subwidgets">
+            <RelatedProducts currentProduct={currentProduct}/>
+            <RatingsAndReviews/>
+            <QandA/>
+          </div>
+        </div>
+
       </main>
     </>
   )

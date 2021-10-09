@@ -1,0 +1,21 @@
+header {
+  border: solid red 5px; /* SCAFFOLDING!!!!!!!!!!!!!!!!!!!!!!*/
+}
+
+main {
+  border: red 5px solid;
+}
+
+.subwidgets-wrapper {
+  display: grid;
+  grid-template-columns: 10% 90%;
+}
+
+
+.subwidgets-indent {
+  grid-column: 1;
+}
+.subwidgets {
+  grid-column: 2;
+  border: green 2px solid;
+}

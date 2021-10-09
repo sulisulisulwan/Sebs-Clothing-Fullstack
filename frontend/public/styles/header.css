@@ -1,0 +1,25 @@
+.header-container {
+
+}
+  .banner-header-container {
+    background-color: silver;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    min-height: 60px;
+  }
+      .banner-header-logo-wrapper {
+
+      }
+          .banner-header-logo {
+            grid-column: 1;
+          }
+      .banner-header-searchbar-wrapper {
+        grid-column: 3;
+        text-align: right;
+      }
+          .banner-header-searchbar {
+          }
+
+  .banner-announcements-container {
+    text-align: center;
+  }
