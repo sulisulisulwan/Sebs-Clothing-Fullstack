@@ -4,8 +4,9 @@ const Logo = ({ parentClassName }) => {
 
 
   return (
-    <img className={`${parentClassName}-logo`} src="TODO:" alt="SEBS CLOTHING CO.;">
-    </img>
+    <div className={`${parentClassName}-logo-wrapper`}>
+      <img className={`${parentClassName}-logo`} src="TODO:" alt="SEBS CLOTHING CO.;"></img>
+    </div>
   )
 }
 

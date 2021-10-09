@@ -4,8 +4,9 @@ const SearchBar = ({ parentClassName }) => {
 
   return (
     <>
-        <div className={`${parentClassName}searchbar-wrapper`}>
-          <input className={`${parentClassName}-searchbar`} type="text">
+        <div className={`${parentClassName}-searchbar-wrapper`}>
+          <img className={`${parentClassName}-searchbar-glass`} src="assets/magnifying-glass.png"></img>
+          <input className={`${parentClassName}-searchbar-input`} type="text">
           </input>
         </div>
     </>

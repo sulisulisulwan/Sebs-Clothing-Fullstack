@@ -3,5 +3,6 @@ module.exports = {
   interactions: require('./interactions'),
   product: require('./product'),
   qa: require('./qa'),
-  reviews: require('./reviews')
+  reviews: require('./reviews'),
+  search: require('./search')
 }

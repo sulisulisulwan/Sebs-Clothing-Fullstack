@@ -4,6 +4,7 @@ module.exports = {
   product: require('./product'),
   qa: require('./qa'),
   reviews: require('./reviews'),
+  search: require('./search'),
   users: require('./users')
 }
 
