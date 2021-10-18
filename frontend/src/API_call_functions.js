@@ -1,52 +1,71 @@
 import axios from 'axios';
+import React from 'react';
 
+const getProduct = async (product_id) => {
+  let formattedCurrentProduct;
+  try {
+    let result = await axios.get(`/product/${product_id}`)
+    formattedCurrentProduct = result.data;
+    result = await axios.get(`/product/${product_id}/styles`)
+    formattedCurrentProduct.styles = result.data.results;
+    let defaultExists = false;
+    formattedCurrentProduct.styles.some((style, i) => {
+      if (style['default?']) {
+        defaultExists = true;
+        formattedCurrentProduct.defaultStyleIndex = i
+        return true;
+      }
+    });
+    if (!defaultExists) {
+      formattedCurrentProduct.styles[0]['default?'] = true;
+      formattedCurrentProduct.defaultStyleIndex = 0;
+    }
 
-const getProduct = (product_id) => {
-  return new Promise((resolve, reject) => {
-    let formattedCurrentProduct;
-    return axios.get(`/product/${product_id}`)
-      .then(result => {
-        formattedCurrentProduct = result.data;
-        return axios.get(`/product/${product_id}/styles`)
-      })
-      .then(result => {
-        formattedCurrentProduct.styles = result.data.results;
-        formattedCurrentProduct.styles.some((style, i) => {
-          if (style['default?']) {
-            formattedCurrentProduct.defaultStyleIndex = i
-            return true;
-          }
-        })
-        resolve(formattedCurrentProduct);
-      })
-      .catch(err => {
-        console.error(err);
-        reject(err);
-      })
-  })
+    return formattedCurrentProduct;
+  } catch(err) {
+    console.error(err);
+    return err;
+  }
 }
 
-const getRelated = (product_id) => {
-  return new Promise ((resolve, reject) => {
-    const relatedProductsAPICalls = [];
-
-    return axios.get(`/product/${product_id}/related`)
-      .then(result => {
-        result.data.forEach(relatedProductId => {
-          relatedProductsAPICalls.push(getProduct(relatedProductId))
-        })
-        return Promise.all(relatedProductsAPICalls)
+const getRelated = async (product_id) => {
+  const relatedProductsAPICalls = [];
+  try {
+    let result = await axios.get(`/product/${product_id}/related`)
+    if (result.data.length) {
+      result.data.forEach(relatedProductId => {
+        relatedProductsAPICalls.push(getProduct(relatedProductId))
       })
-      .then(relatedProductsResults => {
-        resolve(relatedProductsResults)
-      })
-
-      .catch(err => {
-        console.error(err);
-        reject(err);
-      })
-  })
+    }
+    let relatedProductsResults = await Promise.all(relatedProductsAPICalls)
+    return relatedProductsResults;
+  } catch(err) {
+    console.error(err);
+    return err;
+  }
 }
 
+const getSearchResults = async (searchQuery) => {
+  try {
+    let searchResults = await axios.get(`/search?search=${searchQuery}`)
+    searchResults = searchResults.data.map(result => {
+      return {
+          display: {
+            name: result.name,
+            category: result.category
+          },
+          value: result.id
+        }
+    })
+    return searchResults;
+  } catch(err) {
+    console.error(err)
+    return err;
+  }
+}
 
-export { getProduct, getRelated };
+const API = {
+  getProduct, getRelated, getSearchResults
+}
+
+export default API;

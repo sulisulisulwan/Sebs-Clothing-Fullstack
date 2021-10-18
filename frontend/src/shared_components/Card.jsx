@@ -2,16 +2,19 @@ import React from 'react';
 import ActionButton from './ActionButton.jsx'
 import Stars from './Stars.jsx'
 
-const Card = ({ parentClassName, productData }) => {
+const Card = ({ parentClassName, productData, onClickHandler, cardFuncs }) => {
   let {id, category, price, name} = productData;
-  // console.log('productData', productData)
   let defaultStyle = productData.styles[productData.defaultStyleIndex]
-  // console.log('defaultStyle', defaultStyle)
+  console.log('defaultStyle is ', defaultStyle, 'of ', productData)
   let defaultThumbnailUrl = defaultStyle.photos === null ? 'assets/no_thumbnail.jpg' : defaultStyle.photos[0].thumbnail_url;
+
+  const onClickWrapper = (e) => {
+    onClickHandler(id, cardFuncs);
+  }
 
 
   return (
-    <div className={`${parentClassName}-card`}>
+    <div className={`${parentClassName}-card`} onClick={onClickWrapper}>
       <div className={`${parentClassName}-card-image-wrapper`}>
         <img className={`${parentClassName}-card-image`} src={defaultThumbnailUrl} alt={'Product Image'}></img>
       </div>

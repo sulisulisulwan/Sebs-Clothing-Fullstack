@@ -4,9 +4,9 @@ import { useState } from 'react';
 import RelatedCards from './subcomponents/RelatedCards.jsx'
 import OutfitCards from './subcomponents/OutfitCards.jsx'
 import axios from 'axios';
-import { getRelated } from '../../API_call_functions.js'
+import API from '../../API_call_functions.js'
 
-const RelatedProducts = ({ currentProduct }) => {
+const RelatedProducts = ({ currentProduct, setCurrentProduct }) => {
 
   let id = currentProduct === null ? null : currentProduct.id;
   const [relatedProducts, setRelatedProducts] = useState(null);
@@ -14,26 +14,36 @@ const RelatedProducts = ({ currentProduct }) => {
   const relatedProductStylesAPICalls = []
   const formattedRelatedProducts = []
 
-  useEffect(() => {
+  const relatedProductsCardFuncs = {
+    setStateFuncs: {
+      setCurrentProduct: setCurrentProduct
+    }
+  }
+
+  const myOutfitCardFuncs = {
+
+  }
+
+  useEffect( async () => {
     if (id === null) {
       return;
     }
-    return getRelated(id)
-      .then(allRelatedProducts => {
-        setRelatedProducts(allRelatedProducts)
-      })
-      .catch( err=> {
-        console.error(err)
-      })
+    try {
+      let allRelatedProducts = await API.getRelated(id)
+      setRelatedProducts(allRelatedProducts);
+    } catch(err) {
+      console.error(err)
+    }
   }, [currentProduct])
 
   const componentClassName = 'related-products'
+
   return (
     <div className={`${componentClassName}-container`}>
       <div className="widget-title">
         <h2>RELATED PRODUCTS</h2>
       </div>
-      <RelatedCards parentClassName={componentClassName} relatedProducts={relatedProducts}/>
+      <RelatedCards parentClassName={componentClassName} relatedProducts={relatedProducts} cardFuncs={relatedProductsCardFuncs}/>
       <OutfitCards parentClassName={componentClassName}/>
     </div>
   )

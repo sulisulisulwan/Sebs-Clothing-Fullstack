@@ -1,8 +1,9 @@
 import React from 'react';
 
 const CurrentProductPhoto = ({ parentClassName, currentProduct }) => {
-  console.log(currentProduct)
-  let photoUrl = currentProduct !== null ? currentProduct.styles[currentProduct.defaultStyleIndex].photos[0].url : '';
+  let photoUrl = currentProduct === null ? ''
+    : !currentProduct.styles.length ? ''
+    : currentProduct.styles[currentProduct.defaultStyleIndex].photos[0].url;
 
   return (
     <div className={`${parentClassName}-photo-container`}>

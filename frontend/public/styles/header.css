@@ -16,6 +16,7 @@
           }
       .banner-header-searchbar-wrapper {
         padding:  20px;
+        position: relative;
         border: yellow solid 2px;
         display: flex;
         flex-direction: row;
@@ -33,7 +34,6 @@
         height: 40px;
         font-size: 20px;
         background-color: silver;
-        /* outline: 0; */
         outline: 0;
         border-width: 0 0 2px;
         border-color: black

@@ -1,7 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { getProduct } from './API_call_functions.js'
+import { useState, useEffect } from 'react';
+import API from './API_call_functions.js'
 
 import Header from './widgets/header/Header.jsx'
 import ProductDetail from './widgets/product_detail/ProductDetail.jsx';
@@ -13,27 +12,43 @@ const App = () => {
 
   const [currentProduct, setCurrentProduct] = useState(null);
 
-  useEffect(() => {
-    return getProduct(1)
-      .then(product => {
-        setCurrentProduct(product);
-      })
-      .catch(err => {
-        console.error(err);
-      })
+  useEffect(async () => {
+    try {
+      let product = await API.getProduct(1);
+      product.related = await API.getRelated(1);
+      setCurrentProduct(product);
+    } catch(err) {
+      console.error(err);
+    }
   }, [])
 
   return (
     <>
       <header>
-        <Header/>
+        <Header
+          setCurrentProduct={setCurrentProduct}
+          dropdownFuncs={
+            {
+              setStateFuncs: {
+                setCurrentProduct
+              },
+              api: {
+                getProduct: API.getProduct,
+                getRelated: API.getRelated
+              }
+            }
+          }
+        />
       </header>
       <main className="main-content">
         <ProductDetail currentProduct={currentProduct}/>
         <div className="subwidgets-wrapper">
           <div className="subwidgets-indent"></div>
           <div className="subwidgets">
-            <RelatedProducts currentProduct={currentProduct}/>
+            <RelatedProducts
+              currentProduct={currentProduct}
+              setCurrentProduct={setCurrentProduct}
+            />
             <RatingsAndReviews/>
             <QandA/>
           </div>

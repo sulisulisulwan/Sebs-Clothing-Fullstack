@@ -1,7 +1,10 @@
 import React from 'react';
 import Card from '../../../shared_components/Card.jsx'
+import onClick from '../../../onClickHandlers.js';
 
-const RelatedCards = ({ parentClassName, relatedProducts }) => {
+
+
+const RelatedCards = ({ parentClassName, relatedProducts, cardFuncs }) => {
 
   if (!relatedProducts) {
     return null
@@ -13,6 +16,8 @@ const RelatedCards = ({ parentClassName, relatedProducts }) => {
           key={`relatedProduct${relatedProduct.id}`}
           parentClassName={`${parentClassName}-related-cards`}
           productData={relatedProduct}
+          onClickHandler={onClick.relatedProductCard}
+          cardFuncs={cardFuncs}
         />)}
     </div>
   )
