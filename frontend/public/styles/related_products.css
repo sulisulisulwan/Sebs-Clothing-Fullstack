@@ -13,6 +13,7 @@
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
   column-gap: 5%;
+  padding-bottom: 5%;
 }
 
 .related-products-related-cards-card {
@@ -29,6 +30,7 @@
   overflow: hidden;
 
 }
+
 .related-products-related-cards-card-image {
   object-fit: fill;
   /* margin: auto; */
@@ -40,4 +42,41 @@
 
 .related-products-related-cards-card-details-wrapper {
   grid-row: 2;
+}
+
+.related-products-outfit-cards-container {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  column-gap: 5%;
+}
+
+.related-products-outfit-cards-card {
+  border: solid black;
+  max-height: 300px;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 70% 30%;
+}
+
+
+.related-products-outfit-cards-card-image-wrapper {
+  grid-row: 1;
+  overflow: hidden;
+
+}
+.related-products-outfit-cards-card-image {
+  object-fit: fill;
+  /* margin: auto; */
+  /* min-height: 200px;
+  min-width: 100px; */
+  overflow: hidden;
+  z-index: 0;
+}
+
+
+.related-products-outfit-cards-card-details-wrapper {
+  grid-row: 2;
+  text-align: center;
+  padding-top: 15%;
 }

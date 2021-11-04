@@ -5,6 +5,7 @@ import RelatedCards from './subcomponents/RelatedCards.jsx'
 import OutfitCards from './subcomponents/OutfitCards.jsx'
 import axios from 'axios';
 import API from '../../API_call_functions.js'
+import createCardOptions from './createCardOptions.js';
 
 const RelatedProducts = ({ currentProduct, setCurrentProduct }) => {
 
@@ -14,15 +15,6 @@ const RelatedProducts = ({ currentProduct, setCurrentProduct }) => {
   const relatedProductStylesAPICalls = []
   const formattedRelatedProducts = []
 
-  const relatedProductsCardFuncs = {
-    setStateFuncs: {
-      setCurrentProduct: setCurrentProduct
-    }
-  }
-
-  const myOutfitCardFuncs = {
-
-  }
 
   useEffect( async () => {
     if (id === null) {
@@ -38,13 +30,19 @@ const RelatedProducts = ({ currentProduct, setCurrentProduct }) => {
 
   const componentClassName = 'related-products'
 
+
+
   return (
     <div className={`${componentClassName}-container`}>
       <div className="widget-title">
         <h2>RELATED PRODUCTS</h2>
       </div>
-      <RelatedCards parentClassName={componentClassName} relatedProducts={relatedProducts} cardFuncs={relatedProductsCardFuncs}/>
-      <OutfitCards parentClassName={componentClassName}/>
+      { id === null ? null :
+      <>
+        <RelatedCards parentClassName={componentClassName} relatedProducts={relatedProducts} cardOptions={createCardOptions('related', setCurrentProduct)}/>
+        <OutfitCards parentClassName={componentClassName} currentProduct={currentProduct}/>
+      </>
+      }
     </div>
   )
 }

@@ -1,7 +1,18 @@
-header {
-  border: solid red 5px; /* SCAFFOLDING!!!!!!!!!!!!!!!!!!!!!!*/
+html {
 }
 
+header {
+  /* border: solid red 5px; SCAFFOLDING!!!!!!!!!!!!!!!!!!!!!! */
+  position: fixed;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  z-index: 2;
+}
+.standin-header-space {
+  background-color: white;
+  height: 150px;
+}
 main {
   border: red 5px solid;
 }

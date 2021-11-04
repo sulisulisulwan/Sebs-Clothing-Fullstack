@@ -5,10 +5,11 @@ import BannerAnnouncements from './BannerAnnouncements.jsx'
 const Header = ({ dropdownFuncs }) => {
   return (
     <>
+      <BannerAnnouncements/>
       <BannerSearchAndLogo
         dropdownFuncs={dropdownFuncs}
       />
-      <BannerAnnouncements/>
+
     </>
   )
 }

@@ -11,16 +11,33 @@ const searchBarResults = async (e, dropdownFuncs) => {
   }
 }
 
-const relatedProductCard = async (id, cardFuncs) => {
+const relatedProductCard = async (id, cardOptions) => {
+
   try {
-    console.log('id is ', id)
     let product = await getAllCurrentProductData(id);
-    cardFuncs.setStateFuncs.setCurrentProduct(product);
+    cardOptions.setStateFuncs(product)
   } catch(err) {
     console.error(err);
   }
 }
 
+const addToOutfitCard = (id, setStateFunc) => {
+  alert('THIS ADDS PRODUCT TO OUTFIT')
+}
+
+const removeFromOutfitAction = (id, setStateFunc) => {
+  alert('THIS REMOVES PRODUCT FROM OUTFIT')
+}
+
+const productComparisonAction = (id) => {
+  alert('THIS IS THE PRODUCT COMPARISON MODAL')
+}
+
+
+
+
+
+//API aggregator
 async function getAllCurrentProductData(id) {
   try {
     let product = await api.getProduct(id)
@@ -33,5 +50,8 @@ async function getAllCurrentProductData(id) {
 
 export default {
   searchBarResults,
-  relatedProductCard
+  relatedProductCard,
+  addToOutfitCard,
+  removeFromOutfitAction,
+  productComparisonAction
 }

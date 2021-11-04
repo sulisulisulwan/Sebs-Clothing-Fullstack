@@ -40,6 +40,7 @@ const App = () => {
           }
         />
       </header>
+      <div className="standin-header-space"></div>
       <main className="main-content">
         <ProductDetail currentProduct={currentProduct}/>
         <div className="subwidgets-wrapper">

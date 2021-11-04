@@ -1,53 +1,59 @@
 .header-container {
 
 }
-  .banner-header-container {
-    background-color: silver;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    min-height: 80px;
-  }
-      .banner-header-logo-wrapper {
-        border: yellow solid 2px;
-        grid-column: 1;
-      }
-          .banner-header-logo {
+.banner-header-container {
+  background-color: white;
+  /* backdrop-filter: blur(10px); */
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
 
-          }
-      .banner-header-searchbar-wrapper {
-        padding:  20px;
-        position: relative;
-        border: yellow solid 2px;
-        display: flex;
-        flex-direction: row;
-        margin-top: 50px;
-        grid-column: 2;
-        justify-content: flex-end;
-      }
-      .banner-header-searchbar-glass {
-        max-height: 20px;
-        margin-right: 10px;
-        margin-top: 10px;
-      }
-      .banner-header-searchbar-input {
-        width: 300px;
-        height: 40px;
-        font-size: 20px;
-        background-color: silver;
-        outline: 0;
-        border-width: 0 0 2px;
-        border-color: black
-      }
+.banner-header-logo-wrapper {
+  /* SCAFFOLDING!!!!!!!!!! */
+  /* border: yellow solid 2px; */
+  grid-column: 1;
+}
+.banner-header-logo {
+  font-family: Olympus -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 260px;
+}
+.banner-header-searchbar-wrapper {
+  padding:  20px;
+  position: relative;
+  /*SCAFFOLDING!!!!!!*/
+  /* border: yellow solid 2px; */
+  display: flex;
+  flex-direction: row;
+  grid-column: 2;
+  justify-content: flex-end;
+}
+
+.banner-header-searchbar-glass {
+  max-height: 20px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.banner-header-searchbar-input {
+  width: 300px;
+  /* height: 40px; */
+  font-size: 20px;
+  /* background-color: silver; */
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: black
+}
 
       .banner-header-searchbar-input:focus {
         outline: none;
       }
 
   .banner-announcements-container {
-    min-height: 40px;
   }
 
       .banner-announcements {
-        padding: 15px;
+        padding: 5px;
+        font-size: 13px;
         text-align: center;
+        color: white;
+        background-color: black;
       }
