@@ -8,28 +8,40 @@ import optionComponent from './DropDownOptionFormats.jsx';
 const SearchBar = ({ parentClassName, dropdownFuncs }) => {
 
   const searchBarInput = useRef(null);
+  const [searchInputValue, setSearchInputValue] = useState('');
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState([]);
-
-  const searchBarOnChange = (e) => {
-    if (e.target.value === '') {
-      setSearchResults([]);
-    }
-    setSearchQuery(e.target.value)
-  }
 
   useEffect(async() => {
     if (!searchQuery.length) {
       return;
     }
     try {
-      let results = await API.getSearchResults(searchQuery)
-      setSearchResults(results)
+      let isExactMatch = await API.getIfSearchResultIsExactMatch(searchQuery);
+      if (!isExactMatch) {
+        let results = await API.getSearchResults(searchQuery)
+        setSearchResults(results)
+      } else {
+        setSearchResults([]);
+      }
     } catch(err) {
       console.error(err);
     }
-  }, [searchQuery])
+  }, [searchQuery]);
 
+
+  const searchBarOnChange = (e, altValue) => {
+    let value = e ? e.target.value : altValue;
+    setSearchInputValue(value)
+    if (value === '') {
+      setSearchResults([]);
+    }
+    setSearchQuery(value)
+  }
+
+  const updateSearchBar = (chosenSearchResult) => {
+    searchBarOnChange(null, chosenSearchResult);
+  }
 
   dropdownFuncs.setStateFuncs.setSearchQuery = setSearchQuery;
   dropdownFuncs.ref = searchBarInput;
@@ -41,7 +53,7 @@ const SearchBar = ({ parentClassName, dropdownFuncs }) => {
     <>
         <div className={`${parentClassName}-searchbar-wrapper`}>
           <img className={`${parentClassName}-searchbar-glass`} src="assets/magnifying-glass.png"></img>
-          <input className={`${parentClassName}-searchbar-input`} ref={searchBarInput} type="text" onChange={searchBarOnChange}>
+          <input className={`${parentClassName}-searchbar-input`} ref={searchBarInput} type="text" onChange={searchBarOnChange} value={searchInputValue}>
           </input>
           {!searchResults.length ? null :
             <DropDownSelect
@@ -49,6 +61,8 @@ const SearchBar = ({ parentClassName, dropdownFuncs }) => {
               optionComponent={searchResults.map(searchResult =>
                 <SearchResult
                   key={`${parentClassName}-dropdown-option-${searchResult.value}`}
+                  updateSearchBar={updateSearchBar}
+                  searchQuery={searchQuery}
                   searchResult={searchResult}
                   parentClassName={parentClassName}
                   dropdownFuncs={dropdownFuncs}

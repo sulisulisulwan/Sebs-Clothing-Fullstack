@@ -1,13 +1,29 @@
 import React from 'react';
 import onClick from '../onClickHandlers.js';
 
-const SearchResult = ({ parentClassName, searchResult, dropdownFuncs }) => {
+const SearchResult = ({ parentClassName, searchResult, searchQuery, updateSearchBar, dropdownFuncs }) => {
 
   const optionOnClick = (e) => {
+
+    updateSearchBar(searchResult.display.name)
     onClick.searchBarResults(e, dropdownFuncs).catch(err => {
       console.error(err);
     })
   }
+  const formatSearchResult = (result, query) => {
+    let name = result.display.name;
+    let category = result.display.category;
+    let bolded = name.substring(0, query.length)
+    let notBolded = name.substring(query.length);
+    return (
+      <>
+        <span className="search-result-name"><span className="thick">{ bolded }</span>{ notBolded } </span>
+        <span className="search-result-category">{ category }</span>
+      </>
+    )
+  }
+
+  let formattedSearchResult = formatSearchResult(searchResult, searchQuery);
 
   return (
     <li
@@ -16,8 +32,7 @@ const SearchResult = ({ parentClassName, searchResult, dropdownFuncs }) => {
       value={searchResult.value}
       onClick={optionOnClick}
     >
-      <span className="search-result-name">{searchResult.display.name} </span>
-      <span className="search-result-category">{searchResult.display.category}</span>
+      { formattedSearchResult }
   </li>
   )
 }

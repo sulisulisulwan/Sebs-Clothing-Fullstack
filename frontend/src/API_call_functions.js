@@ -45,6 +45,16 @@ const getRelated = async (product_id) => {
   }
 }
 
+const getIfSearchResultIsExactMatch = async(searchQuery) => {
+  try {
+    let result = await axios.get(`/search/exact?search=${searchQuery}`);
+    console.log(result.data)
+    return result.data;
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 const getSearchResults = async (searchQuery) => {
   try {
     let searchResults = await axios.get(`/search?search=${searchQuery}`)
@@ -65,7 +75,7 @@ const getSearchResults = async (searchQuery) => {
 }
 
 const API = {
-  getProduct, getRelated, getSearchResults
+  getProduct, getRelated, getIfSearchResultIsExactMatch, getSearchResults
 }
 
 export default API;
