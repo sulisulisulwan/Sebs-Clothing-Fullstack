@@ -1,12 +1,12 @@
 import React from 'react';
-import BannerSearchAndLogo from './BannerSearchAndLogo.jsx'
+import BannerLogoNavbarSearch from './BannerLogoNavbarSearch.jsx'
 import BannerAnnouncements from './BannerAnnouncements.jsx'
 
 const Header = ({ dropdownFuncs }) => {
   return (
     <>
       <BannerAnnouncements/>
-      <BannerSearchAndLogo
+      <BannerLogoNavbarSearch
         dropdownFuncs={dropdownFuncs}
       />
 
