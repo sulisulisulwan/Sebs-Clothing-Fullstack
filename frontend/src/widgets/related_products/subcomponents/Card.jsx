@@ -16,12 +16,12 @@ const Card = (props) => {
   }
 
   return (
-    <div className={`${parentClassName}-card`} onClick={onClickWrapper}>
-      <div className={`${parentClassName}-card-image-wrapper`}>
-        <img className={`${parentClassName}-card-image`} src={defaultThumbnailUrl} alt={'Product Image'}></img>
+    <div className={`card ${parentClassName}`} onClick={onClickWrapper}>
+      <div className={`card-image-wrapper ${parentClassName}`}>
+        <img className={`card-image ${parentClassName}`} src={defaultThumbnailUrl} alt={'Product Image'}></img>
       </div>
       {cardOptions.actionOnClick ? <ActionButton parentClassName={`${parentClassName}-card`} onClickHandler={cardOptions.actionOnClick}/>: null}
-      <div className={ `${parentClassName}-card-details-wrapper`}>
+      <div className={ `card-details-wrapper ${parentClassName}`}>
         {props.children}
       </div>
     </div>

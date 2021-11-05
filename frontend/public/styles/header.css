@@ -15,7 +15,7 @@
 }
 
 .banner-header-container {
-  border-bottom:seashell 1px solid;
+  border-bottom:lightgray 1px solid;
   background-color: white;
   /* backdrop-filter: blur(10px); */
   display: grid;

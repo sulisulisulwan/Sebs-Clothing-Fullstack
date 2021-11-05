@@ -24,6 +24,67 @@ SUB WIDGETS
 
 }
 
+/***********
+
+Carousel
+
+*************/
+
+.carousel-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.carousel-display-wrapper {
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 1%;
+
+}
+
+.carousel-display-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  margin: 5px;
+  border: solid black 1px;
+  max-height: 300px;
+  width: max-content;
+  min-width: 270px; /* if this is too short, the card will shrink when there are more than 4 cards in the carousel*/
+  max-width: 270px; /* if this is too long the image won't fill the card*/
+  height: 100%;
+  width: 100%;
+  display: grid; /* this separates the image from the details */
+  grid-template-rows: 70% 30%;
+}
+
+.card-image-wrapper {
+  grid-row: 1;
+  overflow: hidden;
+
+}
+
+.card-image {
+  object-fit: fill;
+  /* margin: auto; */
+  /* min-height: 200px;
+  min-width: 100px; */
+  overflow: hidden;
+  z-index: 0;
+}
+
+.card-details-wrapper {
+  grid-row: 2;
+  text-align: center;
+  padding-top: 5px;
+}
+
+
+
 
 
 /*****************
