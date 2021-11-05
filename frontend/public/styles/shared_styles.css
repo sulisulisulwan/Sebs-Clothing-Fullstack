@@ -33,6 +33,7 @@ Carousel
 .carousel-wrapper {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 .carousel-display-wrapper {
@@ -42,7 +43,7 @@ Carousel
   -ms-overflow-style: none;
   scrollbar-width: none;
   padding-bottom: 1%;
-
+  position: relative;
 }
 
 .carousel-display-wrapper::-webkit-scrollbar {
@@ -50,7 +51,7 @@ Carousel
 }
 
 .card {
-  margin: 5px;
+  margin: 10px;
   border: solid black 1px;
   max-height: 300px;
   width: max-content;
@@ -81,10 +82,22 @@ Carousel
   grid-row: 2;
   text-align: center;
   padding-top: 5px;
+  position: relative;
 }
 
-
-
+.carousel-prev-button {
+  width: 100px;
+  position: absolute;
+  top: 100px;
+  z-index: 1;
+}
+.carousel-next-button {
+  width: 100px;
+  position: absolute;
+  top: 100px;
+  right: 0;
+  z-index: 1;
+}
 
 
 /*****************
