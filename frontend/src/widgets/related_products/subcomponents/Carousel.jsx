@@ -8,26 +8,70 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
 
   const [prevButtonIsHidden, setPrevButtonIsHidden] = useState(true)
   const [nextButtonIsHidden, setNextButtonIsHidden] = useState(true)
+  const [currentScrollIndex, setCurrentScrollIndex] = useState(0);
 
-  if (cardsData.length < 5) {
-    if (!prevButtonIsHidden) {
-      setPrevButtonIsHidden(true)
+  useEffect(() => {
+    console.log('prevButtonIsHidden', prevButtonIsHidden)
+    console.log('nextButtonIsHidden', nextButtonIsHidden)
+  }, [prevButtonIsHidden, nextButtonIsHidden])
+
+  useEffect(() => {
+    setCurrentScrollIndex(0)
+  }, [cardsData])
+
+  useEffect(() => {
+    let maxScrollIndex = Math.floor(((cardsData.length - 1) / 4));
+    if (carouselName === 'related') {
+      console.log('cardsData.length is ', cardsData.length)
+      console.log('maxScrollIndex is', maxScrollIndex)
+      console.log('currentScrollIndex is', currentScrollIndex)
     }
-    if (!nextButtonIsHidden) {
-      setNextButtonIsHidden(true)
+    if (maxScrollIndex === 0) {
+      if (!prevButtonIsHidden) {
+        setPrevButtonIsHidden(true)
+      }
+      if (!nextButtonIsHidden) {
+        setNextButtonIsHidden(true)
+      }
+    } else {
+      //if we are at the start of the carousel
+      if (currentScrollIndex === 0) {
+        if (!prevButtonIsHidden) {
+          setPrevButtonIsHidden(true);
+        }
+        if (nextButtonIsHidden) {
+          setNextButtonIsHidden(false);
+        }
+      //if we are in the middle of the carousel
+      } else if (currentScrollIndex < maxScrollIndex) {
+        if (prevButtonIsHidden) {
+          setPrevButtonIsHidden(false);
+        }
+        if (nextButtonIsHidden) {
+          setNextButtonIsHidden(false);
+        }
+      //if we are at the end of the carousel
+      } else if (currentScrollIndex === maxScrollIndex) {
+        if (prevButtonIsHidden) {
+          setPrevButtonIsHidden(false)
+        }
+        if (!nextButtonIsHidden) {
+          setNextButtonIsHidden(true);
+        }
+      }
     }
-  } else {
-    if (nextButtonIsHidden) {
-      setNextButtonIsHidden(false);
-    }
-  }
+  }, [currentScrollIndex, cardsData])
+
+
 
   const prevButtonClickHandler = (e) => {
-
+    console.log('prevButton clicked')
+    setCurrentScrollIndex(currentScrollIndex - 1);
   };
 
   const nextButtonClickHandler = (e) => {
-
+    console.log('nextButton clicked')
+    setCurrentScrollIndex(currentScrollIndex + 1);
   };
 
   const onScrollHandler = (e) => {
@@ -38,15 +82,16 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
   return (
     <>
       <div className={`carousel-wrapper ${carouselName}`}>
-        <img className={`carousel-prev-button ${carouselName}`} src="/assets/carouselLeft.png" hidden={prevButtonIsHidden} onClick={prevButtonClickHandler}/>
+        <a><img className={`carousel-prev-button ${carouselName}`} src="/assets/carouselLeft.png" hidden={prevButtonIsHidden} onClick={prevButtonClickHandler}/></a>
         <div className={`carousel-display-wrapper ${carouselName}`} onScroll={onScrollHandler}>
+          <div id={`${carouselName}-scrollIndex-0`}></div>
           {cardsData.map(
           function (cardData, index) {
-            if ((index + 1) % 4 === 0) {
-              let scrollIndex = (index + 1) / 4;
+            if (index > 3 && (index + 1) % 4 === 1) {
+              let scrollIndex = (Math.ceil(index / 4));
               return (
-                <React.Fragment key={`rps-${scrollIndex}`}>
-                  <div id={`rps-${scrollIndex}`}></div>
+                <React.Fragment key={`${carouselName}-scrollindex-${scrollIndex}`}>
+                  <div id={`${carouselName}-scrollindex-${scrollIndex}`}></div>
                   <Card
                     key={`${carouselName}${cardData.id}-${index}`}
                     parentClassName={`${parentClassName}-${carouselName}-cards`}
@@ -58,6 +103,7 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
                     <div className={`${parentClassName}-${carouselName}-cards-card-price`}>{cardData.price}</div>
                     <Stars className={`${parentClassName}-${carouselName}-cards-card-stars`}/>
                   </Card>
+
                 </React.Fragment>
               )
             } else {
@@ -78,7 +124,7 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
           }
         )}
         </div>
-        <img className={`carousel-next-button ${carouselName}`} src="/assets/carouselRight.png" hidden={nextButtonIsHidden} onClick={nextButtonClickHandler}/>
+        <a><img className={`carousel-next-button ${carouselName}`} src="/assets/carouselRight.png" hidden={nextButtonIsHidden} onClick={nextButtonClickHandler}/></a>
       </div>
     </>
   )
