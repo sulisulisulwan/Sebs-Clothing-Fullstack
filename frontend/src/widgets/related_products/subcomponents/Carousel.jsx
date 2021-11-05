@@ -11,21 +11,11 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
   const [currentScrollIndex, setCurrentScrollIndex] = useState(0);
 
   useEffect(() => {
-    console.log('prevButtonIsHidden', prevButtonIsHidden)
-    console.log('nextButtonIsHidden', nextButtonIsHidden)
-  }, [prevButtonIsHidden, nextButtonIsHidden])
-
-  useEffect(() => {
     setCurrentScrollIndex(0)
   }, [cardsData])
 
   useEffect(() => {
     let maxScrollIndex = Math.floor(((cardsData.length - 1) / 4));
-    if (carouselName === 'related') {
-      console.log('cardsData.length is ', cardsData.length)
-      console.log('maxScrollIndex is', maxScrollIndex)
-      console.log('currentScrollIndex is', currentScrollIndex)
-    }
     if (maxScrollIndex === 0) {
       if (!prevButtonIsHidden) {
         setPrevButtonIsHidden(true)
@@ -65,17 +55,14 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
 
 
   const prevButtonClickHandler = (e) => {
-    console.log('prevButton clicked')
     setCurrentScrollIndex(currentScrollIndex - 1);
   };
 
   const nextButtonClickHandler = (e) => {
-    console.log('nextButton clicked')
     setCurrentScrollIndex(currentScrollIndex + 1);
   };
 
   const onScrollHandler = (e) => {
-    console.log(e)
   }
 
 
