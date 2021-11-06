@@ -69,7 +69,7 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
   return (
     <>
       <div className={`carousel-wrapper ${carouselName}`}>
-        <a><img className={`carousel-prev-button ${carouselName}`} src="/assets/carouselLeft.png" hidden={prevButtonIsHidden} onClick={prevButtonClickHandler}/></a>
+        <a><img className={`carousel-prev-button${prevButtonIsHidden ? '-hidden' : ''} ${carouselName}`} src="/assets/carouselLeft.png" onClick={prevButtonClickHandler}/></a>
         <div className={`carousel-display-wrapper ${carouselName}`} onScroll={onScrollHandler}>
           <div id={`${carouselName}-scrollIndex-0`}></div>
           {cardsData.map(
@@ -111,7 +111,7 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
           }
         )}
         </div>
-        <a><img className={`carousel-next-button ${carouselName}`} src="/assets/carouselRight.png" hidden={nextButtonIsHidden} onClick={nextButtonClickHandler}/></a>
+        <a><img className={`carousel-next-button${nextButtonIsHidden ? '-hidden' : ''} ${carouselName}`} src="/assets/carouselRight.png" onClick={nextButtonClickHandler}/></a>
       </div>
     </>
   )
