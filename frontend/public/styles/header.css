@@ -38,6 +38,13 @@
   padding-right: 20px;
 }
 
+.login-button {
+  cursor: pointer;
+}
+.login-button:hover {
+  color:gray;
+}
+
 .banner-header-searchbar-wrapper {
   padding-top:  10px;
   padding-right:  20px;
