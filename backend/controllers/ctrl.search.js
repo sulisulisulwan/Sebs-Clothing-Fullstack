@@ -1,7 +1,6 @@
-const router = require('express').Router();
 const { Search } = require('../models')
 
-router.get('/', async (req, res) => {
+const getSearchResults = async (req, res) => {
   try {
     let searchResults = await Search.getProductNameAndId(req.query.search)
     searchResults = searchResults.filter((result, i) => {
@@ -18,15 +17,18 @@ router.get('/', async (req, res) => {
     console.error(err);
     res.sendStatus(500);
   }
-})
+};
 
-router.get('/exact', async(req, res) => {
+const getIfSearchQueryHasExactResult = async(req, res) => {
   try {
     let isExact = await Search.getProductByName(req.query.search);
     return res.status(200).json(isExact);
   } catch(err) {
     console.error(err)
   }
-})
+}
 
-module.exports = router;
+module.exports = {
+  getSearchResults,
+  getIfSearchQueryHasExactResult
+}

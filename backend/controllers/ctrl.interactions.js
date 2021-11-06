@@ -1,7 +1,6 @@
-const router = require('express').Router();
 const { Interactions } = require('../models')
 
-router.post('/', async (req, res) => {
+const postInteractions =async (req, res) => {
 
   let { element, widget, time } = req.body
 
@@ -19,6 +18,8 @@ router.post('/', async (req, res) => {
     //else
     res.sendStatus(500);
   }
-})
+};
 
-module.exports = router;
+module.exports = {
+  postInteractions
+}

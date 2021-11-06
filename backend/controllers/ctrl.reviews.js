@@ -1,7 +1,6 @@
-const router = require('express').Router();
 const { Reviews } = require('../models')
 
-router.get('/', async (req, res) => {
+const getAllReviewsByProductId = async (req, res) => {
   let { page, count, sort, product_id } = req.query
   try {
     let reviews = await Reviews.getAll(page, count, sort, product_id)
@@ -10,10 +9,9 @@ router.get('/', async (req, res) => {
     console.error(err);
     res.sendStatus(500);
   }
+};
 
-})
-
-router.get('/meta', async (req, res) => {
+const getReviewMetaDataByProductId = async (req, res) => {
   let { product_id } = req.query;
   try {
     let reviewMetadata = await Reviews.getMetadata(product_id)
@@ -22,9 +20,9 @@ router.get('/meta', async (req, res) => {
     console.error(err);
     res.sendStatus(500);
   }
-})
+};
 
-router.post('/', async (req, res) => {
+const postReview = async (req, res) => {
   try {
     await Reviews.post(req.body)
     res.sendStatus(201)
@@ -32,9 +30,9 @@ router.post('/', async (req, res) => {
     console.error(err);
     res.sendStatus(500);
   }
-})
+};
 
-router.put('/:review_id/helpful', async (req, res) => {
+const updateReviewAsHelpful = async (req, res) => {
   let review_id = req.params.review_id
   try {
     await Reviews.updateOneAsHelpful(review_id)
@@ -43,9 +41,9 @@ router.put('/:review_id/helpful', async (req, res) => {
     res.sendStatus(500);
     console.error(err);
   }
-})
+};
 
-router.put('/:review_id/report', async (req, res) => {
+const updateReviewAsReported = async (req, res) => {
   let review_id = req.params.review_id
   try {
     await Reviews.updateOneAsReported(review_id)
@@ -54,6 +52,12 @@ router.put('/:review_id/report', async (req, res) => {
     console.error(err);
     res.sendStatus(500);
   }
-})
+};
 
-module.exports = router;
+module.exports = {
+  getAllReviewsByProductId,
+  getReviewMetaDataByProductId,
+  postReview,
+  updateReviewAsHelpful,
+  updateReviewAsReported
+}

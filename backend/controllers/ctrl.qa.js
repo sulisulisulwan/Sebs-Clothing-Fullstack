@@ -1,7 +1,6 @@
-const router = require('express').Router();
 const { QA } = require('../models')
 
-router.get('/questions', async (req,res) => {
+const getQuestionsByProductId = async (req,res) => {
   let { product_id, page, count } = req.query;
   try {
     let questions = await QA.getQsByProductId(product_id, page, count)
@@ -10,9 +9,9 @@ router.get('/questions', async (req,res) => {
     console.error(err);
     res.sendStatus(500);
   }
-})
+};
 
-router.get('/questions/:question_id/answers', async (req, res) => {
+const getAnswersByQuestionId = async (req, res) => {
   let { question_id } = req.params
   let { page, count } = req.query;
   try {
@@ -22,9 +21,9 @@ router.get('/questions/:question_id/answers', async (req, res) => {
     console.error(err);
     res.sendStatus(500);
   }
-})
+};
 
-router.post('/questions', async (req ,res) => {
+const postQuestion = async (req ,res) => {
   try {
     await QA.postQuestion(req.body)
     res.sendStatus(201);
@@ -34,10 +33,10 @@ router.post('/questions', async (req ,res) => {
     console.error(err);
     res.sendStatus(500);
   }
-})
+};
 
 
-router.post('/questions/:question_id/answers', async (req,res) => {
+const postAnswer = async (req,res) => {
   let { question_id } = req.params
   try {
     await QA.postAnswer(question_id, req.body)
@@ -46,10 +45,10 @@ router.post('/questions/:question_id/answers', async (req,res) => {
     console.error(err);
     res.sendStatus(500);
   }
-})
+};
 
 
-router.put('/questions/:question_id/helpful', async (req,res) => {
+const updateQuestionAsHelpful = async (req,res) => {
   let { question_id } = req.params
   try {
     await QA.updateQuestionAsHelpful(question_id)
@@ -58,9 +57,9 @@ router.put('/questions/:question_id/helpful', async (req,res) => {
     console.error(err);
     res.sendStatus(500);
   }
-})
+};
 
-router.put('/questions/:question_id/report', async (req,res) => {
+const updateQuestionAsReported = async (req,res) => {
   let { question_id } = req.params
   try {
     await QA.reportQuestion(question_id)
@@ -69,11 +68,11 @@ router.put('/questions/:question_id/report', async (req,res) => {
     console.error(err);
     res.sendStatus(500);
   }
-})
+};
 
 
 
-router.put('/answers/:answer_id/helpful', async (req,res) => {
+const updateAnswerAsHelpful = async (req,res) => {
   let { answer_id } = req.params
   try {
     await QA.updateAnswerAsHelpful(answer_id)
@@ -82,10 +81,10 @@ router.put('/answers/:answer_id/helpful', async (req,res) => {
     console.error(err);
     res.sendStatus(500);
   }
-})
+};
 
 
-router.put('/answers/:answer_id/report', async (req,res) => {
+const updateAnswerAsReported = async (req,res) => {
   let { answer_id } = req.params
   try {
     await QA.reportAnswer(answer_id)
@@ -96,8 +95,16 @@ router.put('/answers/:answer_id/report', async (req,res) => {
     res.sendStatus(500);
 
   }
-})
+};
 
 
-
-module.exports = router;
+module.exports = {
+  getQuestionsByProductId,
+  getAnswersByQuestionId,
+  postQuestion,
+  postAnswer,
+  updateQuestionAsHelpful,
+  updateQuestionAsReported,
+  updateAnswerAsHelpful,
+  updateAnswerAsReported
+};

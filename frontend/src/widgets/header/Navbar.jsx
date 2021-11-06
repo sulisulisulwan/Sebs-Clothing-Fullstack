@@ -1,22 +1,22 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import LoginModal from './LoginModal.jsx';
+import LoginSignupModal from './LoginSignupModal.jsx';
 
 
 const Navbar = () => {
 
-  const [modalOpen, setModalOpen] = useState(false);
+  const [loginSignUpModalOpen, setLoginSignUpModalOpen] = useState(false);
 
   const handleLoginClick = () => {
-    setModalOpen(true);
+    setLoginSignUpModalOpen(true);
   }
 
   return (
     <>
       <nav className="banner-header-navbar">
         <span className="login-button" onClick={handleLoginClick}>Login</span>
-        { modalOpen ? <LoginModal setModalOpen={setModalOpen}/> : null}
+        { loginSignUpModalOpen ? <LoginSignupModal setLoginSignUpModalOpen={setLoginSignUpModalOpen}/> : null}
       </nav>
     </>
   )

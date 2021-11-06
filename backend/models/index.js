@@ -1,8 +1,8 @@
 module.exports = {
-  Cart: require('./cart'),
-  Interactions: require('./interactions'),
-  Product: require('./product'),
-  Qa: require('./qa'),
-  Reviews: require('./reviews'),
-  Search: require('./search')
+  Cart: require('./models.cart'),
+  Interactions: require('./models.interactions'),
+  Product: require('./models.product'),
+  Qa: require('./models.qa'),
+  Reviews: require('./models.reviews'),
+  Search: require('./models.search')
 }

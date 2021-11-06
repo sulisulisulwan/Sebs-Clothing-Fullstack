@@ -1,7 +1,6 @@
-const router = require('express').Router();
 const { Product } = require('../models');
 
-router.get('/', async (req, res) => {
+const getAllProducts = async(req, res) => {
   let { page, count } = req.query
   try {
     let products = await Product.getAll(page, count)
@@ -10,9 +9,9 @@ router.get('/', async (req, res) => {
     console.error(err);
     res.sendStatus(500)
   }
-})
+}
 
-router.get('/:product_id', async (req, res) => {
+const getProductById = async(req, res) => {
   let { product_id } = req.params
   try {
     let product = await Product.getOne(product_id)
@@ -21,9 +20,9 @@ router.get('/:product_id', async (req, res) => {
     console.error(err);
     res.sendStatus(500)
   }
-})
+}
 
-router.get('/:product_id/styles', async (req, res) => {
+const getProductStyles = async(req, res) => {
   let { product_id } = req.params
   try {
     let productStyles = await Product.getStyles(product_id)
@@ -32,10 +31,9 @@ router.get('/:product_id/styles', async (req, res) => {
     console.error(err);
     res.sendStatus(500)
   }
-})
+}
 
-
-router.get('/:product_id/related', async (req, res) => {
+const getRelatedProducts = async(req, res) => {
   let { product_id } = req.params
   try {
     let relatedProducts = await Product.getRelated(product_id)
@@ -44,6 +42,12 @@ router.get('/:product_id/related', async (req, res) => {
     console.error(err);
     res.sendStatus(500)
   }
-})
+}
 
-module.exports = router;
+
+module.exports = {
+  getAllProducts,
+  getProductById,
+  getProductStyles,
+  getRelatedProducts
+}
