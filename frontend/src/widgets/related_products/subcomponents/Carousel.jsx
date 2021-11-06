@@ -8,40 +8,45 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
 
   const [prevButtonIsHidden, setPrevButtonIsHidden] = useState(true)
   const [nextButtonIsHidden, setNextButtonIsHidden] = useState(true)
-  const [currentScrollIndex, setCurrentScrollIndex] = useState(0);
+  const [scrollLocation, setScrollLocation] = useState(0);
+  const [scrollDistance, setScrollDistance] = useState(0);
+  const [maxScrollLocation, setMaxScrollLocation] = useState(0);
 
   useEffect(() => {
-    setCurrentScrollIndex(0)
+    let scrollIndexOne = document.getElementById(`${carouselName}-scrollIndex-1`)
+    setScrollDistance( scrollIndexOne ? scrollIndexOne.offsetLeft : 0);
+    setScrollLocation(0)
   }, [cardsData])
 
   useEffect(() => {
-    let maxScrollIndex = Math.floor(((cardsData.length - 1) / 4));
-    if (maxScrollIndex === 0) {
+    let { scrollWidth, clientWidth } = document.querySelector(`.carousel-display-wrapper.${carouselName}`)
+    setMaxScrollLocation(scrollWidth - clientWidth);
+  }, [scrollDistance])
+
+  useEffect(() => {
+    if (maxScrollLocation === 0) {
       if (!prevButtonIsHidden) {
-        setPrevButtonIsHidden(true)
+        setPrevButtonIsHidden(true);
       }
       if (!nextButtonIsHidden) {
-        setNextButtonIsHidden(true)
+        setNextButtonIsHidden(true);
       }
     } else {
-      //if we are at the start of the carousel
-      if (currentScrollIndex === 0) {
+      if (scrollLocation === 0) {
         if (!prevButtonIsHidden) {
           setPrevButtonIsHidden(true);
         }
         if (nextButtonIsHidden) {
           setNextButtonIsHidden(false);
         }
-      //if we are in the middle of the carousel
-      } else if (currentScrollIndex < maxScrollIndex) {
+      } else if (0 < scrollLocation && scrollLocation < maxScrollLocation) {
         if (prevButtonIsHidden) {
           setPrevButtonIsHidden(false);
         }
         if (nextButtonIsHidden) {
           setNextButtonIsHidden(false);
         }
-      //if we are at the end of the carousel
-      } else if (currentScrollIndex === maxScrollIndex) {
+      } else if (scrollLocation === maxScrollLocation) {
         if (prevButtonIsHidden) {
           setPrevButtonIsHidden(false)
         }
@@ -50,35 +55,41 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
         }
       }
     }
-  }, [currentScrollIndex, cardsData])
+  }, [scrollLocation, maxScrollLocation])
 
 
 
   const prevButtonClickHandler = (e) => {
-    setCurrentScrollIndex(currentScrollIndex - 1);
+    let translate = scrollLocation - scrollDistance < 0 ? 0 : scrollLocation - scrollDistance;
+    let carouselElement = document.querySelector(`.carousel-display-wrapper.${carouselName}`)
+    carouselElement.scroll({ left: translate, behavior: 'smooth' })
   };
 
   const nextButtonClickHandler = (e) => {
-    setCurrentScrollIndex(currentScrollIndex + 1);
+    let translate = scrollLocation + scrollDistance > maxScrollLocation ? maxScrollLocation : scrollLocation + scrollDistance;
+    let carouselElement = document.querySelector(`.carousel-display-wrapper.${carouselName}`)
+    carouselElement.scroll({ left: translate, behavior: 'smooth' })
+
   };
 
   const onScrollHandler = (e) => {
+    setScrollLocation(e.nativeEvent.target.scrollLeft)
   }
 
 
   return (
     <>
       <div className={`carousel-wrapper ${carouselName}`}>
-        <a><img className={`carousel-prev-button${prevButtonIsHidden ? '-hidden' : ''} ${carouselName}`} src="/assets/carouselLeft.png" onClick={prevButtonClickHandler}/></a>
+        <img className={`carousel-prev-button${prevButtonIsHidden ? '-hidden' : ''} ${carouselName}`} src="/assets/carouselLeft.png" onClick={prevButtonClickHandler}/>
         <div className={`carousel-display-wrapper ${carouselName}`} onScroll={onScrollHandler}>
           <div id={`${carouselName}-scrollIndex-0`}></div>
           {cardsData.map(
           function (cardData, index) {
             if (index > 3 && (index + 1) % 4 === 1) {
-              let scrollIndex = (Math.ceil(index / 4));
+              let generatedScrollIndex = (Math.ceil(index / 4));
               return (
-                <React.Fragment key={`${carouselName}-scrollindex-${scrollIndex}`}>
-                  <div id={`${carouselName}-scrollindex-${scrollIndex}`}></div>
+                <React.Fragment key={`${carouselName}-scrollIndex-${generatedScrollIndex}`}>
+                  <div id={`${carouselName}-scrollIndex-${generatedScrollIndex}`}></div>
                   <Card
                     key={`${carouselName}${cardData.id}-${index}`}
                     parentClassName={`${parentClassName}-${carouselName}-cards`}
@@ -110,21 +121,12 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
             }
           }
         )}
+        <div id={`${carouselName}-scrollIndex-end`}></div>
         </div>
-        <a><img className={`carousel-next-button${nextButtonIsHidden ? '-hidden' : ''} ${carouselName}`} src="/assets/carouselRight.png" onClick={nextButtonClickHandler}/></a>
+        <img className={`carousel-next-button${nextButtonIsHidden ? '-hidden' : ''} ${carouselName}`} src="/assets/carouselRight.png" onClick={nextButtonClickHandler}/>
       </div>
     </>
   )
 }
-
-/*
-we need a grid template system which changes dynamically depending on an input integer
-representing the amount of cards in the carousel
-*/
-
-/*
-Build an algorithm which reassigns a card to have a css property of hidden depending on a user's toggling of a next
-and prev button.  On load, cards with an index (indexed at 1) above the maximum visible cards will havwe
-*/
 
 export default Carousel
