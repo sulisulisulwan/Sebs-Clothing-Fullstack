@@ -1,4 +1,6 @@
-const { Reviews } = require('../models')
+const { ReviewsModel } = require('../models')
+const Reviews = new ReviewsModel;
+
 
 const getAllReviewsByProductId = async (req, res) => {
   let { page, count, sort, product_id } = req.query
@@ -20,7 +22,8 @@ const getReviewMetaDataByProductId = async (req, res) => {
     let formattedMetaData = {
       product_id: product_id
     }
-    [ratings, recommend, characteristics].forEach((data, i) => {
+    let metaData = [ratings, recommend, characteristics]
+    metaData.forEach((data, i) => {
       if (i === 0) {
         formattedMetaData.ratings = {}
         data[0].forEach(datum => {

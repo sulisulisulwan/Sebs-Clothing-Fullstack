@@ -6,11 +6,8 @@ import Card from './Card.jsx'
 
 const OutfitCards = ({ parentClassName, currentProduct }) => {
 
-
   const [myOutfit, setMyOutfit] = useState([]);
   const [addOutfitDisabled, setAddOutfitDisabled] = useState(false);
-
-
 
   for (let i = 0; i < myOutfit.length; i++) {
     if (myOutfit[i].id === currentProduct.id) {
@@ -36,7 +33,6 @@ const OutfitCards = ({ parentClassName, currentProduct }) => {
     >
       <div className={`${parentClassName}-outfit-cards ${addOutfitDisabled ? 'disabled' : null}`}>Add to Outfit</div>
     </Card>;
-console.log(addOutfitDisabled)
 
   return (
     <div className={`${parentClassName}-outfit-cards-container`}>

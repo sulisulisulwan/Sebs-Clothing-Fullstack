@@ -53,6 +53,7 @@ Carousel
 .card {
   margin: 10px;
   border: solid black 1px;
+  font-family: Roboto Condensed;
   max-height: 300px;
   width: max-content;
   min-width: 270px; /* if this is too short, the card will shrink when there are more than 4 cards in the carousel*/
@@ -80,10 +81,22 @@ Carousel
 
 .card-details-wrapper {
   grid-row: 2;
-  text-align: center;
+  text-align: left;
   padding-top: 5px;
+  padding-left: 5px;
   position: relative;
 }
+
+.name {
+  color: black;
+}
+.category {
+  color: gray;
+}
+.price {
+  color: black;
+}
+
 
 .carousel-prev-button {
   animation: fadeIn 0.2s backwards;

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Stars = ({ parentClassName }) => {
+const Stars = ({ parentClassName, productData }) => {
   return (
     <div className={`${parentClassName}-stars`}>
-      STARS
+
     </div>
   )
 }

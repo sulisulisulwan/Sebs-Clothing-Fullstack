@@ -76,6 +76,8 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
     setScrollLocation(e.nativeEvent.target.scrollLeft)
   }
 
+  // console.log(cardsData)
+
   return (
     <>
       <div className={`carousel-wrapper ${carouselName}`}>
@@ -96,10 +98,10 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
                     productData={cardData}
                     cardOptions={cardOptions}
                   >
-                    <div className={`${parentClassName}-${carouselName}-cards-card-category`}>{cardData.category}</div>
-                    <div className={`${parentClassName}-${carouselName}-cards-card-name`}>{cardData.name}</div>
-                    <div className={`${parentClassName}-${carouselName}-cards-card-price`}>{cardData.price}</div>
-                    <Stars className={`${parentClassName}-${carouselName}-cards-card-stars`}/>
+                    <div className={`${parentClassName}-${carouselName}-card name`}>{cardData.name}</div>
+                    <div className={`${parentClassName}-${carouselName}-card category`}>{cardData.category}</div>
+                    <div className={`${parentClassName}-${carouselName}-card price`}>{cardData.default_price}</div>
+                    <Stars className={`${parentClassName}-${carouselName}-card stars`}/>
                   </Card>
 
                 </React.Fragment>
@@ -112,10 +114,10 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
                   productData={cardData}
                   cardOptions={cardOptions}
                 >
-                  <div className={`${parentClassName}-${carouselName}-cards-card-category`}>{cardData.category}</div>
-                  <div className={`${parentClassName}-${carouselName}-cards-card-name`}>{cardData.name}</div>
-                  <div  className={`${parentClassName}-${carouselName}-cards-card-price`}>{cardData.price}</div>
-                  <Stars className={`${parentClassName}-${carouselName}-cards-card-stars`}/>
+                  <div className={`${parentClassName}-${carouselName}-card name`}>{cardData.name}</div>
+                  <div className={`${parentClassName}-${carouselName}-card category`}>{cardData.category}</div>
+                  <div  className={`${parentClassName}-${carouselName}-card price`}>${cardData.default_price}</div>
+                  <Stars className={`${parentClassName}-${carouselName}-card stars`} productData={cardData}/>
                 </Card>
               )
             }

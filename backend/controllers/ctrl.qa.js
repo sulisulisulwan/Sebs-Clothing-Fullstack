@@ -1,4 +1,5 @@
-const { QA } = require('../models')
+const { QAModel } = require('../models')
+const QA = new QAModel;
 
 const getQuestionsByProductId = async (req,res) => {
   let { product_id, page, count } = req.query;
