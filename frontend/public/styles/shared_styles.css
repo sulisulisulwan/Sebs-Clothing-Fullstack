@@ -97,6 +97,9 @@ Carousel
   color: black;
 }
 
+.card-star {
+  max-width: 20px;
+}
 
 .carousel-prev-button {
   animation: fadeIn 0.2s backwards;

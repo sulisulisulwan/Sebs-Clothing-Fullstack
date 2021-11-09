@@ -23,7 +23,8 @@ const getProduct = async (product_id) => {
         formattedCurrentProduct.defaultStyleIndex = 0;
       }
     }
-
+    let reviewsMetaData = await getProductReviewsMetaData(product_id);
+    formattedCurrentProduct.reviewsMetaData = reviewsMetaData
     return formattedCurrentProduct;
   } catch(err) {
     console.error(err);
@@ -38,7 +39,7 @@ const getRelated = async (product_id) => {
     if (result.data.length) {
       result.data.forEach(relatedProductId => {
         let productData = getProduct(relatedProductId);
-        let reviewsMetaData = getProductReviewMetaData(relatedProductId);
+        let reviewsMetaData = getProductReviewsMetaData(relatedProductId);
         relatedProductsAPICalls.push(Promise.all([productData, reviewsMetaData]))
       })
     }
@@ -48,7 +49,6 @@ const getRelated = async (product_id) => {
       productData.reviewsMetaData = reviewsMetaData;
       return productData;
     })
-    console.log(formattedRelatedProductsResults)
     return formattedRelatedProductsResults;
   } catch(err) {
     console.error(err);
@@ -65,7 +65,7 @@ const getIfSearchResultIsExactMatch = async(searchQuery) => {
   }
 }
 
-const getProductReviewMetaData = async(product_id) => {
+const getProductReviewsMetaData = async(product_id) => {
   try {
     let result = await axios.get(`/reviews/meta?product_id=${product_id}`);
     return result.data
@@ -94,7 +94,7 @@ const getSearchResults = async (searchQuery) => {
 }
 
 const API = {
-  getProduct, getRelated, getIfSearchResultIsExactMatch, getSearchResults
+  getProduct, getRelated, getIfSearchResultIsExactMatch, getSearchResults, getProductReviewsMetaData
 }
 
 export default API;

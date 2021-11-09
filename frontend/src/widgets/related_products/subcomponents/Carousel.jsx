@@ -101,7 +101,7 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
                     <div className={`${parentClassName}-${carouselName}-card name`}>{cardData.name}</div>
                     <div className={`${parentClassName}-${carouselName}-card category`}>{cardData.category}</div>
                     <div className={`${parentClassName}-${carouselName}-card price`}>{cardData.default_price}</div>
-                    <Stars className={`${parentClassName}-${carouselName}-card stars`}/>
+                    <Stars className={`${parentClassName}-${carouselName}-card stars`}  parentClassName={parentClassName} productData={cardData}/>
                   </Card>
 
                 </React.Fragment>
@@ -117,7 +117,7 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
                   <div className={`${parentClassName}-${carouselName}-card name`}>{cardData.name}</div>
                   <div className={`${parentClassName}-${carouselName}-card category`}>{cardData.category}</div>
                   <div  className={`${parentClassName}-${carouselName}-card price`}>${cardData.default_price}</div>
-                  <Stars className={`${parentClassName}-${carouselName}-card stars`} productData={cardData}/>
+                  <Stars className={`${parentClassName}-${carouselName}-card stars`} parentClassName={parentClassName} productData={cardData}/>
                 </Card>
               )
             }
