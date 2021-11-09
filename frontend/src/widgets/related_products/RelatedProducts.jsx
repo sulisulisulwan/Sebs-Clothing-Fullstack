@@ -39,7 +39,7 @@ const RelatedProducts = ({ currentProduct, setCurrentProduct }) => {
       </div>
       { id === null ? null :
       <>
-        <RelatedCards parentClassName={componentClassName} relatedProducts={relatedProducts} cardOptions={createCardOptions('related', setCurrentProduct)}/>
+        <RelatedCards parentClassName={componentClassName} relatedProducts={relatedProducts} cardOptions={createCardOptions('related', { setCurrentProduct })}/>
         <OutfitCards parentClassName={componentClassName} currentProduct={currentProduct}/>
       </>
       }

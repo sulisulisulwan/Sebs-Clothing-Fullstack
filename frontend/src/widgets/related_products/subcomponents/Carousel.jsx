@@ -14,12 +14,14 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
 
   useEffect(() => {
     let scrollIndexOne = document.getElementById(`${carouselName}-scrollIndex-1`)
+    console.log(scrollIndexOne)
     setScrollDistance( scrollIndexOne ? scrollIndexOne.offsetLeft : 0);
     setScrollLocation(0)
   }, [cardsData])
 
   useEffect(() => {
     let { scrollWidth, clientWidth } = document.querySelector(`.carousel-display-wrapper.${carouselName}`)
+    console.log(scrollWidth, clientWidth)
     setMaxScrollLocation(scrollWidth - clientWidth);
   }, [scrollDistance])
 
@@ -85,8 +87,9 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
           <div id={`${carouselName}-scrollIndex-0`}></div>
           {cardsData.map(
           function (cardData, index) {
-            if (index > 3 && (index + 1) % 4 === 1) {
-              let generatedScrollIndex = (Math.ceil(index / 4));
+            let cardRowMax = carouselName === 'outfit' ? 3 : 4
+            if (index > (cardRowMax - 1) && (index + 1) % cardRowMax === 1) {
+              let generatedScrollIndex = (Math.ceil(index / cardRowMax));
               return (
                 <React.Fragment key={`${carouselName}-scrollIndex-${generatedScrollIndex}`}>
                   <div id={`${carouselName}-scrollIndex-${generatedScrollIndex}`}></div>

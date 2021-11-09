@@ -13,4 +13,6 @@
 }
 
 .related-products-outfit-cards-container {
+  display: grid;
+  grid-template-columns: 25% 75%;
 }

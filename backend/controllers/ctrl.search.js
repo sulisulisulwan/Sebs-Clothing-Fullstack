@@ -25,7 +25,6 @@ const getSearchResults = async (req, res) => {
 const getIfSearchQueryHasExactResult = async(req, res) => {
   try {
     let isExact = await Search.getProductByName(req.query.search)
-    console.log(isExact)
     isExact = !!isExact[0].length
     return res.status(200).json(isExact);
   } catch(err) {

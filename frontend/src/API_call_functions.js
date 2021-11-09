@@ -16,11 +16,12 @@ const getProduct = async (product_id) => {
         return true;
       }
     });
-    if (!defaultExists) {
-      formattedCurrentProduct.styles[0]['default?'] = true;
-      formattedCurrentProduct.defaultStyleIndex = 0;
+    if (formattedCurrentProduct.styles.length) {
+      if (!defaultExists) {
+        formattedCurrentProduct.styles[0]['default?'] = true;
+        formattedCurrentProduct.defaultStyleIndex = 0;
+      }
     }
-
     return formattedCurrentProduct;
   } catch(err) {
     console.error(err);

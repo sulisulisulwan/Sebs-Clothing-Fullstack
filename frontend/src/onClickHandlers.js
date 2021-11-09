@@ -15,14 +15,16 @@ const relatedProductCard = async (id, cardOptions) => {
 
   try {
     let product = await getAllCurrentProductData(id);
-    cardOptions.setStateFuncs(product)
+    cardOptions.funcs.setCurrentProduct(product)
   } catch(err) {
     console.error(err);
   }
 }
 
-const addToOutfitCard = (id, setStateFunc) => {
-  alert('THIS ADDS PRODUCT TO OUTFIT')
+const addToOutfitCard = (id, cardOptions, productData) => {
+  let myOutfit = cardOptions.data.myOutfit.slice();
+  myOutfit.push(productData);
+  cardOptions.funcs.setMyOutfit(myOutfit);
 }
 
 const removeFromOutfitAction = (id, setStateFunc) => {

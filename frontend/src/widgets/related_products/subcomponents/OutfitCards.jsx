@@ -8,8 +8,8 @@ const OutfitCards = ({ parentClassName, currentProduct }) => {
 
   const [myOutfit, setMyOutfit] = useState([]);
 
-  let addToOutfitOptions = createCardOptions('addToOutfit', setMyOutfit);
-  let currentOutfitOptions = createCardOptions('currentOutfit', setMyOutfit);
+  const addToOutfitOptions = createCardOptions('addToOutfit', { setMyOutfit }, { myOutfit });
+  const currentOutfitOptions = createCardOptions('currentOutfit', { setMyOutfit }, { myOutfit } );
 
   let addToOutfitCard = <Card
     parentClassName={`${parentClassName}-outfit-cards`}
