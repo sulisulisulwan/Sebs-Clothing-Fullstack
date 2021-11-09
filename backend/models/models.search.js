@@ -1,34 +1,22 @@
 const db = require('../db/db')
 
-async function getProductNameAndId(searchQuery) {
+module.exports = class SearchModel {
+  constructor() {}
 
-  let q = `
-    SELECT id, name, category
-    FROM Product
-    WHERE name LIKE '${searchQuery}%'
-    LIMIT 5;
-  `;
-  try {
-    let result = await db.query(q);
-    return result[0];
-  } catch(err) {
-    console.log(err)
-    return err;
+  getProductNameAndId(searchQuery) {
+    const q = `
+      SELECT id, name, category
+      FROM Product
+      WHERE name LIKE '${searchQuery}%'
+      LIMIT 5;
+    `;
+    return db.query(q);
   }
-}
 
-async function getProductByName(searchQuery) {
-  let q = `
-  SELECT id FROM Product WHERE name = '${searchQuery}';
-  `;
-  try {
-    let result = await db.query(q);
-    return !!result[0].length;
-  } catch(err) {
-    console.error(err)
+  getProductByName(searchQuery) {
+    const q = `
+    SELECT id FROM Product WHERE name = '${searchQuery}';
+    `;
+    return db.query(q);
   }
-}
-
-module.exports = {
-  getProductNameAndId, getProductByName
 }

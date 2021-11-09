@@ -4,7 +4,7 @@ const getQuestionsByProductId = async (req,res) => {
   let { product_id, page, count } = req.query;
   try {
     let questions = await QA.getQsByProductId(product_id, page, count)
-    res.status(200).json(questions);
+    res.status(200).json(questions[0][0].questions);
   } catch(err) {
     console.error(err);
     res.sendStatus(500);
@@ -16,7 +16,7 @@ const getAnswersByQuestionId = async (req, res) => {
   let { page, count } = req.query;
   try {
     let answers = await QA.getAnswersByQId(question_id, page, count)
-    res.status(200).json(answers);
+    res.status(200).json(answers[0][0].answers);
   } catch(err) {
     console.error(err);
     res.sendStatus(500);
@@ -37,9 +37,12 @@ const postQuestion = async (req ,res) => {
 
 
 const postAnswer = async (req,res) => {
-  let { question_id } = req.params
+  let { question_id } = req.params;
+  let { body, name, email, photos } = req.body;
   try {
-    await QA.postAnswer(question_id, req.body)
+    const result = await QA.postAnswer(question_id, body, name, email)
+    let answer_id = result[0].insertId
+    await QA.preparePhotosQueriesArray('Answers_Photos', answer_id, photos)
     res.sendStatus(201);
   } catch(err) {
     console.error(err);

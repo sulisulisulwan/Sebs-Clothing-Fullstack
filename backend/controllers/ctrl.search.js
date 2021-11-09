@@ -1,13 +1,16 @@
-const { Search } = require('../models')
+const { SearchModel } = require('../models')
 
+const Search = new SearchModel;
+Search.getProductNameAndId
 const getSearchResults = async (req, res) => {
+  const { search } = req.query
   try {
-    let searchResults = await Search.getProductNameAndId(req.query.search)
-    searchResults = searchResults.filter((result, i) => {
+    let searchResults = await Search.getProductNameAndId(search)
+    searchResults = searchResults[0].filter((result, i) => {
       if (i === 0) {
         return true;
       }
-      if (result.name === searchResults[i - 1].name) {
+      if (result.name === searchResults[0][i - 1].name) {
         return false;
       }
       return true;
@@ -21,7 +24,9 @@ const getSearchResults = async (req, res) => {
 
 const getIfSearchQueryHasExactResult = async(req, res) => {
   try {
-    let isExact = await Search.getProductByName(req.query.search);
+    let isExact = await Search.getProductByName(req.query.search)
+    console.log(isExact)
+    isExact = !!isExact[0].length
     return res.status(200).json(isExact);
   } catch(err) {
     console.error(err)
