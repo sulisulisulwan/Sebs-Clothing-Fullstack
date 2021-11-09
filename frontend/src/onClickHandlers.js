@@ -22,16 +22,28 @@ const relatedProductCard = async (id, cardOptions) => {
 }
 
 const addToOutfitCard = (id, cardOptions, productData) => {
+  if (cardOptions.data.addOutfitDisabled) {
+    return;
+  }
   let myOutfit = cardOptions.data.myOutfit.slice();
   myOutfit.push(productData);
   cardOptions.funcs.setMyOutfit(myOutfit);
+  cardOptions.funcs.setAddOutfitDisabled(true);
 }
 
-const removeFromOutfitAction = (id, setStateFunc) => {
-  alert('THIS REMOVES PRODUCT FROM OUTFIT')
+const removeFromOutfitAction = (id, cardOptions) => {
+  const myOutfit = cardOptions.data.myOutfit.slice();
+  for (let i = 0; i < myOutfit.length; i++) {
+    if (myOutfit[i].id === id) {
+      myOutfit.splice(i, 1)
+      cardOptions.funcs.setMyOutfit(myOutfit);
+      cardOptions.funcs.setAddOutfitDisabled(false);
+      break;
+    }
+  }
 }
 
-const productComparisonAction = (id) => {
+const productComparisonAction = (id, cardOptions, productData) => {
   alert('THIS IS THE PRODUCT COMPARISON MODAL')
 }
 

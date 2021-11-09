@@ -11,10 +11,10 @@ const Card = (props) => {
     : null;
 
   const onClickWrapper = (e) => {
-    if (e.target.className === 'related-products-related-cards-card-action-button-star') {
+    if (e.target.className === 'related-products-related-cards-card-action-button-star' || e.target.className  === 'related-products-outfit-cards-card-action-button-x') {
       return;
     }
-    cardOptions.funcs.onClickHandler(id, cardOptions, productData);
+    cardOptions.funcs.onClickHandler(id, cardOptions, productData, e);
   }
 
   return (
@@ -22,7 +22,7 @@ const Card = (props) => {
       <div className={`card-image-wrapper ${parentClassName}`}>
         <img className={`card-image ${parentClassName}`} src={defaultThumbnailUrl} alt={'Product Image'}></img>
       </div>
-      {cardOptions.funcs.actionOnClick ? <ActionButton parentClassName={`${parentClassName}-card`} onClickHandler={cardOptions.funcs.actionOnClick}/>: null}
+      {cardOptions.funcs.actionOnClick ? <ActionButton parentClassName={`${parentClassName}-card`} productId={id} cardOptions={cardOptions}/>: null}
       <div className={ `card-details-wrapper ${parentClassName}`}>
         {props.children}
       </div>

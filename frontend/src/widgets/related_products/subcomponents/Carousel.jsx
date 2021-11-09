@@ -14,14 +14,12 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
 
   useEffect(() => {
     let scrollIndexOne = document.getElementById(`${carouselName}-scrollIndex-1`)
-    console.log(scrollIndexOne)
     setScrollDistance( scrollIndexOne ? scrollIndexOne.offsetLeft : 0);
     setScrollLocation(0)
   }, [cardsData])
 
   useEffect(() => {
     let { scrollWidth, clientWidth } = document.querySelector(`.carousel-display-wrapper.${carouselName}`)
-    console.log(scrollWidth, clientWidth)
     setMaxScrollLocation(scrollWidth - clientWidth);
   }, [scrollDistance])
 
@@ -78,7 +76,6 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
     setScrollLocation(e.nativeEvent.target.scrollLeft)
   }
 
-
   return (
     <>
       <div className={`carousel-wrapper ${carouselName}`}>
@@ -111,7 +108,7 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
               return (
                 <Card
                   key={`relatedProduct${cardData.id}-${index}`}
-                  parentClassName={`${parentClassName}-related-cards`}
+                  parentClassName={`${parentClassName}-${carouselName}-cards`}
                   productData={cardData}
                   cardOptions={cardOptions}
                 >

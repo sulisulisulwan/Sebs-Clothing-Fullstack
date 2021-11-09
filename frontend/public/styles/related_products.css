@@ -16,3 +16,19 @@
   display: grid;
   grid-template-columns: 25% 75%;
 }
+
+.card .related-products-outfit-cards {
+  opacity: 1;
+
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+}
+
+.card .related-products-outfit-cards .disabled{
+  opacity: .5;
+
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+}
