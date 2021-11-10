@@ -18,7 +18,7 @@ const Card = (props) => {
   }
 
   return (
-    <div className={`card ${parentClassName}`} onClick={onClickWrapper}>
+    <div id={ id ? `${id}-${cardOptions.type}` : null} className={`card ${parentClassName}`} onClick={onClickWrapper}>
       <div className={`card-image-wrapper ${parentClassName}`}>
         <img className={`card-image ${parentClassName}`} src={defaultThumbnailUrl} alt={'Product Image'}></img>
       </div>

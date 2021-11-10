@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ActionButton = ({ parentClassName, productId, cardOptions }) => {
+const  ActionButton = ({ parentClassName, productId, cardOptions }) => {
 
-  const onClickWrapper = () => {
-    cardOptions.funcs.actionOnClick(productId, cardOptions)
+  const onClickWrapper = (e) => {
+    cardOptions.funcs.actionOnClick(productId, cardOptions, e)
   }
 
   let buttonType = parentClassName === 'related-products-related-cards-card' ? 'star' : 'x';

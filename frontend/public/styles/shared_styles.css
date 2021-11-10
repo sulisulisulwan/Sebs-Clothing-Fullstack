@@ -51,6 +51,7 @@ Carousel
 }
 
 .card {
+  position: relative;
   margin: 10px;
   border: solid black 1px;
   font-family: Roboto Condensed;
@@ -159,11 +160,11 @@ Buttons
 ******************/
 
 .related-products-related-cards-card-action-button-star {
-  position: relative;
+  position: absolute;
   /* background-color: white; */
-  bottom: 30%;
-  left: 80%;
-  max-height: 2%;
+  bottom: 85%;
+  left: 83%;
+  max-height: 8%;
   z-index: 1;
 }
 .related-products-outfit-cards-card-action-button-x {

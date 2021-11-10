@@ -1,4 +1,6 @@
 /* RENDERED TO APP*/
+
+/*used for search*/
 .modal-unordered-lists {
   margin: 0;
   padding: 0;
@@ -16,10 +18,6 @@
 .modal-unordered-list-item:hover {
   color: gray
 }
-
-
-
-
 .banner-header-dropdown-modal-wrapper {
   display: flex;
   justify-content: right;
@@ -41,14 +39,55 @@
 .search-result-name {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
 .thick {
   font-weight: 900;
 }
-
 .search-result-category {
   /* color: grey; */
   font-size: 10px;
+}
+
+
+/*used for comparison*/
+/* .modal-comparison-wrapper {
+  position: absolute;
+  right: 50%;
+  min-width: 500px;
+  bottom: 125%;
+  z-index: 3;
+  border: lightgray .2px solid;
+  border-radius: 10px;
+  background-color: white;
+  text-align: right;
+  padding: 20px;
+} */
+.modal-comparison-table thead td {
+  text-align: center;
+}
+.modal-comparison-table {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  min-width: 200px;
+  padding-bottom: 20px;
+}
+
+.modal-comparison-table .product-names {
+  font-weight: 900;
+}
+/* .modal-comparison-table td {
+  text-align: center;
+} */
+.modal-comparison-table .current-product-value {
+  text-align: left;
+  font-size: 12px;
+  vertical-align: text-bottom;
+}
+
+.modal-comparison-table .comparison-product-value {
+  text-align: right;
+  vertical-align: text-bottom;
+  font-size: 12px;
 }
 
 /* RENDERED TO PORTAL*/
@@ -58,7 +97,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  overflow: auto;
+  /* overflow: auto; */
   width: 100%;
   height: 100%;
   background-color: rgb(0, 0, 0);

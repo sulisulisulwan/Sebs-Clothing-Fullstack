@@ -1,10 +1,12 @@
 import React from 'react';
+import ReactDom from 'react-dom';
 import { useState, useEffect } from 'react';
-import Card from './Card.jsx'
+import Card from './Card.jsx';
 import onClick from '../../../onClickHandlers.js';
-import Stars from '../../../shared_components/Stars.jsx'
+import Stars from '../../../shared_components/Stars.jsx';
+import ComparisonModal from './ComparisonModal.jsx';
 
-const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => {
+const Carousel = ({ parentClassName, carouselName, cardsData, currentProduct, comparisonProductData, cardOptions, comparisonModalCoords }) => {
 
   const [prevButtonIsHidden, setPrevButtonIsHidden] = useState(true)
   const [nextButtonIsHidden, setNextButtonIsHidden] = useState(true)
@@ -76,11 +78,11 @@ const Carousel = ({ parentClassName, carouselName, cardsData, cardOptions }) => 
     setScrollLocation(e.nativeEvent.target.scrollLeft)
   }
 
-  // console.log(cardsData)
 
   return (
     <>
       <div className={`carousel-wrapper ${carouselName}`}>
+        {cardOptions.data.comparisonModalOpen ? <ComparisonModal cardOptions={cardOptions} currentProductData={currentProduct} comparisonProductData={comparisonProductData} comparisonModalCoords={comparisonModalCoords}/> : null}
         <img className={`carousel-prev-button${prevButtonIsHidden ? '-hidden' : ''} ${carouselName}`} src="/assets/carouselLeft.png" onClick={prevButtonClickHandler}/>
         <div className={`carousel-display-wrapper ${carouselName}`} onScroll={onScrollHandler}>
           <div id={`${carouselName}-scrollIndex-0`}></div>

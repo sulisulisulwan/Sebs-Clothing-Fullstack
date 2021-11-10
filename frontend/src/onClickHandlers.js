@@ -43,8 +43,23 @@ const removeFromOutfitAction = (id, cardOptions) => {
   }
 }
 
-const productComparisonAction = (id, cardOptions, productData) => {
-  alert('THIS IS THE PRODUCT COMPARISON MODAL')
+const productComparisonAction = (id, cardOptions, e) => {
+  let { relatedProducts } = cardOptions.data
+  console.log(e)
+  id = Number(e.target.parentNode.id.split('-')[0]);
+  let clickedProduct;
+  for (let i = 0; i < relatedProducts.length; i++) {
+    if (id === relatedProducts[i].id) {
+      clickedProduct = relatedProducts[i];
+      break;
+    }
+  }
+
+
+
+  cardOptions.funcs.setComparisonProductData(clickedProduct);
+  cardOptions.funcs.setComparisonModalOpen(true);
+  cardOptions.funcs.setComparisonModalCoords([e.pageX, e.pageY])
 }
 
 

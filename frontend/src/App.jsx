@@ -54,7 +54,6 @@ const App = () => {
             <QandA/>
           </div>
         </div>
-
       </main>
     </>
   )

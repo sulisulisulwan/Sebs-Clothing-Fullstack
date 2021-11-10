@@ -7,6 +7,9 @@ const getAverageRating = (ratings) => {
     numOfRatings += ratings[rating];
     totalScore += rating * ratings[rating]
   }
+  if (numOfRatings === 0) {
+    return 'no ratings'
+  }
   return totalScore / numOfRatings || 0;
 }
 
@@ -43,6 +46,9 @@ const Stars = ({ parentClassName, productData }) => {
   }
 
   const averageRating = getAverageRating(productData.reviewsMetaData.ratings)
+  if (averageRating === 'no ratings') {
+    return null;
+  }
   const starImages = getStarImagesArray(averageRating)
 
   return (

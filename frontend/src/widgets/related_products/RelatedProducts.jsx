@@ -11,9 +11,13 @@ const RelatedProducts = ({ currentProduct, setCurrentProduct }) => {
 
   let id = currentProduct === null ? null : currentProduct.id;
   const [relatedProducts, setRelatedProducts] = useState(null);
+  const [comparisonModalOpen, setComparisonModalOpen] = useState(false);
+  const [comparisonProductData, setComparisonProductData] = useState({});
+  const [comparisonModalCoords, setComparisonModalCoords] = useState({})
   const relatedProductsAPICalls = [];
   const relatedProductStylesAPICalls = []
   const formattedRelatedProducts = []
+  const modalPosition = { x: 0, y: 0}
 
 
   useEffect( async () => {
@@ -39,7 +43,17 @@ const RelatedProducts = ({ currentProduct, setCurrentProduct }) => {
       </div>
       { id === null ? null :
       <>
-        <RelatedCards parentClassName={componentClassName} relatedProducts={relatedProducts} cardOptions={createCardOptions('related', { setCurrentProduct })}/>
+        <RelatedCards
+          parentClassName={componentClassName}
+          currentProduct={currentProduct}
+          relatedProducts={relatedProducts}
+          comparisonProductData={comparisonProductData}
+          cardOptions={createCardOptions(
+            'related',
+            { setCurrentProduct, setComparisonModalOpen, setComparisonProductData, setComparisonModalCoords },
+            { comparisonModalOpen, relatedProducts, modalPosition })}
+          comparisonModalCoords={comparisonModalCoords}
+          />
         <OutfitCards parentClassName={componentClassName} currentProduct={currentProduct}/>
       </>
       }
