@@ -5,9 +5,13 @@ import QuestionWrapper from './QuestionWrapper.jsx';
 import AnswerWrapper from './AnswerWrapper.jsx';
 import SearchBar from '../../../shared_components/SearchBar.jsx';
 import api from '../../../API_call_functions.js';
+
 const QuestionAndAnswerWrapper = ({ parentClassName, currentProduct }) => {
 
   const [currProdQuestions, setCurrProdQuestions] = useState(null);
+
+
+
 
   useEffect(() => {
     if (currentProduct === null) {

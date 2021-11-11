@@ -54,16 +54,18 @@ const productComparisonAction = (id, cardOptions, e) => {
       break;
     }
   }
-
-
-
   cardOptions.funcs.setComparisonProductData(clickedProduct);
   cardOptions.funcs.setComparisonModalOpen(true);
   cardOptions.funcs.setComparisonModalCoords([e.clientX, e.clientY])
 }
 
+const getMoreAnsweredQuestions = () => {
+  alert('This gets more answered questions')
+}
 
-
+const addAQuestion = () => {
+  alert('This adds a question')
+}
 
 
 //API aggregator
@@ -82,5 +84,7 @@ export default {
   relatedProductCard,
   addToOutfitCard,
   removeFromOutfitAction,
-  productComparisonAction
+  productComparisonAction,
+  getMoreAnsweredQuestions,
+  addAQuestion
 }

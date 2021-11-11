@@ -174,3 +174,8 @@ Buttons
   max-height: 40px;
   z-index: 1;
 }
+
+.boxstyle-button {
+  border: darkblue .5px solid;
+  padding: 10px;
+}
