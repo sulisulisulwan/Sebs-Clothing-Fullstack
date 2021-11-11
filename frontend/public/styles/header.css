@@ -63,7 +63,6 @@
 
 .banner-header-searchbar-glass {
   position: fixed;
-  right: 330px;
   top: 60px;
   max-height: 20px;
   margin-right: 10px;
@@ -73,6 +72,7 @@
 .banner-header-searchbar-input {
   position: fixed;
   width: 300px;
+  right: 50px;
   /* height: 40px; */
   font-size: 20px;
   /* background-color: silver; */

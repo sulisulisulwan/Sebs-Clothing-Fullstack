@@ -2,19 +2,31 @@ import React from 'react';
 import Utils from '../utils.js'
 const utils = new Utils();
 
-const UserEntryInfo = ({ parentClassName, userEntryData }) => {
+const UserEntryInfo = ({ parentClassName, userEntryData, componentType }) => {
+
 
   if (userEntryData === undefined) {
     return null;
   }
-  const { reviewer_name, date } = userEntryData;
+
+  let username;
+  const { date } = userEntryData;
+  if (componentType === 'question') {
+    username = userEntryData.asker_name;
+  } else if (componentType === 'answer') {
+    username = userEntryData.answerer_name;
+    console.log(username)
+  } else if (componentType === 'review') {
+    username = userEntryData.reviewer_name;
+  }
+
   let formattedDate = utils.formatDateAndTime('date', date);
-  let formattedReviewerName = utils.removeQuotes(reviewer_name);
+  let formattedUsername = utils.removeQuotes(username);
 
   return (
 
     <div className={`${parentClassName} userentryinfo`}>
-      {formattedReviewerName}, {formattedDate}
+      {formattedUsername}, {formattedDate}
     </div>
   )
 };

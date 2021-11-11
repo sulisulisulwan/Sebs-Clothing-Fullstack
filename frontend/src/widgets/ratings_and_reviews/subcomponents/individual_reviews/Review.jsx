@@ -14,7 +14,7 @@ const Review = ({ parentClassName, review, isLastReview }) => {
     <div className={`${parentClassName}-review`}>
       <div className={`${parentClassName}-review star-userentryinfo-wrapper`}>
         <Stars parentClassName={`${parentClassName}-review`} productData={productData}/>
-        <UserEntryInfo parentClassName={`${parentClassName}-review`} userEntryData={userEntryData}/>
+        <UserEntryInfo parentClassName={`${parentClassName}-review`} userEntryData={userEntryData} componentType={'review'}/>
       </div>
       <ReviewTextWrapper parentClassName={`${parentClassName}-review`} reviewTextData={reviewTextData}/>
       <HelpfulReport parentClassName={`${parentClassName}-review`} helpfulness={helpfulness}/>

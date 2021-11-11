@@ -35,7 +35,15 @@ export default class Utils {
 
   removeQuotes (allText) {
     if (Array.isArray(allText)) {
-      return allText.map(text => text.substring(1, text.length - 1));
+      return allText.map(text => {
+        if (text[0] !== '"') {
+          return text;
+        }
+        return text.substring(1, text.length - 1)
+      });
+    }
+    if (allText[0] !== '"') {
+      return allText;
     }
     return allText.substring(1, allText.length - 1);
   }

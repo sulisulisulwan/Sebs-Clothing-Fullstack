@@ -29,6 +29,7 @@
 }
 .banner-header-dropdown-modal-content {
   top: 36px;
+  right: 50px;
   transition: height 3s ease;
   position: absolute;
   background-color: whitesmoke;
@@ -72,19 +73,19 @@
   padding-bottom: 20px;
 }
 
-.modal-comparison-table .product-names {
+.modal-comparison-table.product-names {
   font-weight: 900;
 }
 /* .modal-comparison-table td {
   text-align: center;
 } */
-.modal-comparison-table .current-product-value {
+.modal-comparison-table.current-product-value {
   text-align: left;
   font-size: 12px;
   vertical-align: text-bottom;
 }
 
-.modal-comparison-table .comparison-product-value {
+.modal-comparison-table.comparison-product-value {
   text-align: right;
   vertical-align: text-bottom;
   font-size: 12px;

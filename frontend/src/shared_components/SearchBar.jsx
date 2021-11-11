@@ -5,6 +5,8 @@ import DropDownSelect from './DropDownSelect.jsx';
 import optionComponent from './DropDownOptionFormats.jsx';
 
 
+//if searchbar takes in
+
 const SearchBar = ({ parentClassName, dropdownFuncs }) => {
 
   const searchBarInput = useRef(null);
@@ -52,9 +54,9 @@ const SearchBar = ({ parentClassName, dropdownFuncs }) => {
   return (
     <>
         <div className={`${parentClassName}-searchbar-wrapper`}>
-          <img className={`${parentClassName}-searchbar-glass`} src="assets/magnifying-glass.png"></img>
           <input className={`${parentClassName}-searchbar-input`} ref={searchBarInput} type="text" onChange={searchBarOnChange} value={searchInputValue}>
           </input>
+          <img className={`${parentClassName}-searchbar-glass`} src="assets/magnifying-glass.png"></img>
           {!searchResults.length ? null :
             <DropDownSelect
               parentClassName={parentClassName}

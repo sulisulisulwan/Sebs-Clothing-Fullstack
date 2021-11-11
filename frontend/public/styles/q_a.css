@@ -7,22 +7,53 @@
 }
 
 .qa-question-wrapper {
-  display: grid;
-  grid-template-columns: 70% 30%;
 }
 .qa-question-text {
-  grid-column: 1;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+.qa-question-text.question {
+  text-align: left;
+}
+.qa-question-text.helpful-and-report {
+  text-align: right;
+  display: block;
+  font-size: 10px;
+  padding-right: 30px;
 }
 .qa-question-user-entry-info {
-  grid-column: 2;
 }
 
-.qa-answer-wrapper {
-
+.qa-answer-noanswer {
+  padding-bottom: 20px;
+  text-align: center;
 }
-.qa-answer {
 
+.qa-question-text.question {
+  font-family: Arial;
+  font-weight: 900;
+  font-size: 20px;
+  padding-bottom: 20px;
 }
-.qa-answer-user-entry-info {
+
+.qa-answer.answer {
+  font-family: Arial;
+  font-size: 15px;
+}
+.qa-answer.answer-A {
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.qa-answer.userentryinfo-helpful-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 10px;
+}
+
+
+.qa-answer-userentryinfo {
 
 }

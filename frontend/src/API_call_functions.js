@@ -79,6 +79,16 @@ const getProductReviewsMetaData = async(product_id) => {
   }
 }
 
+const getAllQuestions = async(product_id) => {
+  try {
+    const allQuestions = await axios.get(`/qa/questions?product_id=${product_id}&page=${1}&count=${5}`);
+    return allQuestions.data.results;
+  } catch(err) {
+    console.error(err);
+    return err;
+  }
+}
+
 const getSearchResults = async (searchQuery) => {
   try {
     let searchResults = await axios.get(`/search?search=${searchQuery}`)
@@ -104,7 +114,7 @@ const getCurrentProductReviews = async (product_id) => {
 }
 
 const API = {
-  getProduct, getRelated, getIfSearchResultIsExactMatch, getSearchResults, getProductReviewsMetaData, getCurrentProductReviews
+  getProduct, getRelated, getIfSearchResultIsExactMatch, getSearchResults, getProductReviewsMetaData, getCurrentProductReviews, getAllQuestions
 }
 
 export default API;
