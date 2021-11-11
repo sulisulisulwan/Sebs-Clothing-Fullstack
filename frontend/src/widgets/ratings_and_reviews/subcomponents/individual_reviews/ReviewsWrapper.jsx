@@ -1,12 +1,12 @@
 import React from 'react';
-import Stars from '../../../../shared_components/Stars.jsx'
+
 import Review from './Review.jsx';
 
-const ReviewsWrapper = ({ parentClassName }) => {
+const ReviewsWrapper = ({ parentClassName, currProductReviews }) => {
+  let allReviews = currProductReviews.reviews.results;
   return (
     <div className={`${parentClassName}-reviews-wrapper`}>
-      <Stars parentClassName={`${parentClassName}-reviews`}/>
-      <Review parentClassName={`${parentClassName}-reviews`}/>
+      {allReviews.map(review => <Review key={`${review.id}-${review.date}`} parentClassName={`${parentClassName}-reviews`} review={review}/>)}
     </div>
   )
 }

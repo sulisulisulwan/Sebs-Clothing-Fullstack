@@ -1,9 +1,11 @@
 import React from 'react';
-
-const ReviewTextBody = ({ parentClassName }) => {
+import Response from './Response.jsx';
+const ReviewTextBody = ({ parentClassName, body, recommend, response }) => {
   return (
     <div className={`${parentClassName}-body`}>
-      REVIEW TEXT BODY
+      {body}
+      {recommend}
+      <Response parentClassName={parentClassName} response={response}/>
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ReviewTextTitle = ({ parentClassName }) => {
+const ReviewTextTitle = ({ parentClassName, summary }) => {
   return (
     <div className={`${parentClassName}-title`}>
-      REVIEW TITLE
+      {summary}
     </div>
   )
 }

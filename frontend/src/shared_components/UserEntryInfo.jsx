@@ -1,9 +1,16 @@
 import React from 'react';
 
-const UserEntryInfo = ({ parentClassName }) => {
+const UserEntryInfo = ({ parentClassName, userEntryData }) => {
+
+  console.log(userEntryData)
+  if (userEntryData === undefined) {
+    return null;
+  }
+  const { reviewer_name, date } = userEntryData;
   return (
-    <div className={`${parentClassName}-user-entry-info`}>
-      USER ENTRY INFO
+
+    <div className={`${parentClassName} user-entry-info`}>
+      {reviewer_name} {date}
     </div>
   )
 };

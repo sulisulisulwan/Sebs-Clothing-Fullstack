@@ -9,14 +9,21 @@ RATINGS AND REVIEWS
   grid-row: 3;
 }
 
-.ratings-and-reviews .aggregates-and-reviews-wrapper {
+.ratings-and-reviews.aggregates-and-reviews-wrapper {
   display: grid;
   grid-template-columns: 33% 67%;
 }
 
+/*************************
+
+      AGGREGATES
+
+*************************/
+
 .ratings-and-reviews-aggregates-wrapper {
 
 }
+
 .ratings-and-reviews-aggregates.average-rating-wrapper {
   display: flex;
   flex-direction: row;
@@ -24,6 +31,31 @@ RATINGS AND REVIEWS
 .ratings-and-reviews-aggregates.average-rating-number {
   font-size: 60px;
 }
+
+.ratings-and-reviews-aggregates.percentage-who-recommend {
+  font-size: 12px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+.ratings-and-reviews-aggregates.rating-bargraph {
+  font-size: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+.ratings-and-reviews-aggregates.rating-bargraph.bar{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.ratings-and-reviews-aggregates.characteristic-rating-slider.slider{
+  font-size: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.ratings-and-reviews-reviews-review.user-entry-info {
+  text-align: right;
+}
+
 
 
 

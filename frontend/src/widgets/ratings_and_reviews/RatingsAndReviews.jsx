@@ -6,7 +6,7 @@ import API from '../../API_call_functions.js';
 
 const RatingsAndReviews = ({ currentProduct }) => {
 
-  const [currProductReviews, setCurrProductReviews] = useState([]);
+  const [currProductReviews, setCurrProductReviews] = useState(null);
 
   useEffect(() => {
     if (currentProduct === null) {
@@ -22,7 +22,7 @@ const RatingsAndReviews = ({ currentProduct }) => {
   }, [currentProduct])
 
   const componentClassName = 'ratings-and-reviews';
-  if (currentProduct === null) {
+  if (currentProduct === null || currProductReviews === null) {
     return null;
   }
   return (
