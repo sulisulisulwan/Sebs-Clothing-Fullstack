@@ -59,7 +59,7 @@ const productComparisonAction = (id, cardOptions, e) => {
 
   cardOptions.funcs.setComparisonProductData(clickedProduct);
   cardOptions.funcs.setComparisonModalOpen(true);
-  cardOptions.funcs.setComparisonModalCoords([e.pageX, e.pageY])
+  cardOptions.funcs.setComparisonModalCoords([e.clientX, e.clientY])
 }
 
 

@@ -8,6 +8,12 @@ RATINGS AND REVIEWS
 .ratings-and-reviews-wrapper {
   grid-row: 3;
 }
+
+.ratings-and-reviews .aggregates-and-reviews-wrapper {
+  display: grid;
+  grid-template-columns: 33% 67%;
+}
+
 .ratings-and-reviews-aggregates-wrapper {
 }
 .ratings-and-reviews-reviews-wrapper {

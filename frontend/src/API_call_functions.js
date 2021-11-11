@@ -93,8 +93,13 @@ const getSearchResults = async (searchQuery) => {
   }
 }
 
+const getCurrentProductReviews = async (product_id) => {
+  let allReviews = await axios.get(`/reviews?product_id=${product_id}&page=1&count=5`) //sort is not a thing eh? hmm should we keep that as part of the api?
+  return allReviews.data;
+}
+
 const API = {
-  getProduct, getRelated, getIfSearchResultIsExactMatch, getSearchResults, getProductReviewsMetaData
+  getProduct, getRelated, getIfSearchResultIsExactMatch, getSearchResults, getProductReviewsMetaData, getCurrentProductReviews
 }
 
 export default API;

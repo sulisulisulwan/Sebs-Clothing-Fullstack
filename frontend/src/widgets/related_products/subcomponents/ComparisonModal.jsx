@@ -42,6 +42,8 @@ const ComparisonModal = ({ cardOptions, currentProductData, comparisonProductDat
       : [document.getElementsByTagName('body').clientWidth, document.getElementsByTagName('body').clientHeight]
   }
 
+  const [viewportWidth, viewportHeight] = getViewPort();
+
 
   let modalStyle = {
     position: 'absolute',

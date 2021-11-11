@@ -4,6 +4,7 @@ const Reviews = new ReviewsModel;
 
 const getAllReviewsByProductId = async (req, res) => {
   let { page, count, sort, product_id } = req.query
+  //sort isn't being used.  should it be done on the client side?
   try {
     let reviews = await Reviews.getAll(page, count, sort, product_id)
     res.status(200).json(reviews[0][0])

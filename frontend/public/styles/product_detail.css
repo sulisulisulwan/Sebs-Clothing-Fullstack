@@ -3,7 +3,7 @@
 ********************/
 
 .current-product-detail-container {
-  border: 2px blue solid;
+  /* border: 2px blue solid; */
   max-height: 100%;
 }
 
@@ -18,7 +18,7 @@
       right: 0%;
     }
     .current-product-detail-highbar-photo-container {
-      border: 2px blue solid;
+      /* border: 2px blue solid; */
       grid-column: 1;
       overflow: scroll;
     }
@@ -30,11 +30,11 @@
 
 .current-product-detail-highbar-sidebar-container {
   grid-column: 2;
-  border: blue 2px solid;
+  /* border: blue 2px solid; */
 }
 
 .current-product-detail-lowbar-container {
-  border: blue solid 2px;
+  /* border: blue solid 2px; */
   display: grid;
   grid-template-columns: 60% 40%;
 }

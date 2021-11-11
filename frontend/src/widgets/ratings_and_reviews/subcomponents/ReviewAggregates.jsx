@@ -3,7 +3,7 @@ import React from 'react';
 const ReviewAggregates = ({ parentClassName }) => {
   return(
     <div className={`${parentClassName}-aggregates-wrapper`}>
-      AGGREGATE SUBCOMPOENTS
+      AGGREGATE SUBCOMPONENTS
     </div>
   )
 }
