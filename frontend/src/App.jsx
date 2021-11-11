@@ -50,8 +50,8 @@ const App = () => {
               currentProduct={currentProduct}
               setCurrentProduct={setCurrentProduct}
             />
-            <RatingsAndReviews currentProduct={currentProduct}/>
             <QandA/>
+            <RatingsAndReviews currentProduct={currentProduct}/>
           </div>
         </div>
       </main>
