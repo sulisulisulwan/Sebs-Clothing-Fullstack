@@ -11,20 +11,6 @@ import RatingsAndReviews from './widgets/ratings_and_reviews/RatingsAndReviews.j
 const App = () => {
 
   const [currentProduct, setCurrentProduct] = useState(null);
-  const [currProductReviewMetaData, setCurrProductReviewMetaData] = useState(null);
-
-  useEffect(async () => {
-    if (currentProduct === null) {
-      return;
-    }
-
-    try {
-      let metaData = API.getProductReviewsMetaData(currentProduct.id)
-      setCurrProductReviewMetaData(metaData);
-    } catch (err) {
-      console.error(err);
-    }
-  }, [currentProduct])
 
   useEffect(async () => {
     try {
@@ -64,7 +50,7 @@ const App = () => {
               currentProduct={currentProduct}
               setCurrentProduct={setCurrentProduct}
             />
-            <RatingsAndReviews currentProduct={currentProduct} currProductReviewMetaData={currProductReviewMetaData}/>
+            <RatingsAndReviews currentProduct={currentProduct}/>
             <QandA/>
           </div>
         </div>

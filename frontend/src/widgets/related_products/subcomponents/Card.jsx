@@ -1,6 +1,5 @@
 import React from 'react';
 import ActionButton from '../../../shared_components/ActionButton.jsx'
-import Stars from '../../../shared_components/Stars.jsx'
 
 const Card = (props) => {
   let { parentClassName, productData, cardOptions } = props;

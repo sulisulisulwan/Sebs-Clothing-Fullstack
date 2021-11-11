@@ -15,7 +15,25 @@ RATINGS AND REVIEWS
 }
 
 .ratings-and-reviews-aggregates-wrapper {
+
 }
+.ratings-and-reviews-aggregates.average-rating-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+.ratings-and-reviews-aggregates.average-rating-number {
+  font-size: 60px;
+}
+
+
+
+
+
+
+
+
+
+
 .ratings-and-reviews-reviews-wrapper {
 
 }

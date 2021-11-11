@@ -1,20 +1,7 @@
 import React from 'react';
 
-const getAverageRating = (ratings) => {
-  let numOfRatings = 0;
-  let totalScore = 0;
-  for (let rating in ratings) {
-    numOfRatings += ratings[rating];
-    totalScore += rating * ratings[rating]
-  }
-  if (numOfRatings === 0) {
-    return 'no ratings'
-  }
-  return totalScore / numOfRatings || 0;
-}
-
-const getStarImagesArray = (averageRating) => {
-  let [wholeNum, decimal] = averageRating.toString().split('.')
+const getStarImagesArray = (rating) => {
+  let [wholeNum, decimal] = rating.toString().split('.')
   decimal = Number(decimal) / 10 || 0;
   let stars = [];
   for (let i = 0; i < 5; i++) {
@@ -22,11 +9,11 @@ const getStarImagesArray = (averageRating) => {
       wholeNum--;
       stars.push('StarFILLED.png')
     } else if (decimal > 0) {
-      if (decimal > 0.75) {
+      if (decimal >= 0.75) {
         stars.push('Star.75.png')
-      } else if (decimal > 0.5) {
+      } else if (decimal >= 0.5) {
         stars.push('Star.50.png')
-      } else if (decimal > 0.25) {
+      } else if (decimal >= 0.25) {
         stars.push('Star.25.png')
       } else {
         stars.push('StarUMPAINTED.png')
@@ -45,7 +32,7 @@ const Stars = ({ parentClassName, productData }) => {
     return null;
   }
 
-  const averageRating = getAverageRating(productData.reviewsMetaData.ratings)
+  const { averageRating } = productData.reviewsMetaData;
   if (averageRating === 'no ratings') {
     return null;
   }

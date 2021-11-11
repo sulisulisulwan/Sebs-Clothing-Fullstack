@@ -1,5 +1,5 @@
 import React from 'react';
-import Stars from '../../../shared_components/Stars.jsx'
+import Stars from '../../../../shared_components/Stars.jsx'
 import Review from './Review.jsx';
 
 const ReviewsWrapper = ({ parentClassName }) => {

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import utils from './utils.js'
 
 const getProduct = async (product_id) => {
   let formattedCurrentProduct;
@@ -25,6 +26,7 @@ const getProduct = async (product_id) => {
     }
     let reviewsMetaData = await getProductReviewsMetaData(product_id);
     formattedCurrentProduct.reviewsMetaData = reviewsMetaData
+    formattedCurrentProduct.reviewsMetaData.averageRating = utils.getAverageRating(formattedCurrentProduct.reviewsMetaData.ratings);
     return formattedCurrentProduct;
   } catch(err) {
     console.error(err);
@@ -47,6 +49,8 @@ const getRelated = async (product_id) => {
     let formattedRelatedProductsResults = relatedProductsResults.map(result => {
       let [productData, reviewsMetaData] = result;
       productData.reviewsMetaData = reviewsMetaData;
+      productData.reviewsMetaData.averageRating = utils.getAverageRating(productData.reviewsMetaData.ratings);
+
       return productData;
     })
     return formattedRelatedProductsResults;

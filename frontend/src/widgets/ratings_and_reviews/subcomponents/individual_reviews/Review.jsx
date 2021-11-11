@@ -1,5 +1,5 @@
 import React from 'react';
-import UserEntryInfo from '../../../shared_components/UserEntryInfo.jsx'
+import UserEntryInfo from '../../../../shared_components/UserEntryInfo.jsx'
 import ReviewTextWrapper from './ReviewTextWrapper.jsx';
 
 const Review = ({ parentClassName }) => {

@@ -78,7 +78,6 @@ const Carousel = ({ parentClassName, carouselName, cardsData, currentProduct, co
     setScrollLocation(e.nativeEvent.target.scrollLeft)
   }
 
-
   return (
     <>
       <div className={`carousel-wrapper ${carouselName}`}>
