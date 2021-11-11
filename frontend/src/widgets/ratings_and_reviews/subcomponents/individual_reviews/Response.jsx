@@ -10,7 +10,12 @@ const Response = ({ parentClassName, response }) => {
   response = utils.removeQuotes(response)
 
   return (
-    <div>Response: {response}</div>
+    <div className={`${parentClassName} response-wrapper`}>
+      <div className={`${parentClassName} response`}>
+        <p><strong>Response:</strong></p>
+        <p>{response}</p>
+      </div>
+    </div>
   )
 }
 export default Response;

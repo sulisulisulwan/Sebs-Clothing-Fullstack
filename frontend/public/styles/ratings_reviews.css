@@ -96,6 +96,20 @@ RATINGS AND REVIEWS
 
 }
 
+
+.ratings-and-reviews-reviews-review-text.response-wrapper {
+  background: lightgray;
+  padding: 10px;
+  margin-right: 10px;
+}
+.ratings-and-reviews-reviews-review-text.response {
+  padding:  5px 10px 5px 10px
+}
+
 .ratings-and-reviews-reviews-review.userentryinfo {
+  font-size: 10px;
+}
+
+.ratings-and-reviews-reviews-review.helpful-and-report {
   font-size: 10px;
 }
