@@ -10,7 +10,7 @@ const ReviewTextBody = ({ parentClassName, body, recommend, response }) => {
   return (
     <div className={`${parentClassName}-body`}>
       {body}
-      {recommend}
+      {recommend ? <div className={`${parentClassName}-body recommend`}>✓ I recommend this product</div> : null}
       <Response parentClassName={parentClassName} response={response}/>
     </div>
   )

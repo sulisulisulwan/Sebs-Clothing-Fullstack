@@ -3,7 +3,7 @@ import Stars from '../../../../shared_components/Stars.jsx';
 
 const AverageRatingDisplay = ({ parentClassName, currentProduct }) => {
   let { averageRating } = currentProduct.reviewsMetaData;
-
+  console.log(averageRating)
   return (
     <>
       <div className={`${parentClassName} average-rating-wrapper`}>

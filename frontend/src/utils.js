@@ -8,6 +8,16 @@ export default class Utils {
     }
   }
 
+  roundDownToNearestQuarter (decimal) {
+    if (decimal === undefined) {
+      return 0;
+    }
+    decimal = Number(decimal)
+    return decimal > .75 ? .75
+      : decimal > .5 ? .5
+      : decimal > .25 ? .25 : 0
+  }
+
   getAverageRating (ratings) {
     let numOfRatings = 0;
     let totalScore = 0;
@@ -18,7 +28,9 @@ export default class Utils {
     if (numOfRatings === 0) {
       return 'no ratings'
     }
-    return totalScore / numOfRatings || 0;
+    let average = totalScore / numOfRatings || 0;
+    let [wholeNum, decimal] = average.toString().split('.')
+    return Number(wholeNum) + this.roundDownToNearestQuarter(decimal);
   }
 
   removeQuotes (allText) {
