@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
-import utils from './utils.js'
+import Utils from './utils.js'
+const utils = new Utils();
 
 const getProduct = async (product_id) => {
   let formattedCurrentProduct;
