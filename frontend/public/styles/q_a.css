@@ -57,3 +57,11 @@
 .qa-answer-userentryinfo {
 
 }
+
+.qa.load-collapse-answers {
+  font-family: Arial;
+  font-weight: 900;
+  font-size: 12px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}

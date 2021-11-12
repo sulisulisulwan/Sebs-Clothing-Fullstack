@@ -15,7 +15,6 @@ const UserEntryInfo = ({ parentClassName, userEntryData, componentType }) => {
     username = userEntryData.asker_name;
   } else if (componentType === 'answer') {
     username = userEntryData.answerer_name;
-    console.log(username)
   } else if (componentType === 'review') {
     username = userEntryData.reviewer_name;
   }

@@ -1,9 +1,13 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import UserEntryInfo from '../../../shared_components/UserEntryInfo.jsx';
 import Answer from './Answer.jsx';
 import HelpfulReport from '../../../shared_components/HelpfulReport.jsx'
 
 const AnswerWrapper = ({ parentClassName, answersData }) => {
+
+  const [answersExpanded, setAnswersExpanded] = useState(false);
+  const [moreThanTwoAnswers, setMoreThanTwoAnswers] = useState(false);
 
   if (answersData.answers === null) {
     return <div className={`${parentClassName}-answer-noanswer`}>No answers yet! :/</div>
@@ -16,25 +20,42 @@ const AnswerWrapper = ({ parentClassName, answersData }) => {
     answersDataArray.push(answersData.answers[answerId]);
   }
 
-  return (
+  const loadMoreAnswersClickHandler = () => {
+    setAnswersExpanded(!answersExpanded);
+  }
 
-    answersDataArray.map(answerData => {
-      const { id, body, date, photos, helpfulness, answerer_name } = answerData
-      const userEntryData = { answerer_name, date };
-      answerData = { body, photos, helpfulness };
-      return (
-        <React.Fragment key={`answer-key-${id}`}>
-          <div className={`${parentClassName}-answer-wrapper`}>
-            <Answer parentClassName={parentClassName} answerData={answerData}/>
-            <div className={ `${parentClassName}-answer userentryinfo-helpful-wrapper`}>
-              by&nbsp;&nbsp;<UserEntryInfo parentClassName={`${parentClassName}-answer`} userEntryData={userEntryData} componentType={'answer'}/>
-              &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-              <HelpfulReport parentClassName={`${parentClassName}-answer`} helpfulness={helpfulness}/>
+  useEffect(() => {
+    if (answersDataArray.length > 2) {
+      setMoreThanTwoAnswers(true);
+    }
+  }, [answersData])
+
+  return (
+    <>
+      {answersDataArray.map((answerData, i) => {
+        if (moreThanTwoAnswers && !answersExpanded && i > 1) {
+          return null;
+        }
+        const { id, body, date, photos, helpfulness, answerer_name } = answerData
+        const userEntryData = { answerer_name, date };
+        answerData = { body, photos, helpfulness };
+        return (
+          <React.Fragment key={`answer-key-${id}`}>
+            <div className={`${parentClassName}-answer-wrapper`}>
+              <Answer parentClassName={parentClassName} answerData={answerData}/>
+              <div className={ `${parentClassName}-answer userentryinfo-helpful-wrapper`}>
+                by&nbsp;&nbsp;<UserEntryInfo parentClassName={`${parentClassName}-answer`} userEntryData={userEntryData} componentType={'answer'}/>
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                <HelpfulReport parentClassName={`${parentClassName}-answer`} helpfulness={helpfulness}/>
+              </div>
             </div>
-          </div>
-        </React.Fragment>
-      )
-    })
+          </React.Fragment>
+        )
+      })}
+      { !moreThanTwoAnswers ? null
+          : !answersExpanded ? <div className={`${parentClassName} load-collapse-answers`} onClick={loadMoreAnswersClickHandler}>LOAD MORE ANSWERS</div>
+          : <div className={`${parentClassName} load-collapse-answers`} onClick={loadMoreAnswersClickHandler}>COLLAPSE ANSWERS</div>}
+    </>
   )
 }
 

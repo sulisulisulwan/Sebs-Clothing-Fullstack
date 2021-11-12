@@ -59,11 +59,12 @@ const productComparisonAction = (id, cardOptions, e) => {
   cardOptions.funcs.setComparisonModalCoords([e.clientX, e.clientY])
 }
 
-const getMoreAnsweredQuestions = () => {
-  alert('This gets more answered questions')
+const getMoreAnsweredQuestions = (e, buttonOptions) => {
+  const { maxQuestionsShown, setMaxQuestionsShown } = buttonOptions.componentDataAndFuncs;
+  setMaxQuestionsShown(maxQuestionsShown + 2)
 }
 
-const addAQuestion = () => {
+const addAQuestion = (e, buttonOptions) => {
   alert('This adds a question')
 }
 

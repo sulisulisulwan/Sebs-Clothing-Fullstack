@@ -6,7 +6,7 @@ const BoxStyleButton = ({ buttonOptions }) => {
   const { buttonText, onClickHandler } = buttonOptions;
 
   const onClickWrapper = (e) => {
-    onClickHandler(e)
+    onClickHandler(e, buttonOptions)
   }
 
   return (

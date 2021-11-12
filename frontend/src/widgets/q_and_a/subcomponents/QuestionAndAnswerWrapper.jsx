@@ -1,30 +1,11 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import UserEntryInfo from '../../../shared_components/UserEntryInfo.jsx';
 import QuestionWrapper from './QuestionWrapper.jsx';
 import AnswerWrapper from './AnswerWrapper.jsx';
 import SearchBar from '../../../shared_components/SearchBar.jsx';
-import api from '../../../API_call_functions.js';
-
-const QuestionAndAnswerWrapper = ({ parentClassName, currentProduct }) => {
-
-  const [currProdQuestions, setCurrProdQuestions] = useState(null);
 
 
-
-
-  useEffect(() => {
-    if (currentProduct === null) {
-      return;
-    }
-    api.getAllQuestions(currentProduct.id)
-      .then(allQuestions => {
-        setCurrProdQuestions(allQuestions);
-      })
-      .catch(err => {
-        console.error(err);
-      })
-  }, [currentProduct]);
+const QuestionAndAnswerWrapper = ({ parentClassName, currProdQuestions, moreThanTwoQuestions, maxQuestionsShown }) => {
 
   if (currProdQuestions === null) {
     return null;
@@ -44,7 +25,10 @@ const QuestionAndAnswerWrapper = ({ parentClassName, currentProduct }) => {
           }
       }
       /> */}
-      {currProdQuestions.map(questionData => {
+      {currProdQuestions.map((questionData, i) => {
+        if (moreThanTwoQuestions && i > maxQuestionsShown - 1) {
+          return;
+        }
         let { asker_name, question_body, question_date, question_helpfulness, question_id, reported, answers } = questionData;
         questionData = { asker_name, question_body, question_date, question_helpfulness, question_id, reported }
         let answersData = { answers };
