@@ -12,7 +12,7 @@ const ProductDetail = ({ currentProduct }) => {
       <div className={`${componentClassName}-highbar-container`}>
         <VerticalPhotoCarousel parentClassName={`${componentClassName}-highbar`} currentProduct={currentProduct}/>
         <CurrentProductPhoto parentClassName={`${componentClassName}-highbar`} currentProduct={currentProduct}/>
-        <CurrentProductSideBar parentClassName={`${componentClassName}-highbar`}/>
+        <CurrentProductSideBar parentClassName={`${componentClassName}-highbar`} currentProduct={currentProduct}/>
       </div>
       <CurrentProductLowBar parentClassName={componentClassName} currentProduct={currentProduct}/>
     </div>
