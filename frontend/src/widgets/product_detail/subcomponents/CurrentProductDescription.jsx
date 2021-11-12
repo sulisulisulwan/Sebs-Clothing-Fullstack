@@ -14,7 +14,7 @@ const CurrentProductLowBar = ({ parentClassName, currentProduct }) => {
         </div>
       </div>
       <div className={`${parentClassName}-lowbar-right-wrapper`}>
-        <CurrentProductFeatures parentClassName={`${parentClassName}-lowbar`}/>
+        <CurrentProductFeatures parentClassName={`${parentClassName}-lowbar`} currentProduct={currentProduct}/>
       </div>
     </div>
   )

@@ -61,7 +61,11 @@
 
 
     .current-product-detail-lowbar-features {
-      border: goldenrod 2px solid;
-
+      margin-top: 50px;
+      margin-left: 20px;
+    }
+    .current-product-detail-lowbar-feature {
+      padding-top: 5px;
+      padding-bottom: 5px;
     }
 
