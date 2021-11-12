@@ -6,8 +6,42 @@
   grid-row: 4;
 }
 
+.qa-searchbar-wrapper {
+  padding-top:  10px;
+  padding-right:  20px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  grid-column: 2;
+  z-index: 1;
+  border: black .5px solid;
+  margin-right: 100px;
+  margin-bottom: 20px;
+}
+.qa-searchbar-input {
+  width: 1000px;
+  font-size: 20px;
+  outline: 0;
+  border-width: 0 0 0;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.qa-searchbar-glass {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  max-height: 20px;
+  margin-right: 10px;
+  margin-top: 10px;
+  z-index: 1;
+}
+
 .qa-question-wrapper {
 }
+
+
+
 .qa-question-text {
   display: grid;
   grid-template-columns: 60% 40%;

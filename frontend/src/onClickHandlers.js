@@ -1,11 +1,11 @@
 import api from './API_call_functions.js';
 
-const searchBarResults = async (e, dropdownFuncs) => {
+const searchBarResults = async (e, dropdownOptions) => {
   let id = e.target.nodeName === 'SPAN' ? e.target.parentNode.value : e.target.value;
   try {
     let product = await getAllCurrentProductData(id)
-    dropdownFuncs.ref.current.value = e.target.value;
-    dropdownFuncs.setStateFuncs.setCurrentProduct(product);
+    dropdownOptions.ref.current.value = e.target.value;
+    dropdownOptions.setStateFuncs.setCurrentProduct(product);
   } catch(err) {
     console.error(err);
   }

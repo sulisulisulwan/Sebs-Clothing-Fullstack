@@ -4,6 +4,7 @@ import QuestionAndAnswerWrapper from './subcomponents/QuestionAndAnswerWrapper.j
 import BoxStyleButton from '../../shared_components/BoxStyleButton.jsx';
 import onClickHandlers from '../../onClickHandlers.js';
 import api from '../../API_call_functions.js';
+import SearchBar from '../../shared_components/SearchBar.jsx'
 
 const QandA = ({ parentClassName, currentProduct }) => {
 
@@ -47,11 +48,24 @@ const QandA = ({ parentClassName, currentProduct }) => {
     onClickHandler: onClickHandlers.addAQuestion
   }
 
+  const searchBarOptions = {
+    placeholder: 'HAVE A QUESTION? SEARCH FOR ANSWERS...',
+    dropdownOptions: {
+      setStateFuncs: {
+
+      },
+      api: {
+
+      }
+    },
+  }
+
   return (
     <div className={`${componentClassName}-wrapper`}>
       <div className="widget-title">
         <h2>QUESTIONS & ANSWERS</h2>
       </div>
+      <SearchBar parentClassName={componentClassName} searchBarOptions={searchBarOptions}/>
       <QuestionAndAnswerWrapper
         parentClassName={componentClassName}
         currProdQuestions={currProdQuestions}

@@ -22,22 +22,26 @@ const App = () => {
     }
   }, [])
 
+  const searchBarOptions = {
+    placeholder: 'Search our store',
+    dropdownOptions: {
+      setStateFuncs: {
+        setCurrentProduct
+      },
+      api: {
+        getProduct: API.getProduct,
+        getRelated: API.getRelated
+      }
+    }
+  }
+
+
   return (
     <>
       <header>
         <Header
           setCurrentProduct={setCurrentProduct}
-          dropdownFuncs={
-            {
-              setStateFuncs: {
-                setCurrentProduct
-              },
-              api: {
-                getProduct: API.getProduct,
-                getRelated: API.getRelated
-              }
-            }
-          }
+          searchBarOptions={searchBarOptions}
         />
       </header>
       <div className="standin-header-space"></div>

@@ -7,7 +7,7 @@ import optionComponent from './DropDownOptionFormats.jsx';
 
 //if searchbar takes in
 
-const SearchBar = ({ parentClassName, dropdownFuncs }) => {
+const SearchBar = ({ parentClassName, searchBarOptions }) => {
 
   const searchBarInput = useRef(null);
   const [searchInputValue, setSearchInputValue] = useState('');
@@ -45,16 +45,16 @@ const SearchBar = ({ parentClassName, dropdownFuncs }) => {
     searchBarOnChange(null, chosenSearchResult);
   }
 
-  dropdownFuncs.setStateFuncs.setSearchQuery = setSearchQuery;
-  dropdownFuncs.ref = searchBarInput;
-  dropdownFuncs.searchResults = searchResults
+  searchBarOptions.dropdownOptions.setStateFuncs.setSearchQuery = setSearchQuery;
+  searchBarOptions.dropdownOptions.ref = searchBarInput;
+  searchBarOptions.dropdownOptions.searchResults = searchResults
 
   const { SearchResult } = optionComponent;
 
   return (
     <>
         <div className={`${parentClassName}-searchbar-wrapper`}>
-          <input className={`${parentClassName}-searchbar-input`} ref={searchBarInput} type="text" onChange={searchBarOnChange} value={searchInputValue}>
+          <input className={`${parentClassName}-searchbar-input`} ref={searchBarInput} type="text" onChange={searchBarOnChange} value={searchInputValue} placeholder={searchBarOptions.placeholder}>
           </input>
           <img className={`${parentClassName}-searchbar-glass`} src="assets/magnifying-glass.png"></img>
           {!searchResults.length ? null :
@@ -67,7 +67,7 @@ const SearchBar = ({ parentClassName, dropdownFuncs }) => {
                   searchQuery={searchQuery}
                   searchResult={searchResult}
                   parentClassName={parentClassName}
-                  dropdownFuncs={dropdownFuncs}
+                  dropdownOptions={searchBarOptions.dropdownOptions}
                 />)}
             />
           }

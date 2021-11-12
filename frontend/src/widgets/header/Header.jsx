@@ -2,12 +2,12 @@ import React from 'react';
 import BannerLogoNavbarSearch from './BannerLogoNavbarSearch.jsx'
 import BannerAnnouncements from './BannerAnnouncements.jsx'
 
-const Header = ({ dropdownFuncs }) => {
+const Header = ({ searchBarOptions }) => {
   return (
     <>
       <BannerAnnouncements/>
       <BannerLogoNavbarSearch
-        dropdownFuncs={dropdownFuncs}
+        searchBarOptions={searchBarOptions}
       />
 
     </>

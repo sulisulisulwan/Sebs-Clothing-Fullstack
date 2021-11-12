@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBar from '../../shared_components/SearchBar.jsx'
 import Logo from '../../shared_components/Logo.jsx';
 import Navbar from './Navbar.jsx';
-const BannerLogoNavbarSearch = ({ dropdownFuncs }) => {
+const BannerLogoNavbarSearch = ({ searchBarOptions }) => {
 
   const componentClassName = 'banner-header';
 
@@ -13,7 +13,7 @@ const BannerLogoNavbarSearch = ({ dropdownFuncs }) => {
           <Navbar/>
           <SearchBar
             parentClassName={componentClassName}
-            dropdownFuncs={dropdownFuncs}
+            searchBarOptions={searchBarOptions}
           />
         </div>
     </div>

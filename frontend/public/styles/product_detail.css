@@ -5,6 +5,8 @@
 .current-product-detail-container {
   /* border: 2px blue solid; */
   max-height: 100%;
+  /* margin-left: 5%;
+  margin-right: 5%; */
 }
 
 /* HIGHBAR */
@@ -19,11 +21,13 @@
     }
     .current-product-detail-highbar-photo-container {
       /* border: 2px blue solid; */
+      margin-left: 30px;
       grid-column: 1;
       overflow: scroll;
     }
         .current-product-detail-highbar-photo-large {
           object-fit: contain;
+          border: gray 1px solid;
           max-height: 100%;
           max-width: 100%;
         }
@@ -36,16 +40,22 @@
 .current-product-detail-lowbar-container {
   /* border: blue solid 2px; */
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 10% 50% 40%;
 }
+  .current-product-detail-lowbar-left-wrapper {
+    margin-top: 20px;
+    border-right: gray solid 2px;
+  }
     .current-product-detail-lowbar-slogan {
-      border: goldenrod 2px solid;
+      /* border: goldenrod 2px solid; */
       /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-      font-size: 20px;
+      font-size: 30px;
       font-weight: bolder;
+      padding-top: 30px;
+      padding-bottom: 20px;
     }
     .current-product-detail-lowbar-description {
-      border: goldenrod 2px solid;
+      /* border: goldenrod 2px solid; */
       font-size: 14px;
     }
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import onClick from '../onClickHandlers.js';
 
-const SearchResult = ({ parentClassName, searchResult, searchQuery, updateSearchBar, dropdownFuncs }) => {
+const SearchResult = ({ parentClassName, searchResult, searchQuery, updateSearchBar, dropdownOptions }) => {
 
   const optionOnClick = (e) => {
 
     updateSearchBar(searchResult.display.name)
-    onClick.searchBarResults(e, dropdownFuncs).catch(err => {
+    onClick.searchBarResults(e, dropdownOptions).catch(err => {
       console.error(err);
     })
   }
