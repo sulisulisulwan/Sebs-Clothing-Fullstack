@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import UserEntryInfo from '../../../shared_components/UserEntryInfo.jsx';
 import Answer from './Answer.jsx';
-import HelpfulReport from '../../../shared_components/HelpfulReport.jsx'
+import HelpfulAndOptionalAction from '../../../shared_components/HelpfulAndOptionalAction.jsx'
 
 const AnswerWrapper = ({ parentClassName, answersData }) => {
 
@@ -30,6 +30,11 @@ const AnswerWrapper = ({ parentClassName, answersData }) => {
     }
   }, [answersData])
 
+  const optionalAction = {
+    action: 'Report',
+    clickHandler: () => { alert('Reports an answer') }
+  }
+
   return (
     <>
       {answersDataArray.map((answerData, i) => {
@@ -46,7 +51,7 @@ const AnswerWrapper = ({ parentClassName, answersData }) => {
               <div className={ `${parentClassName}-answer userentryinfo-helpful-wrapper`}>
                 by&nbsp;&nbsp;<UserEntryInfo parentClassName={`${parentClassName}-answer`} userEntryData={userEntryData} componentType={'answer'}/>
                 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-                <HelpfulReport parentClassName={`${parentClassName}-answer`} helpfulness={helpfulness}/>
+                <HelpfulAndOptionalAction parentClassName={`${parentClassName}-answer`} helpfulness={helpfulness} optionalAction={optionalAction}/>
               </div>
             </div>
           </React.Fragment>

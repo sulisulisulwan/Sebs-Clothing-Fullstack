@@ -1,13 +1,18 @@
 import React from 'react';
-import HelpfulReport from '../../../shared_components/HelpfulReport.jsx'
+import HelpfulAndOptionalAction from '../../../shared_components/HelpfulAndOptionalAction.jsx'
 
 const QuestionText = ({ parentClassName, questionTextData }) => {
+
+  const optionalAction = {
+    action: 'Add Answer',
+    clickHandler: () => { alert('adds an answer') }
+  }
 
   const { question_body, question_helpfulness } = questionTextData;
   return (
     <div className={`${parentClassName}-text`}>
       <div className={`${parentClassName}-text question`}>Q. {question_body}</div>
-      <HelpfulReport parentClassName={`${parentClassName}-text`} helpfulness={question_helpfulness} />
+      <HelpfulAndOptionalAction parentClassName={`${parentClassName}-text`} helpfulness={question_helpfulness} optionalAction={optionalAction}/>
     </div>
   )
 }

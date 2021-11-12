@@ -58,7 +58,10 @@ const QandA = ({ parentClassName, currentProduct }) => {
         maxQuestionsShown={maxQuestionsShown}
         moreThanTwoQuestions={moreThanTwoQuestions}
       />
-      <BoxStyleButton buttonOptions={moreAnsweredQuestionsButton}/>
+      { !moreThanTwoQuestions ? null
+        : maxQuestionsShown >= currProdQuestions.length ? null
+        : <BoxStyleButton buttonOptions={moreAnsweredQuestionsButton}/>
+      }
       <BoxStyleButton buttonOptions={addAQuestionButton}/>
     </div>
   )

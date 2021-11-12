@@ -23,9 +23,11 @@ const UserEntryInfo = ({ parentClassName, userEntryData, componentType }) => {
   let formattedUsername = utils.removeQuotes(username);
 
   return (
-
-    <div className={`${parentClassName} userentryinfo`}>
-      {formattedUsername}, {formattedDate}
+    <div className={`${parentClassName } userentryinfo`}>
+      { componentType === !'answer' ? formattedUsername
+        : formattedUsername === 'Seller' ? <span><u><strong>{formattedUsername}</strong></u></span>
+        : formattedUsername
+    }, {formattedDate}
     </div>
   )
 };

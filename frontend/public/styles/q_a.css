@@ -46,6 +46,7 @@
 }
 
 .qa-answer.userentryinfo-helpful-wrapper {
+  font-family: Arial;
   display: flex;
   flex-direction: row;
   padding-top: 20px;
