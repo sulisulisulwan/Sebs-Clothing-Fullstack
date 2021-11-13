@@ -7,7 +7,6 @@ import CurrentProductLowBar from './subcomponents/lowbar/CurrentProductDescripti
 const ProductDetail = ({ currentProduct }) => {
 
   const [currentStyle, setCurrentStyle] = useState(null)
-
   useEffect(() => {
     if (currentProduct === null) {
       return;

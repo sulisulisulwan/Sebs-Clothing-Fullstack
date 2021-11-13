@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import ThumbnailPhoto from '../../../../shared_components/ThumbnailPhoto.jsx';
 
-const PhotoGrid = ({ parentClassName, currentProductStyles, currentStyle, setCurrentStyle,  }) => {
+const PhotoGrid = ({ parentClassName, currentProductStyles, currentProduct, currentStyle, setCurrentStyle,  }) => {
 
   const [stylesIdAndThumbnails, setStylesIdAndThumbnails] = useState(null);
 
@@ -22,15 +22,15 @@ const PhotoGrid = ({ parentClassName, currentProductStyles, currentStyle, setCur
   if (stylesIdAndThumbnails === null) {
     return null;
   }
-
   return (
     <div className={`${parentClassName} photo-grid`}>
       {stylesIdAndThumbnails.map((idAndThumbnail, i) => <ThumbnailPhoto
         key={`${parentClassName}-photo-grid-${i}`}
         parentClassName={`${parentClassName} photo-grid`}
         idAndThumbnail={idAndThumbnail}
+        currentStyle={currentStyle}
         setCurrentStyle={setCurrentStyle}
-        currentProductStyles={currentProductStyles}
+        currentProduct={currentProduct}
       />)}
     </div>
   )

@@ -25,7 +25,11 @@ const CurrentProductSideBar = ({ parentClassName, currentProduct, setCurrentStyl
       <div className={`${parentClassName}-sidebar category`}>{currentProduct.category}</div>
       <div className={`${parentClassName}-sidebar name`}>{currentProduct.name}</div>
       <div className={`${parentClassName}-sidebar price`}>${currentProduct.default_price}</div>
-      <StyleSelector parentClassName={`${parentClassName}-sidebar`} currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} currentStyle={currentStyle}/>
+      <StyleSelector
+        parentClassName={`${parentClassName}-sidebar`}
+        currentProduct={currentProduct}
+        setCurrentStyle={setCurrentStyle}
+        currentStyle={currentStyle}/>
       <div className={`${parentClassName}-sidebar dropdown-selectors`}>
         <div>SELECT SIZE v</div>
         <div>AMOUNT</div>
