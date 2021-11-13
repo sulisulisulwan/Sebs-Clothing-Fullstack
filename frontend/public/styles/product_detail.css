@@ -74,13 +74,21 @@
 .current-product-detail-sidebar-container {
 
 }
+.current-product-detail-highbar-sidebar a {
+  color: black;
+}
+.current-product-detail-highbar-sidebar a:visited {
+  color: black;
+}
+
+
 .current-product-detail-highbar-sidebar.review-data {
   display: flex;
   flex-direction: row;
   padding-bottom: 20px;
 }
 
-  .current-product-detail-highbar-sidebar.readallreviews {
+  .current-product-detail-highbar-sidebar.review-data.readallreviews {
     padding-left: 20px;
     padding-top: 5px;
   }
@@ -96,6 +104,18 @@
 }
 .current-product-detail-highbar-sidebar.price {
   padding-bottom: 20px;
+}
+
+.current-product-detail-highbar-sidebar.style-selector.photo-grid.thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: gray 1px solid;
+  border-radius: 50%;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 .current-product-detail-highbar-sidebar.dropdown-selectors {

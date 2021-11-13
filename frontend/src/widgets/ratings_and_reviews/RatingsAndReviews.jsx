@@ -28,7 +28,7 @@ const RatingsAndReviews = ({ currentProduct }) => {
   return (
     <div className={`${componentClassName}-wrapper`}>
       <div className="widget-title">
-        <h2>RATINGS AND REVIEWS</h2>
+        <h2 id="ratings-reviews">RATINGS AND REVIEWS</h2>
       </div>
       <div className={`${componentClassName} aggregates-and-reviews-wrapper`}>
         <ReviewAggregates parentClassName={componentClassName} currentProduct={currentProduct}/>

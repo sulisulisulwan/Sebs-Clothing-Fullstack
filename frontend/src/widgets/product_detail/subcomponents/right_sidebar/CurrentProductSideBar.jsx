@@ -1,10 +1,9 @@
 import React from 'react';
-import Stars from '../../../shared_components/Stars.jsx';
-import BoxStyleButton from '../../../shared_components/BoxStyleButton.jsx';
+import BoxStyleButton from '../../../../shared_components/BoxStyleButton.jsx';
 import StyleSelector from './StyleSelector.jsx'
+import CurrentProductReviewData from './CurrentProductReviewData.jsx'
 
-
-const CurrentProductSideBar = ({ parentClassName, currentProduct }) => {
+const CurrentProductSideBar = ({ parentClassName, currentProduct, setCurrentStyle, currentStyle }) => {
 
   if (currentProduct === null) {
     return null;
@@ -19,16 +18,14 @@ const CurrentProductSideBar = ({ parentClassName, currentProduct }) => {
     onClickHandler: () => { alert('adds to favorites') }
   }
 
+
   return (
     <div className={`${parentClassName}-sidebar-container`}>
-      <div className={`${parentClassName}-sidebar review-data`}>
-        <Stars parentClassName={`${parentClassName}-sidebar`} productData={currentProduct}/>
-        <div className={`${parentClassName}-sidebar readallreviews`}><u>Read all reviews</u></div>
-      </div>
+      {currentProduct.reviewsMetaData === null ? null : <CurrentProductReviewData parentClassName={`${parentClassName}-sidebar`} currentProduct={currentProduct}/>}
       <div className={`${parentClassName}-sidebar category`}>{currentProduct.category}</div>
       <div className={`${parentClassName}-sidebar name`}>{currentProduct.name}</div>
       <div className={`${parentClassName}-sidebar price`}>${currentProduct.default_price}</div>
-      <StyleSelector/>
+      <StyleSelector parentClassName={`${parentClassName}-sidebar`} currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} currentStyle={currentStyle}/>
       <div className={`${parentClassName}-sidebar dropdown-selectors`}>
         <div>SELECT SIZE v</div>
         <div>AMOUNT</div>
