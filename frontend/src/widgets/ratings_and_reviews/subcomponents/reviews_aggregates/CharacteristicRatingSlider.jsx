@@ -6,10 +6,10 @@ const CharacteristicRatingSlider = ({ parentClassName, currentProduct }) => {
   let characteristicsArr = Object.entries(characteristics)
 
   return (
-    <div className={`${parentClassName} characterstic-rating-slider`}>
+    <div className={`${parentClassName} characteristics-wrapper`}>
       {characteristicsArr.map(characteristic => {
         return (
-          <div key={`characteristic-${characteristic[0]}-${characteristic.id}`} className={`${parentClassName} characteristic-rating-slider slider`}>
+          <div key={`characteristic-${characteristic[0]}-${characteristic.id}`} className={`${parentClassName} characteristics slider`}>
             <div>{characteristic[0]}</div>
             --------------------------------------------------
             <div>Shitty | Great | Too good?</div>

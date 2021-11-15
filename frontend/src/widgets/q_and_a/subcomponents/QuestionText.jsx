@@ -10,10 +10,10 @@ const QuestionText = ({ parentClassName, questionTextData }) => {
 
   const { question_body, question_helpfulness } = questionTextData;
   return (
-    <div className={`${parentClassName}-text`}>
-      <div className={`${parentClassName}-text question`}>Q. {question_body}</div>
-      <HelpfulAndOptionalAction parentClassName={`${parentClassName}-text`} helpfulness={question_helpfulness} optionalAction={optionalAction}/>
-    </div>
+    <>
+      <div className={`${parentClassName} question text`}>Q. {question_body}</div>
+      <HelpfulAndOptionalAction parentClassName={`${parentClassName} question `} helpfulness={question_helpfulness} optionalAction={optionalAction}/>
+    </>
   )
 }
 

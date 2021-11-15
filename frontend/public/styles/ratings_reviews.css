@@ -5,11 +5,7 @@ RATINGS AND REVIEWS
 ****************************/
 
 
-.ratings-and-reviews-wrapper {
-  grid-row: 3;
-}
-
-.ratings-and-reviews.aggregates-and-reviews-wrapper {
+.reviews.content-wrapper {
   display: grid;
   grid-template-columns: 33% 67%;
 }
@@ -20,97 +16,78 @@ RATINGS AND REVIEWS
 
 *************************/
 
-.ratings-and-reviews-aggregates-wrapper {
-
-}
-
-.ratings-and-reviews-aggregates.average-rating-wrapper {
+.reviews.aggregates.rating-wrapper {
   display: flex;
   flex-direction: row;
 }
-.ratings-and-reviews-aggregates.average-rating-number {
+.reviews.aggregates.rating.number {
   font-size: 60px;
 }
 
-.ratings-and-reviews-aggregates.percentage-who-recommend {
+.reviews.aggregates.recommend {
   font-size: 12px;
   padding-top: 10px;
   padding-bottom: 5px;
 }
-.ratings-and-reviews-aggregates.rating-bargraph {
+
+.reviews.aggregates.rating-bargraph {
   font-size: 10px;
   padding-top: 5px;
   padding-bottom: 10px;
 }
-.ratings-and-reviews-aggregates.rating-bargraph.bar{
+.reviews.aggregates.rating-bargraph.bar{
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.ratings-and-reviews-aggregates.characteristic-rating-slider.slider{
+.reviews.aggregates.characteristics.slider{
   font-size: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
-.ratings-and-reviews-reviews-review.star-userentryinfo-wrapper {
+.reviews.review.header-wrapper {
   display: grid;
   grid-template-columns: 50% 50%;
 }
-.ratings-and-reviews-reviews-review.userentryinfo {
+.reviews.review.userentryinfo {
   text-align: right;
 }
 
 
+    .reviews.review.title {
+      font-family: Arial;
+      font-weight: 900;
+      padding: 20px 0px 10px 0px;
+      font-size: 20px;
+
+    }
+    .reviews.review.body {
+      font-family: Arial;
+      padding: 10px 0px;
+      font-size: 15px;
+      padding-bottom: 10px;
+    }
+    .reviews.review.body.recommend {
+      font-weight: bold;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
 
 
-
-
-
-
-
-
-
-.ratings-and-reviews-reviews-wrapper {
-
-}
-.ratings-and-reviews-reviews-stars {
-
-}
-.ratings-and-reviews-reviews-review {
-
-}
-.ratings-and-reviews-reviews-review-text-wrapper {
-
-}
-.ratings-and-reviews-reviews-review-text-title {
-  font-family: Arial;
-  font-weight: 900;
-  padding: 20px 0px 10px 0px;
-  font-size: 20px;
-
-}
-.ratings-and-reviews-reviews-review-text-body {
-  font-family: Arial;
-  padding: 10px 0px;
-  font-size: 15px;
-
-}
-
-
-.ratings-and-reviews-reviews-review-text.response-wrapper {
+.reviews.review.response-wrapper {
   background: lightgray;
   padding: 10px;
   margin-right: 10px;
 }
-.ratings-and-reviews-reviews-review-text.response {
+.reviews.review.response {
   padding:  5px 10px 5px 10px
 }
 
-.ratings-and-reviews-reviews-review.userentryinfo {
+.reviews.review.userentryinfo {
   font-size: 10px;
   padding-right: 30px;
 }
 
-.ratings-and-reviews-reviews-review.helpful-and-report {
+.reviews.review.helpful-and-report {
   font-size: 10px;
 }

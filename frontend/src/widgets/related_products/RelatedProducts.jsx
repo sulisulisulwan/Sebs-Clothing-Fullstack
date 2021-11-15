@@ -32,7 +32,7 @@ const RelatedProducts = ({ currentProduct, setCurrentProduct }) => {
     }
   }, [currentProduct])
 
-  const componentClassName = 'related-products'
+  const componentClassName = 'rprods'
 
 
 
@@ -44,17 +44,17 @@ const RelatedProducts = ({ currentProduct, setCurrentProduct }) => {
       { id === null ? null :
       <>
         <RelatedCards
-          parentClassName={componentClassName}
           currentProduct={currentProduct}
           relatedProducts={relatedProducts}
           comparisonProductData={comparisonProductData}
           cardOptions={createCardOptions(
             'related',
+            'related',
             { setCurrentProduct, setComparisonModalOpen, setComparisonProductData, setComparisonModalCoords },
             { comparisonModalOpen, relatedProducts, modalPosition })}
           comparisonModalCoords={comparisonModalCoords}
           />
-        <OutfitCards parentClassName={componentClassName} currentProduct={currentProduct}/>
+        <OutfitCards currentProduct={currentProduct}/>
       </>
       }
     </div>

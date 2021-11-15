@@ -5,11 +5,11 @@ const AverageRatingDisplay = ({ parentClassName, currentProduct }) => {
   let { averageRating } = currentProduct.reviewsMetaData;
   return (
     <>
-      <div className={`${parentClassName} average-rating-wrapper`}>
-        <div className={`${parentClassName} average-rating-number`}>
+      <div className={`${parentClassName} rating-wrapper`}>
+        <div className={`${parentClassName} rating number`}>
           {averageRating}
         </div>
-        <Stars parentClassName={`${parentClassName} average-rating`} productData={currentProduct}/>
+        <Stars parentClassName={`${parentClassName} rating`} productData={currentProduct}/>
       </div>
     </>
   )

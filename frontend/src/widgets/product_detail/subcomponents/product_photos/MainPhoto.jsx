@@ -11,8 +11,8 @@ const CurrentProductPhoto = ({ parentClassName, currentStyle }) => {
     : currentStyle.photos[0].url;
 
   return (
-    <div className={`${parentClassName}-photo-container`}>
-      <img className={`${parentClassName}-photo-large`} src={photoUrl}></img>
+    <div className={`${parentClassName} photo-container`}>
+      <img className={`${parentClassName} photo-large`} src={photoUrl}></img>
     </div>
   )
 }

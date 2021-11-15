@@ -46,7 +46,7 @@
   color:gray;
 }
 
-.banner-header-searchbar-wrapper {
+.banner-header.searchbar-wrapper {
   padding-top:  10px;
   padding-right:  20px;
   position: relative;
@@ -58,30 +58,28 @@
   justify-content: flex-end;
   z-index: 6;
 }
+    .banner-header.searchbar-input {
+      position: fixed;
+      width: 300px;
+      right: 50px;
+      /* height: 40px; */
+      font-size: 20px;
+      /* background-color: silver; */
+      outline: 0;
+      border-width: 0 0 1px;
+      border-color: black
+    }
+        .banner-header.searchbar-input:focus {
+          outline: none;
+        }
 
+    .banner-header.searchbar-glass {
+      position: fixed;
+      top: 50px;
+      max-height: 20px;
+      margin-right: 10px;
+      margin-top: 10px;
+      /* z-index: 300; */
+    }
 
-
-.banner-header-searchbar-glass {
-  position: fixed;
-  top: 50px;
-  max-height: 20px;
-  margin-right: 10px;
-  margin-top: 10px;
-  /* z-index: 300; */
-}
-.banner-header-searchbar-input {
-  position: fixed;
-  width: 300px;
-  right: 50px;
-  /* height: 40px; */
-  font-size: 20px;
-  /* background-color: silver; */
-  outline: 0;
-  border-width: 0 0 1px;
-  border-color: black
-}
-
-.banner-header-searchbar-input:focus {
-  outline: none;
-}
 

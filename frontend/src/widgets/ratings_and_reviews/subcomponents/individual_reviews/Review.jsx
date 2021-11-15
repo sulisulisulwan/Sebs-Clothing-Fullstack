@@ -15,13 +15,13 @@ const Review = ({ parentClassName, review, isLastReview }) => {
   }
 
   return (
-    <div className={`${parentClassName}-review`}>
-      <div className={`${parentClassName}-review star-userentryinfo-wrapper`}>
-        <Stars parentClassName={`${parentClassName}-review`} productData={productData}/>
-        <UserEntryInfo parentClassName={`${parentClassName}-review`} userEntryData={userEntryData} componentType={'review'}/>
+    <div className={`${parentClassName} review`}>
+      <div className={`${parentClassName} review header-wrapper`}>
+        <Stars parentClassName={`${parentClassName} review`} productData={productData}/>
+        <UserEntryInfo parentClassName={`${parentClassName} review`} userEntryData={userEntryData} componentType={'review'}/>
       </div>
-      <ReviewTextWrapper parentClassName={`${parentClassName}-review`} reviewTextData={reviewTextData}/>
-      <HelpfulAndOptionalAction parentClassName={`${parentClassName}-review`} helpfulness={helpfulness} optionalAction={optionalAction}/>
+      <ReviewTextWrapper parentClassName={`${parentClassName} review`} reviewTextData={reviewTextData}/>
+      <HelpfulAndOptionalAction parentClassName={`${parentClassName} review`} helpfulness={helpfulness} optionalAction={optionalAction}/>
       { isLastReview ? null : <hr></hr>}
     </div>
 

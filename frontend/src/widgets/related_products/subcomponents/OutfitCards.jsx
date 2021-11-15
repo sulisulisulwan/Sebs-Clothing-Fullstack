@@ -4,7 +4,7 @@ import onClick from '../../../onClickHandlers.js'
 import createCardOptions from '../createCardOptions.js';
 import Card from './Card.jsx'
 
-const OutfitCards = ({ parentClassName, currentProduct }) => {
+const OutfitCards = ({ currentProduct }) => {
 
   const [myOutfit, setMyOutfit] = useState([]);
   const [addOutfitDisabled, setAddOutfitDisabled] = useState(false);
@@ -23,21 +23,20 @@ const OutfitCards = ({ parentClassName, currentProduct }) => {
     }
   }
 
-  const addToOutfitOptions = createCardOptions('addToOutfit', { setMyOutfit, setAddOutfitDisabled }, { myOutfit, addOutfitDisabled });
-  const currentOutfitOptions = createCardOptions('currentOutfit', { setMyOutfit, setAddOutfitDisabled }, { myOutfit } );
+  const addToOutfitOptions = createCardOptions(`addToOutfit${addOutfitDisabled ? ' disabled' : ''}`, 'addToOutfit', { setMyOutfit, setAddOutfitDisabled }, { myOutfit, addOutfitDisabled });
+  const currentOutfitOptions = createCardOptions('currentOutfit', 'currentOutfit', { setMyOutfit, setAddOutfitDisabled }, { myOutfit } );
 
   let addToOutfitCard = <Card
-    parentClassName={`${parentClassName}-outfit-cards ${addOutfitDisabled ? 'disabled' : null}`}
     productData={currentProduct}
     cardOptions={addToOutfitOptions}
     >
-      <div className={`${parentClassName}-outfit-cards ${addOutfitDisabled ? 'disabled' : null}`}>Add to Outfit</div>
+      <div>Add to Outfit</div>
     </Card>;
 
   return (
-    <div className={`${parentClassName}-outfit-cards-container`}>
+    <div className={`outfit-cards-container`}>
       {addToOutfitCard}
-      <Carousel carouselName="outfit" parentClassName={parentClassName} cardsData={myOutfit} cardOptions={currentOutfitOptions}/>
+      <Carousel carouselName="outfit" cardsData={myOutfit} cardOptions={currentOutfitOptions}/>
     </div>
   )
 }

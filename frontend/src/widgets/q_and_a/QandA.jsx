@@ -8,7 +8,7 @@ import SearchBar from '../../shared_components/SearchBar.jsx'
 
 const QandA = ({ parentClassName, currentProduct }) => {
 
-  const componentClassName = "qa";
+
 
   const [currProdQuestions, setCurrProdQuestions] = useState(null);
   const [maxQuestionsShown, setMaxQuestionsShown] = useState(2);
@@ -59,6 +59,8 @@ const QandA = ({ parentClassName, currentProduct }) => {
       }
     },
   }
+
+  const componentClassName = "qa";
 
   return (
     <div className={`${componentClassName}-wrapper`}>

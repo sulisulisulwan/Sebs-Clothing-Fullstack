@@ -6,8 +6,8 @@ const ReviewTextWrapper = ({ parentClassName, reviewTextData }) => {
   let { body, summary, recommend, response } = reviewTextData;
   return (
     <div className={`${parentClassName}-text-wrapper`}>
-      <ReviewTextTitle parentClassName={`${parentClassName}-text`} summary={summary} />
-      <ReviewTextBody parentClassName={`${parentClassName}-text`} body={body} response={response} recommend={recommend}/>
+      <ReviewTextTitle parentClassName={parentClassName} summary={summary} />
+      <ReviewTextBody parentClassName={parentClassName} body={body} response={response} recommend={recommend}/>
     </div>
   )
 }

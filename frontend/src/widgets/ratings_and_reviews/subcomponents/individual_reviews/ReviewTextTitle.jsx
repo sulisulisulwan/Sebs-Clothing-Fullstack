@@ -5,7 +5,7 @@ const utils = new Utils();
 const ReviewTextTitle = ({ parentClassName, summary }) => {
   let title = utils.removeQuotes(summary)
   return (
-    <div className={`${parentClassName}-title`}>
+    <div className={`${parentClassName} title`}>
       {title}
     </div>
   )

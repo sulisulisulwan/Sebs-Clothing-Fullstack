@@ -6,29 +6,40 @@
 ***********************/
 
 
-.related-products-container {
+.rprods-container {
   grid-row: 2;
 }
-.related-products-related-cards-container {
-}
 
-.related-products-outfit-cards-container {
+.outfit-cards-container {
   display: grid;
   grid-template-columns: 25% 75%;
 }
 
-.card .related-products-outfit-cards {
+.card.addToOutfit {
   opacity: 1;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  margin-right: 5px;
+}
 
+.card.addToOutfit.disabled{
+  opacity: .5;
   -webkit-transition: opacity 0.2s;
   -moz-transition: opacity 0.2s;
   -o-transition: opacity 0.2s;
 }
 
-.card .related-products-outfit-cards .disabled{
-  opacity: .5;
+.card-name {
+  color: black;
+}
+.card-category {
+  color: gray;
+}
+.card-price {
+  color: black;
+}
 
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
+.card-star {
+  max-width: 20px;
 }

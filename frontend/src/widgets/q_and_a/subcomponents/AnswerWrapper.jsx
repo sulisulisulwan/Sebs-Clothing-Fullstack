@@ -10,7 +10,7 @@ const AnswerWrapper = ({ parentClassName, answersData }) => {
   const [moreThanTwoAnswers, setMoreThanTwoAnswers] = useState(false);
 
   if (answersData.answers === null) {
-    return <div className={`${parentClassName}-answer-noanswer`}>No answers yet! :/</div>
+    return <div className={`${parentClassName} answer noanswers`}>No answers yet! :/</div>
   }
 
   const answersDataArray = []
@@ -46,12 +46,12 @@ const AnswerWrapper = ({ parentClassName, answersData }) => {
         answerData = { body, photos, helpfulness };
         return (
           <React.Fragment key={`answer-key-${id}`}>
-            <div className={`${parentClassName}-answer-wrapper`}>
+            <div className={`${parentClassName} answer-wrapper`}>
               <Answer parentClassName={parentClassName} answerData={answerData}/>
-              <div className={ `${parentClassName}-answer userentryinfo-helpful-wrapper`}>
-                by&nbsp;&nbsp;<UserEntryInfo parentClassName={`${parentClassName}-answer`} userEntryData={userEntryData} componentType={'answer'}/>
+              <div className={ `${parentClassName} answer userentryinfo-helpful-wrapper`}>
+                by&nbsp;&nbsp;<UserEntryInfo parentClassName={`${parentClassName} answer`} userEntryData={userEntryData} componentType={'answer'}/>
                 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-                <HelpfulAndOptionalAction parentClassName={`${parentClassName}-answer`} helpfulness={helpfulness} optionalAction={optionalAction}/>
+                <HelpfulAndOptionalAction parentClassName={`${parentClassName} answer`} helpfulness={helpfulness} optionalAction={optionalAction}/>
               </div>
             </div>
           </React.Fragment>

@@ -53,10 +53,10 @@ const SearchBar = ({ parentClassName, searchBarOptions }) => {
 
   return (
     <>
-        <div className={`${parentClassName}-searchbar-wrapper`}>
-          <input className={`${parentClassName}-searchbar-input`} ref={searchBarInput} type="text" onChange={searchBarOnChange} value={searchInputValue} placeholder={searchBarOptions.placeholder}>
+        <div className={`${parentClassName} searchbar-wrapper`}>
+          <input className={`${parentClassName} searchbar-input`} ref={searchBarInput} type="text" onChange={searchBarOnChange} value={searchInputValue} placeholder={searchBarOptions.placeholder}>
           </input>
-          <img className={`${parentClassName}-searchbar-glass`} src="assets/magnifying-glass.png"></img>
+          <img className={`${parentClassName} searchbar-glass`} src="assets/magnifying-glass.png"></img>
           {!searchResults.length ? null :
             <DropDownSelect
               parentClassName={parentClassName}

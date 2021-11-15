@@ -21,20 +21,20 @@ const RatingsAndReviews = ({ currentProduct }) => {
       })
   }, [currentProduct])
 
-  const componentClassName = 'ratings-and-reviews';
+  const componentClassName = 'reviews';
   if (currentProduct === null || currProductReviews === null) {
     return null;
   }
   return (
-    <div className={`${componentClassName}-wrapper`}>
+    <>
       <div className="widget-title">
         <h2 id="ratings-reviews">RATINGS AND REVIEWS</h2>
       </div>
-      <div className={`${componentClassName} aggregates-and-reviews-wrapper`}>
+      <div className={`${componentClassName} content-wrapper`}>
         <ReviewAggregates parentClassName={componentClassName} currentProduct={currentProduct}/>
         <ReviewsWrapper parentClassName={componentClassName} currProductReviews={currProductReviews}/>
       </div>
-    </div>
+    </>
   )
 }
 

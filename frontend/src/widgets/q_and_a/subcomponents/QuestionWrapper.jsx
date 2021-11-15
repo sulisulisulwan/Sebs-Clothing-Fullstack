@@ -8,9 +8,9 @@ const QuestionWrapper = ({ parentClassName, questionData }) => {
   const userEntryInfoData = { asker_name, question_date }
 
   return (
-    <div className={`${parentClassName}-question-wrapper`}>
+    <div className={`${parentClassName} question-wrapper`}>
       {/* <UserEntryInfo parentClassName={`${parentClassName}-question`} userEntryInfoData={userEntryInfoData} componentType={'question'}/> */}
-      <QuestionText parentClassName={`${parentClassName}-question`} questionTextData={questionTextData}/>
+      <QuestionText parentClassName={parentClassName} questionTextData={questionTextData}/>
     </div>
   )
 }

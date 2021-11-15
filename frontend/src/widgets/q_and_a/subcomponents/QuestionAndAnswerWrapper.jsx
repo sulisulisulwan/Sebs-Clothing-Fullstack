@@ -12,19 +12,8 @@ const QuestionAndAnswerWrapper = ({ parentClassName, currProdQuestions, moreThan
   }
 
   return (
-    <div className={`${parentClassName}-question-and-answer-wrapper`}>
-      {/* <SearchBar
-        dropdownFuncs={
-          {
-            setStateFuncs: {
-              setCurrentProduct
-            },
-            api: {
-              getQuestions: API.getQuestions,
-            }
-          }
-      }
-      /> */}
+    <div className={`${parentClassName} content-wrapper`}>
+
       {currProdQuestions.map((questionData, i) => {
         if (moreThanTwoQuestions && i > maxQuestionsShown - 1) {
           return;

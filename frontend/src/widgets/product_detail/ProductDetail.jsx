@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import CurrentProductPhoto from './subcomponents/left_sidebar/CurrentProductPhoto.jsx'
-import VerticalPhotoCarousel from './subcomponents/left_sidebar/VerticalPhotoCarousel.jsx'
-import CurrentProductSideBar from './subcomponents/right_sidebar/CurrentProductSideBar.jsx'
-import CurrentProductLowBar from './subcomponents/lowbar/CurrentProductDescription.jsx'
+import CPPhotos from './subcomponents/product_photos/CPPhotos.jsx';
+import CPCustomerAction from './subcomponents/product_customer_action/CPCustomerAction.jsx'
+import CPDescription from './subcomponents/product_description/CPDescription.jsx'
+import CPFeatures from './subcomponents/product_features/CPFeatures.jsx';
+
 const ProductDetail = ({ currentProduct }) => {
 
   const [currentStyle, setCurrentStyle] = useState(null)
@@ -15,26 +16,32 @@ const ProductDetail = ({ currentProduct }) => {
   }, [currentProduct]);
 
 
-  const componentClassName = "current-product-detail";
-
   return (
-    <div className={`${componentClassName}-container`}>
-      <div className={`${componentClassName}-highbar-container`}>
-        <VerticalPhotoCarousel
-          parentClassName={`${componentClassName}-highbar`}
-          currentProduct={currentProduct}/>
-        <CurrentProductPhoto
-          parentClassName={`${componentClassName}-highbar`}
-          currentStyle={currentStyle}/>
-        <CurrentProductSideBar
-          parentClassName={`${componentClassName}-highbar`}
-          currentStyle={currentStyle}
-          setCurrentStyle={setCurrentStyle}
-          currentProduct={currentProduct}/>
+    <div className={`product-detail-container`}>
+      <div className={`highbar-container`}>
+        <div className="highbar-left">
+          <CPPhotos parentClassName={`highbar-left`}
+            currentProduct={currentProduct}
+            currentStyle={currentStyle}/>
+        </div>
+        <div className="highbar-right">
+          <CPCustomerAction
+            currentStyle={currentStyle}
+            setCurrentStyle={setCurrentStyle}
+            currentProduct={currentProduct}/>
+        </div>
       </div>
-      <CurrentProductLowBar
-        parentClassName={componentClassName}
-        currentProduct={currentProduct}/>
+      <div className={`lowbar-container`}>
+        <div className={`lowbar-left`}>
+          <div className={`indent`}></div>
+          <div>
+            <CPDescription currentProduct={currentProduct}/>
+          </div>
+        </div>
+        <div className={`lowbar-right`}>
+          <CPFeatures currentProduct={currentProduct}/>
+        </div>
+      </div>
     </div>
   )
 }

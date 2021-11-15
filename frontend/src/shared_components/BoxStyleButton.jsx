@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BoxStyleButton = ({ buttonOptions }) => {
+const BoxStyleButton = ({ parentClassName, buttonOptions }) => {
 
 
   const { buttonText, onClickHandler } = buttonOptions;
@@ -10,7 +10,7 @@ const BoxStyleButton = ({ buttonOptions }) => {
   }
 
   return (
-    <button className={`boxstyle-button`} onClick={onClickWrapper}>{buttonText}</button>
+    <button className={`${parentClassName} ${buttonOptions.customClass} boxstyle-button`} onClick={onClickWrapper}>{buttonText}</button>
   )
 }
 

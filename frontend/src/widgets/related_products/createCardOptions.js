@@ -2,8 +2,9 @@ import onClick from '../../onClickHandlers.js'
 
 
 
-const createCardOptions = (cardType, funcs, data) => {
+const createCardOptions = (className, cardType, funcs, data) => {
   const cardOptions = {
+    className: className,
     type: cardType,
     funcs: funcs || {},
     data: data || {}
@@ -15,9 +16,11 @@ const createCardOptions = (cardType, funcs, data) => {
   } else if (cardType === 'related') {
     cardOptions.funcs.onClickHandler = onClick.relatedProductCard ;
     cardOptions.funcs.actionOnClick = onClick.productComparisonAction;
+    cardOptions.data.actionButton = 'star'
   } else if (cardType === 'currentOutfit') {
     cardOptions.funcs.onClickHandler = onClick.relatedProductCard; //clicking should show the product on product detail right?
     cardOptions.funcs.actionOnClick = onClick.removeFromOutfitAction;
+    cardOptions.data.actionButton = 'x'
   }
   return cardOptions;
 }

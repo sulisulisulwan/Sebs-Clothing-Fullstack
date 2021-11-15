@@ -6,49 +6,16 @@ html {
   font-family: 'Spartan', sans-serif;
 }
 
-
-
-
-
 .main-content {
   grid-template-rows: 25% 25% 25% 25%;
 }
 
-/****************
 
-SUB WIDGETS
+/*************************************************
 
-****************/
+              CARD
 
-.widget-title {
-
-}
-
-/***********
-
-Carousel
-
-*************/
-
-.carousel-wrapper {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
-
-.carousel-display-wrapper {
-  display: flex;
-  flex-direction: row;
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  padding-bottom: 1%;
-  position: relative;
-}
-
-.carousel-display-wrapper::-webkit-scrollbar {
-  display: none;
-}
+*************************************************/
 
 .card {
   position: relative;
@@ -68,7 +35,6 @@ Carousel
 .card-image-wrapper {
   grid-row: 1;
   overflow: hidden;
-
 }
 
 .card-image {
@@ -88,28 +54,41 @@ Carousel
   position: relative;
 }
 
-.name {
-  color: black;
-}
-.category {
-  color: gray;
-}
-.price {
-  color: black;
+/*************************************************
+
+              CAROUSEL
+
+*************************************************/
+
+.carousel-wrapper {
+  display: flex;
+  flex-direction: row;
+  position: relative;
 }
 
-.card-star {
-  max-width: 20px;
+.carousel.display-wrapper {
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 1%;
+  position: relative;
 }
 
-.carousel-prev-button {
+.carousel.display-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+
+.carousel.prev-button {
   animation: fadeIn 0.2s backwards;
   width: 100px;
   position: absolute;
   top: 100px;
   z-index: 1;
 }
-.carousel-next-button {
+.carousel.next-button {
   animation: fadeIn 0.2s backwards;
   width: 100px;
   position: absolute;
@@ -118,7 +97,7 @@ Carousel
   z-index: 1;
 }
 
-.carousel-prev-button-hidden {
+.carousel.prev-button-hidden {
   animation: fadeOut 0.2s forwards;
   width: 100px;
   position: absolute;
@@ -126,7 +105,7 @@ Carousel
   z-index: 1;
 }
 
-.carousel-next-button-hidden {
+.carousel.next-button-hidden {
   animation: fadeOut 0.2s forwards;
   width: 100px;
   position: absolute;
@@ -159,7 +138,7 @@ Buttons
 
 ******************/
 
-.related-products-related-cards-card-action-button-star {
+.action-button-star {
   position: absolute;
   /* background-color: white; */
   bottom: 85%;
@@ -167,7 +146,7 @@ Buttons
   max-height: 8%;
   z-index: 1;
 }
-.related-products-outfit-cards-card-action-button-x {
+.action-button-x {
   position: relative;
   bottom: 280px;
   left: 80%;
